@@ -7,8 +7,7 @@ This repository will hold the assignments of the new XS training modules
 	![image](https://user-images.githubusercontent.com/95345450/149883181-21df83b3-7b00-4e40-97f2-91e1e24355b3.png)
 3. The repository is forked to your github account
 	![image](https://user-images.githubusercontent.com/95345450/149883486-166b6300-696e-4883-bdc5-e746e03faeb8.png)
-4. Clone the repository from your account - git clone https://github.com/<**_your repo name_**>/JavaAssignments.git
-   ![](assets/cloned.png)
+4. Clone the repository from your account - git clone https://github.com/<**_your repo name_**>/XSAssignments.git
 5. Create a branch with your name. (Eg., suseendran_jeevanantham)
 6. Copy the assignment files (each folder for each assignment)
 7. Commit the changes
