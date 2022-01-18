@@ -11,7 +11,7 @@ This repository will hold the assignments of the new XS training modules
 5. Create a branch with your name. (Eg., suseendran_jeevanantham)
 6. Copy the assignment files (each folder for each assignment)
 7. Commit the changes
-	![image](https://user-images.githubusercontent.com/95345450/149883857-a0d66ae3-ce1d-4100-84f7-b6a22cd6346d.png)
+	![image](https://user-images.githubusercontent.com/95345450/149890003-d232f218-0a66-480e-bdff-d60751ac08bb.png)
 8. Push the changes. 
 	![image](https://user-images.githubusercontent.com/95345450/149883873-ed5a9400-5820-44c3-bf33-6e0ba25dafdb.png)
    If you get a prompt to enter the credentials:
