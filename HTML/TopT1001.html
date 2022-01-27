@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <title>Weather Info</title>
+  <head>
+    <link rel="stylesheet" href="TopT1001.css" />
+  </head>
+  <body>
+    <section>
+      <div class="top-div">
+        <div class="locations">
+          <img
+            src="HTMLCSS Images/Icons for cities/kolkata.svg"
+            alt="kolkata"
+            style="
+              position: relative;
+              width: 80px;
+              height: 80px;
+              top: 20px;
+              left: 10px;
+            "
+          />
+          <form action="/action_page.php">
+            <select id="city" name="city" class="loclist">
+              <option value="newdelhi">New Delhi</option>
+              <option value="cbe">Coimbatore</option>
+              <option value="tup">Tiruppur</option>
+              <option value="ten">Tirunelveli</option>
+            </select>
+          </form>
+        </div>
+        <div class="timeanddate">
+          <h3>
+            10:10:44
+            <span
+              ><img
+                src="HTMLCSS Images/General Images & Icons/amState.svg"
+                alt="AM"
+                style="width: 40px; height: 40px" /></span
+            ><br />01-Mar-2020
+          </h3>
+        </div>
+        <div class="currenttemp">
+          <div>
+            <h2 style="font-size: 100%">Temp °C<br /></h2>
+            <h2 style="font-size: 200%">25 C</h2>
+          </div>
+          <div>
+            <h2 style="font-size: 100%">Temp F<br /></h2>
+            <h2 style="font-size: 200%">78 F</h2>
+          </div>
+          <!-- </div>
+
+      <div class="currentweather"> -->
+          <div>
+            <h1>|<br /></h1>
+          </div>
+          <div>
+            <h1>|<br /></h1>
+          </div>
+          <div>
+            <h2 style="font-size: 100%">Humidity<br /></h2>
+            <h2 style="font-size: 200%">26%</h2>
+          </div>
+          <div>
+            <h2 style="font-size: 100%">Precipitation<br /></h2>
+            <h2 style="font-size: 200%">0%</h2>
+          </div>
+        </div>
+        <div class="forecast">
+          <div class="time">
+            <h3>Now<br />|</h3>
+            <h3>11 AM<br />|</h3>
+            <h3>12 PM<br />|</h3>
+            <h3>01 PM<br />|</h3>
+            <h3>02 PM<br />|</h3>
+            <h3>03 PM<br />|</h3>
+          </div>
+          <div class="wimages">
+            <img
+              src="HTMLCSS Images/Weather Icons/precipitationIcon.svg"
+              alt="icon1"
+            />
+            <img src="HTMLCSS Images/Weather Icons/rainyIcon.svg" alt="icon2" />
+            <img
+              src="HTMLCSS Images/Weather Icons/humidityIcon.svg"
+              alt="icon3"
+            />
+            <img
+              src="HTMLCSS Images/Weather Icons/sunnyIcon.svg"
+              alt="icon41"
+            />
+            <img
+              src="HTMLCSS Images/Weather Icons/snowflakeIcon.svg"
+              alt="icon5"
+            />
+            <img
+              src="HTMLCSS Images/Weather Icons/precipitationIconBlack.svg"
+              alt="icon6"
+            />
+          </div>
+          <div class="numbers">
+            <h3>6</h3>
+            <h3>7</h3>
+            <h3>7</h3>
+            <h3>8</h3>
+            <h3>8</h3>
+            <h3>9</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+   
+      <div class="mid-div">
+        <div>
+          <h3>Top cities around world</h3>
+        </div>
+        <div class="selectiontab">
+        <div class="tab">
+          <button class="tablinks">
+            <img src="HTMLCSS Images/Weather Icons/sunnyIcon.svg" alt="sun" />
+          </button>
+          <button class="tablinks">
+            <img
+              src="HTMLCSS Images/Weather Icons/snowflakeIcon.svg"
+              alt="snow"
+            />
+          </button>
+          <button class="tablinks">
+            <img
+              src="HTMLCSS Images/Weather Icons/rainyIcon.svg"
+              alt="precep"
+            />
+          </button>
+        </div>
+        <div>
+          <label for="points" style="color: white;">Display Top</label>
+          <input type="number" id="displaytop" name="DisplayTop" style="width: 40px;" value="4">
+        </div>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3 class="citem1">Coimbatore</h3>
+          <img class="citem2" src="HTMLCSS Images/Weather Icons/sunnyIcon.svg" alt="sun1" />
+          <h3 class="citem3">25 °C</h3>
+          <img class="citem4" src="HTMLCSS Images/Weather Icons/humidityIcon.svg" alt="hum1" />
+          <h3 class="citem5">53%</h3>
+          <img class="citem6" src="HTMLCSS Images/Weather Icons/windyIcon.svg" alt="win2" />
+          <h3 class="citem7">5 Km/hr</h3>
+          <img class="citem8"src="HTMLCSS Images/Weather Icons/precipitationIcon.svg" alt="pre1" />
+          <h3 class="citem9">10%</h3>
+        </div>
+        <div class="card">
+          <h3 class="citem1">Tiruppur</h3>
+          <img class="citem2" src="HTMLCSS Images/Weather Icons/sunnyIcon.svg" alt="sun1" />
+          <h3 class="citem3">27 °C</h3>
+          <img class="citem4" src="HTMLCSS Images/Weather Icons/humidityIcon.svg" alt="hum1" />
+          <h3 class="citem5">49%</h3>
+          <img class="citem6" src="HTMLCSS Images/Weather Icons/windyIcon.svg" alt="win2" />
+          <h3 class="citem7">6 Km/hr</h3>
+          <img class="citem8"src="HTMLCSS Images/Weather Icons/precipitationIcon.svg" alt="pre1" />
+          <h3 class="citem9">15%</h3>
+        </div>
+        <div class="card">
+          <h3 class="citem1">New Delhi</h3>
+          <img class="citem2" src="HTMLCSS Images/Weather Icons/sunnyIcon.svg" alt="sun1" />
+          <h3 class="citem3">27 °C</h3>
+          <img class="citem4" src="HTMLCSS Images/Weather Icons/humidityIcon.svg" alt="hum1" />
+          <h3 class="citem5">49%</h3>
+          <img class="citem6" src="HTMLCSS Images/Weather Icons/windyIcon.svg" alt="win2" />
+          <h3 class="citem7">6 Km/hr</h3>
+          <img class="citem8"src="HTMLCSS Images/Weather Icons/precipitationIcon.svg" alt="pre1" />
+          <h3 class="citem9">15%</h3>
+        </div>
+        <div class="card">
+          <h3 class="citem1">Tirunelveli</h3>
+          <img class="citem2" src="HTMLCSS Images/Weather Icons/sunnyIcon.svg" alt="sun1" />
+          <h3 class="citem3">27 °C</h3>
+          <img class="citem4" src="HTMLCSS Images/Weather Icons/humidityIcon.svg" alt="hum1" />
+          <h3 class="citem5">49%</h3>
+          <img class="citem6" src="HTMLCSS Images/Weather Icons/windyIcon.svg" alt="win2" />
+          <h3 class="citem7">6 Km/hr</h3>
+          <img class="citem8"src="HTMLCSS Images/Weather Icons/precipitationIcon.svg" alt="pre1" />
+          <h3 class="citem9">15%</h3>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section>
+      <div class="bottom-div">
+        <div class="title-sort">
+        <h2>Cities across continents at a glance</h2>
+        <h3>Continent Name</h3>
+        <h3>Temperature</h3>
+      </div>
+      <div class="list-of-cities">
+        <div class="con-temp">
+          <h4 style="margin: 1px;">Asia</h4>
+          <h4 style="margin: 1px;">38°C</h4>
+       </div>
+       <div class="con-temp">
+        <h4 style="margin: 1px;">Delhi, 10:10 AM</h4>
+        <div class="conditionofcity">
+          <img class="citem4" src="HTMLCSS Images/Weather Icons/humidityIcon.svg" alt="humlist" style="width: 20px; height: 20px;"/>
+          <h4 style="margin: 1px;">53%</h4>
+        </div>
+      </div>
+      </div>
+      </div>
+    </section>
+  </body>
+</html>

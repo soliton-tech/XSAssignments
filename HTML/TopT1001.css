@@ -1,0 +1,238 @@
+body {
+  width: 100%;
+  height: 100%;
+}
+.top-div {
+  background-image: url("HTMLCSS Images/General Images & Icons/background.svg");
+  width: 100%;
+  height: 200px;
+  background-repeat: repeat;
+}
+.mid-div {
+  position: relative;
+  background-image: linear-gradient(rgb(22, 89, 109), rgb(231, 227, 227));
+  width: 100%;
+  height: 400px;
+}
+.bottom-div {
+  position: relative;
+  background-image: linear-gradient(rgb(22, 89, 109), rgb(231, 227, 227));
+  width: 100%;
+  height: 400px;
+}
+.title-sort {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.con-temp {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  height: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: rgb(135, 180, 182);
+}
+.conditionofcity {
+  display: flex;
+  flex-direction: row;
+}
+.citem1 {
+  grid-area: cname;
+}
+.citem2 {
+  grid-area: cico;
+}
+.citem3 {
+  grid-area: ctemp;
+}
+.citem4 {
+  grid-area: chum;
+}
+.citem5 {
+  grid-area: chumv;
+}
+.citem6 {
+  grid-area: cwin;
+}
+.citem7 {
+  grid-area: cunit;
+}
+.citem8 {
+  grid-area: cpre;
+}
+.citem9 {
+  grid-area: cprev;
+}
+.cards {
+  position: absolute;
+  width: 96%;
+  top: 80px;
+  left: 20px;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.card {
+  display: grid;
+  grid-template-areas:
+    "cname cico ctemp"
+    "chum chumv empty"
+    "cwin cunit empty"
+    "cpre cprev empty";
+  grid-gap: 5px;
+  padding: 5px;
+  align-items: center;
+  justify-items: center;
+  background-image: url("HTMLCSS Images/Icons for cities/yangon.svg");
+  color: white;
+  position: relative;
+  height: 280px;
+  width: 240px;
+  border-radius: 5%;
+  box-shadow: 3px 3px grey;
+  border-left: 0.1px solid grey;
+  border-top: 0.1px solid grey;
+}
+.card2 {
+  display: grid;
+  grid-template-areas:
+    "cname cico ctemp"
+    "chum chumv empty"
+    "cwin cunit empty"
+    "cpre cprev empty";
+  grid-gap: 5px;
+  padding: 5px;
+  align-items: center;
+  justify-items: center;
+  background-image: url("HTMLCSS Images/Icons for cities/auckland.svg");
+  color: white;
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  height: 280px;
+  width: 240px;
+}
+.mid-div > div > h3 {
+  margin: 2px;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: medium;
+}
+.selectiontab {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.tablinks {
+  background-color: transparent;
+  border-top: 2px;
+  border-left: 2px;
+  border-right: 5px;
+}
+.tablinks:hover {
+  border-top: 2px;
+  border-left: 2px;
+  border-right: 5px;
+  border-color: rgb(187, 51, 17);
+}
+.loclist {
+  position: relative;
+  top: 65px;
+  left: 30px;
+  padding: 5px;
+  background-color: rgba(233, 225, 225, 0.918);
+}
+.locations {
+  display: flex;
+  flex-direction: row;
+}
+.timeanddate {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: small;
+  color: bisque;
+  position: relative;
+  left: 110px;
+  top: 5px;
+}
+.time {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  top: 40px;
+  left: 550px;
+  width: 41.5%;
+}
+.wimages {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  top: 115px;
+  left: 555px;
+  width: 40%;
+}
+.numbers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  top: 125px;
+  left: 555px;
+  width: 40%;
+  color: rgba(228, 226, 226, 0.931);
+}
+.forecast > .wimages > img {
+  width: 20px;
+  height: 20px;
+}
+.forecast > .time > h3 {
+  text-align: center;
+  color: rgba(228, 226, 226, 0.931);
+}
+h2 {
+  margin: 6px;
+  color: rgba(228, 226, 226, 0.931);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+h1 {
+  margin: 10px;
+  padding: 0px;
+  border: 0;
+  color: rgba(228, 226, 226, 0.931);
+  width: 2px;
+}
+.currenttemp {
+  padding-right: 8px;
+  /* border-right: 2px solid rgb(124, 126, 128); */
+  border-top: 50px;
+  position: absolute;
+  top: 40px;
+  left: 270px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 250px;
+}
+
+/* .currentweather {
+  position: absolute;
+  top: 40px;
+  left: 370px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} */
