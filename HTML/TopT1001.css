@@ -16,28 +16,64 @@ body {
 }
 .bottom-div {
   position: relative;
-  background-image: linear-gradient(rgb(22, 89, 109), rgb(231, 227, 227));
+  background-image: linear-gradient(rgb(231, 227, 227), rgb(22, 89, 109));
   width: 100%;
   height: 400px;
 }
 .title-sort {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+}
+.title-sort > h2 {
+  color: white;
+  font-size: larger;
+}
+.sortby {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  right: 1vw;
+  color: white;
+}
+.list-of-cities {
+  position: absolute;
+  top: 55px;
+  left: 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 240px;
 }
 .con-temp {
   display: flex;
   flex-direction: row;
-  width: 200px;
-  height: 30px;
+  width: 240px;
+  height: 55px;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: rgb(135, 180, 182);
+  background-image: linear-gradient(rgb(117, 117, 117), rgb(92, 94, 94));
+  border-radius: 3px;
 }
 .conditionofcity {
   display: flex;
   flex-direction: row;
 }
+.list-of-cities > .con-temp > .city {
+  color: rgb(104, 224, 224);
+}
+.list-of-cities > .con-temp > h4 {
+  margin: 4px;
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.list-of-cities > .con-temp > .conditionofcity > h4 {
+  margin: 3px;
+  color: white;
+}
+
 .citem1 {
   grid-area: cname;
 }
