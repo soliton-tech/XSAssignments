@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+  <body>
+    <div class="head">
+      <div class="image">
+        <img src="/Images/karachi.svg" alt="karachi" />
+      </div>
+      <div class="select">
+        <select name="country" id="name">
+          <option value="Newyork">Newyork</option>
+          <option value="Newdelhi">Newdelhi</option>
+          <option value="Moscow">Moscow</option>
+        </select>
+      </div>
+      <div class="date-time">
+        <div class="date">
+          <div>10:10 <span id="small">:44</span></div>
+          <div><img src="/images/amState.svg" alt="AM" /></div>
+        </div>
+        <div class="time">
+          <div>01-Mar-2022</div>
+        </div>
+      </div>
+      <div class="th">
+        <div class="t">
+          <div class="light">Temp&#176;C</div>
+          <div><b>25 C</b></div>
+        </div>
+        <div class="h">
+          <div class="light">Humidity</div>
+          <div><b>26 %</b></div>
+        </div>
+      </div>
+      <div class="tp">
+        <div class="t">
+          <div class="light">Temp F</div>
+          <div><b>25 F</b></div>
+        </div>
+        <div class="p">
+          <div class="light">Precipitation</div>
+          <div><b>0 %</b></div>
+        </div>
+      </div>
+      <div class="time-basis">
+        <div class="now">
+          <div>NOW</div>
+          <div>|</div>
+          <div><img src="/images/cloudyIcon.svg" alt="cloud" /></div>
+          <div>6</div>
+        </div>
+        <div class="line">
+          <div>|</div>
+        </div>
+        <div class="now">
+          <div>11AM</div>
+          <div>|</div>
+          <div><img src="/images/precipitationIcon.svg" alt="cloud" /></div>
+          <div>6</div>
+        </div>
+        <div class="line">
+          <div>|</div>
+        </div>
+
+        <div class="now">
+          <div>12PM</div>
+          <div>|</div>
+          <div><img src="/images/rainyIconBlack.svg" alt="cloud" /></div>
+          <div>6</div>
+        </div>
+        <div class="line">
+          <div>|</div>
+        </div>
+        <div class="now">
+          <div>1 PM</div>
+          <div>|</div>
+          <div><img src="/images/sunnyIcon.svg" alt="cloud" /></div>
+          <div>6</div>
+        </div>
+        <div class="line">
+          <div>|</div>
+        </div>
+        <div class="now">
+          <div>2PM</div>
+          <div>|</div>
+          <div><img src="/images/snowflakeIcon.svg" alt="cloud" /></div>
+          <div>6</div>
+        </div>
+        <div class="line">
+          <div>|</div>
+        </div>
+        <div class="now">
+          <div>3PM</div>
+          <div>|</div>
+          <div><img src="/images/windyIcon.svg" alt="cloud" /></div>
+          <div>6</div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="heading">Top Cities Around World</div>
+      <div class="top-icon">
+        <div><img id="dine" src="/images/sunnyIcon.svg" alt="sun" /></div>
+        <div><img src="/images/snowflakeIcon.svg" alt="winter" /></div>
+        <div><img src="/images/rainyIcon.svg" alt="rain" /></div>
+        <div>Display Top</div>
+        <div>
+          <input type="number" id="drop" />
+        </div>
+      </div>
+      <div class="mid">
+        <div class="box">
+          <div class="box-top">
+            <div class="particular">
+              <div class="colo">New Delhi</div>
+              <div <b>10:00 AM</b></div>
+              <div>28 Mar 2020</div>
+              <div class="hum">
+                <div><img src="/images/humidityIcon.svg" alt="drop" /></div>
+                <div>50%</div>
+              </div>
+              <div class="hum">
+                <div>
+                  <img src="/images/precipitationIcon.svg" alt="cloud" />
+                </div>
+                <div>50%</div>
+              </div>
+            </div>
+            <div class="box-temp">
+              <div><img src="/images/sunnyIcon.svg" alt="sunny" /></div>
+              <div>25&#176;C</div>
+            </div>
+          </div>
+          <div class="box-img">
+            <img src="/images/yangon.svg" alt="city image" />
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-top">
+            <div class="particular">
+              <div class="colo">New Delhi</div>
+              <div <b>10:00 AM</b></div>
+              <div>28 Mar 2020</div>
+              <div class="hum">
+                <div><img src="/images/humidityIcon.svg" alt="drop" /></div>
+                <div>50%</div>
+              </div>
+              <div class="hum">
+                <div>
+                  <img src="/images/precipitationIcon.svg" alt="cloud" />
+                </div>
+                <div>50%</div>
+              </div>
+            </div>
+            <div class="box-temp">
+              <div><img src="/images/sunnyIcon.svg" alt="sunny" /></div>
+              <div>25&#176;C</div>
+            </div>
+          </div>
+          <div class="box-img">
+            <img src="/images/yangon.svg" alt="city image" />
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-top">
+            <div class="particular">
+              <div class="colo">New Delhi</div>
+              <div <b>10:00 AM</b></div>
+              <div>28 Mar 2020</div>
+              <div class="hum">
+                <div><img src="/images/humidityIcon.svg" alt="drop" /></div>
+                <div>50%</div>
+              </div>
+              <div class="hum">
+                <div>
+                  <img src="/images/precipitationIcon.svg" alt="cloud" />
+                </div>
+                <div>50%</div>
+              </div>
+            </div>
+            <div class="box-temp">
+              <div><img src="/images/sunnyIcon.svg" alt="sunny" /></div>
+              <div>25&#176;C</div>
+            </div>
+          </div>
+          <div class="box-img">
+            <img src="/images/yangon.svg" alt="city image" />
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-top">
+            <div class="particular">
+              <div class="colo">New Delhi</div>
+              <div <b>10:00 AM</b></div>
+              <div>28 Mar 2020</div>
+              <div class="hum">
+                <div><img src="/images/humidityIcon.svg" alt="drop" /></div>
+                <div>50%</div>
+              </div>
+              <div class="hum">
+                <div>
+                  <img src="/images/precipitationIcon.svg" alt="cloud" />
+                </div>
+                <div>50%</div>
+              </div>
+            </div>
+            <div class="box-temp">
+              <div><img src="/images/sunnyIcon.svg" alt="sunny" /></div>
+              <div>25&#176;C</div>
+            </div>
+          </div>
+          <div class="box-img">
+            <img src="/images/yangon.svg" alt="city image" />
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-top">
+            <div class="particular">
+              <div class="colo">New Delhi</div>
+              <div <b>10:00 AM</b></div>
+              <div>28 Mar 2020</div>
+              <div class="hum">
+                <div><img src="/images/humidityIcon.svg" alt="drop" /></div>
+                <div>50%</div>
+              </div>
+              <div class="hum">
+                <div>
+                  <img src="/images/precipitationIcon.svg" alt="cloud" />
+                </div>
+                <div>50%</div>
+              </div>
+            </div>
+            <div class="box-temp">
+              <div><img src="/images/sunnyIcon.svg" alt="sunny" /></div>
+              <div>25&#176;C</div>
+            </div>
+          </div>
+          <div class="box-img">
+            <img src="/images/yangon.svg" alt="city image" />
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-top">
+            <div class="particular">
+              <div class="colo">New Delhi</div>
+              <div <b>10:00 AM</b></div>
+              <div>28 Mar 2020</div>
+              <div class="hum">
+                <div><img src="/images/humidityIcon.svg" alt="drop" /></div>
+                <div>50%</div>
+              </div>
+              <div class="hum">
+                <div>
+                  <img src="/images/precipitationIcon.svg" alt="cloud" />
+                </div>
+                <div>50%</div>
+              </div>
+            </div>
+            <div class="box-temp">
+              <div><img src="/images/sunnyIcon.svg" alt="sunny" /></div>
+              <div>25&#176;C</div>
+            </div>
+          </div>
+          <div class="box-img">
+            <img src="/images/yangon.svg" alt="city image" />
+          </div>
+        </div>
+      </div>
+      <div class="end">
+        <div class="heading">Cities across continents as a Glance</div>
+        <div class="continent">
+          <div class="c-name">
+            <div>Continent Name</div>
+            <div><img src="/images/arrowDown.svg" alt="down" /></div>
+          </div>
+          <div class="c-name">
+            <div>Temperature</div>
+            <div><img src="/images/arrowUp.svg" alt="down" /></div>
+          </div>
+        </div>
+        <div class="grid-end">
+          <div class="rec">
+            <div class="upper">
+              <div class="colo">Asia</div>
+              <div id="bold"><b>38&#176;C</b></div>
+            </div>
+            <div class="lower">
+              <div>Delhi,10:10 AM</div>
+              <div class="drop">
+                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div>53%</div>
+              </div>
+            </div>
+          </div>
+          <div class="rec">
+            <div class="upper">
+              <div class="colo">Asia</div>
+              <div id="bold"><b>38&#176;C</b></div>
+            </div>
+            <div class="lower">
+              <div>Delhi,10:10 AM</div>
+              <div class="drop">
+                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div>53%</div>
+              </div>
+            </div>
+          </div>
+          <div class="rec">
+            <div class="upper">
+              <div class="colo">Asia</div>
+              <div id="bold"><b>38&#176;C</b></div>
+            </div>
+            <div class="lower">
+              <div>Delhi,10:10 AM</div>
+              <div class="drop">
+                <div><img src="/Images/humidityIcon.svg" alt="" /></div>
+                <div>53%</div>
+              </div>
+            </div>
+          </div>
+          <div class="rec">
+            <div class="upper">
+              <div class="colo">Asia</div>
+              <div id="bold"><b>38&#176;C</b></div>
+            </div>
+            <div class="lower">
+              <div>Delhi,10:10 AM</div>
+              <div class="drop">
+                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div>53%</div>
+              </div>
+            </div>
+          </div>
+          <div class="rec">
+            <div class="upper">
+              <div class="colo">Asia</div>
+              <div id="bold"><b>38&#176;C</b></div>
+            </div>
+            <div class="lower">
+              <div>Delhi,10:10 AM</div>
+              <div class="drop">
+                <div><img src="/Images/humidityIcon.svg" alt="" /></div>
+                <div>53%</div>
+              </div>
+            </div>
+          </div>
+          <div class="rec">
+            <div class="upper">
+              <div class="colo">Asia</div>
+              <div id="bold"><b>38&#176;C</b></div>
+            </div>
+            <div class="lower">
+              <div>Delhi,10:10 AM</div>
+              <div class="drop">
+                <div><img src="/Images/humidityIcon.svg" alt="" /></div>
+                <div>53%</div>
+              </div>
+            </div>
+          </div>
+          <div class="rec">
+            <div class="upper">
+              <div class="colo">Asia</div>
+              <div id="bold"><b>38&#176;C</b></div>
+            </div>
+            <div class="lower">
+              <div>Delhi,10:10 AM</div>
+              <div class="drop">
+                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div>53%</div>
+              </div>
+            </div>
+          </div>
+          <div class="rec">
+            <div class="upper">
+              <div class="colo">Asia</div>
+              <div id="bold"><b>38&#176;C</b></div>
+            </div>
+            <div class="lower">
+              <div>Delhi,10:10 AM</div>
+              <div class="drop">
+                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div>53%</div>
+              </div>
+            </div>
+          </div>
+          <div class="rec">
+            <div class="upper">
+              <div class="colo">Asia</div>
+              <div id="bold"><b>38&#176;C</b></div>
+            </div>
+            <div class="lower">
+              <div>Delhi,10:10 AM</div>
+              <div class="drop">
+                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div>53%</div>
+              </div>
+            </div>
+          </div>
+          <div class="rec">
+            <div class="upper">
+              <div class="colo">Asia</div>
+              <div id="bold"><b>38&#176;C</b></div>
+            </div>
+            <div class="lower">
+              <div>Delhi,10:10 AM</div>
+              <div class="drop">
+                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div>53%</div>
+              </div>
+            </div>
+          </div>
+          <div class="rec">
+            <div class="upper">
+              <div class="colo">Asia</div>
+              <div id="bold"><b>38&#176;C</b></div>
+            </div>
+            <div class="lower">
+              <div>Delhi,10:10 AM</div>
+              <div class="drop">
+                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div>53%</div>
+              </div>
+            </div>
+          </div>
+          <div class="rec">
+            <div class="upper">
+              <div class="colo">Asia</div>
+              <div id="bold"><b>38&#176;C</b></div>
+            </div>
+            <div class="lower">
+              <div>Delhi,10:10 AM</div>
+              <div class="drop">
+                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div>53%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
