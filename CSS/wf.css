@@ -1,0 +1,227 @@
+
+[contenteditable]{
+    outline: 0px solid transparent;
+}
+body{margin: 0%;
+}
+.one{
+    height:auto;
+    background-image: url('../assets/background/background.svg');
+    background-size: 150%;
+    display: grid;
+    background-position: left;
+    animation: anime 20s linear 0s infinite normal both;
+   color: white;padding-bottom: 20px;
+   grid-template-columns: 0.5fr 0.35fr 0.3fr 0.01fr 0.4fr 0.27fr  0.27fr  0.27fr  0.27fr  0.27fr  0.27fr 0.27fr  0.27fr  0.27fr  0.27fr  0.27fr;
+   justify-content: space-evenly;
+   
+}
+@keyframes anime{
+    50% {
+        background-position: right;
+    }
+}
+.c1{
+    text-align: center;
+    padding-top: 35px;
+}
+
+.c2{
+   
+   padding-top: 20%;
+    font-size:20px;
+    color: white;
+}
+.sb:hover{
+    background-color: lightblue;
+}
+#time{
+    color: rgb(255, 230, 0);
+}
+.c3{padding-top: 29px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.line{ 
+    border-left: 2px solid white;
+    height: 75px; 
+}
+#deg{
+    font-size: 25px;
+}
+.c5{padding-top: 29px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.c6{
+    text-align: center;
+    width: 50px;
+    height: 225.4px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.c7{width: 50.37px;height: 221.9px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+@media screen and (max-width:1100px){
+    .one{
+        display: grid;
+        grid-template-columns: 2fr 1.5fr 2fr 0.2fr 1.8fr 1fr;
+        grid-template-rows: 1.05fr 1fr ;
+    }
+   
+}
+@media screen and (max-width:600px){
+    .one{
+        display: grid;
+        grid-template-columns: 2fr 2fr 3fr 0.1fr 2fr ;
+        grid-template-rows: 1.05fr 1fr 1fr;
+    }
+    .c2{
+        text-align: center;
+    }
+    .c5{
+        text-align: center;
+    }
+
+}
+
+.two{
+  border-radius:15px ;
+    height: auto;
+    padding-bottom:35px ;
+    background: linear-gradient(rgb(0, 255, 149),rgba(40, 40, 109, 0),rgba(250, 249, 249, 0.959));
+    
+    background-size: contain;
+}
+
+.a1{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 0.75fr;
+    padding-right: 20px;
+    align-items: center;
+    text-align: center;
+}
+.b1{
+    align-items: center;
+    text-align: end;
+}
+.b2{
+    align-items: center;
+    text-align: end;
+  padding-top: 10px;
+}
+.line2{
+    border-bottom: 4px solid rgb(141, 136, 136);
+    width: 35px;
+    height: 35px;
+}
+@media screen and (max-width:700px){
+    .a1{display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2;
+    text-align: center;
+    }
+    .b1,.b2{
+        text-align: center;
+    }
+}
+
+.a2{
+    display: grid;
+    grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit,250px);
+  justify-content: space-around;
+  padding-right: 30px;
+}
+
+.a2b{width: 250px;
+    height: 150px;
+    background-image: url('../assets/cities/newyork.svg');
+    background-color: black;
+    background-size:cover;
+    display: grid;
+    grid-gap: 2rem;
+  grid-template-columns:1fr 1fr;
+  justify-content: flex-start;
+  font-family: fantasy;
+  color: whitesmoke;
+  padding: 15px;
+  line-height: 200%;
+  
+  border-radius: 15px;
+}
+
+#a2b2{
+    text-align:center;
+  
+}
+#a2b2 > img{
+    width: 30px;
+}
+#i1{
+    transform: translate(1px,5px);
+    position: relative;
+    width:22px;
+}
+.a3{
+    display: grid;
+    height: auto;
+    padding-right: 25px;
+    padding-left: 30px;
+    font-size: 20px;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 1fr;   
+}
+#a32,#a31{height:auto; 
+}
+#a31{
+    font-size: 25px;
+}
+#a32{
+    text-align: end;
+}
+@media screen and (max-width: 700px){
+    .a3{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        text-align: center;    
+        gap: 0%;
+    }
+    #a32{
+        justify-content: center;text-align: center;
+    }
+}
+.a4{
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fill,300px);
+    justify-content: center;
+    font-style: normal;
+    font-family: sans-serif;
+    font-size: 100%;
+  
+}
+.a4b{border-radius: 15px;
+    width: 250px;
+    height: 50px;
+    background-color: rgb(145, 145, 140);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: flex-start;
+    font-family: fantasy;
+    color: black;
+    padding: 15px;
+    line-height: 200%;
+    padding-bottom: 25px;
+}
+#a4b2{
+    text-align: end;
+    align-items: center;
+}
+.fontcolor{
+color: yellow;
+}
