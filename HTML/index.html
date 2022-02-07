@@ -10,42 +10,44 @@
   <body>
     <div class="head">
       <div class="image">
-        <img src="/Images/karachi.svg" alt="karachi" />
+        <img id="dynamic" alt="country icon" />
       </div>
       <div class="select">
-        <select name="country" id="name">
-          <option value="Newyork">Newyork</option>
+        <select name="country" id="name" onchange="selectdata();">
+          <option value="NewYork">Select</option>
+          <option value="NewYork">Newyork</option>
           <option value="Newdelhi">Newdelhi</option>
           <option value="Moscow">Moscow</option>
+          <option value="Jamaica">Jamaica</option>
         </select>
       </div>
       <div class="date-time">
         <div class="date">
-          <div>10:10 <span id="small">:44</span></div>
-          <div><img src="/images/amState.svg" alt="AM" /></div>
+          <div id="time">00:00:00</div>
+          <div><img id="ampm" src="/images/amState.svg" alt="AM" /></div>
         </div>
         <div class="time">
-          <div>01-Mar-2022</div>
+          <div id="date">Date-Mon-Year</div>
         </div>
       </div>
       <div class="th">
         <div class="t">
           <div class="light">Temp&#176;C</div>
-          <div><b>25 C</b></div>
+          <div id="cel"><b>0 C</b></div>
         </div>
         <div class="h">
           <div class="light">Humidity</div>
-          <div><b>26 %</b></div>
+          <div id="hum"><b>0 %</b></div>
         </div>
       </div>
       <div class="tp">
         <div class="t">
           <div class="light">Temp F</div>
-          <div><b>25 F</b></div>
+          <div id="far"><b>0 F</b></div>
         </div>
         <div class="p">
           <div class="light">Precipitation</div>
-          <div><b>0 %</b></div>
+          <div id="per"><b>0 %</b></div>
         </div>
       </div>
       <div class="time-basis">
@@ -107,11 +109,13 @@
       <div class="heading">Top Cities Around World</div>
       <div class="top-icon">
         <div><img id="dine" src="/images/sunnyIcon.svg" alt="sun" /></div>
-        <div><img src="/images/snowflakeIcon.svg" alt="winter" /></div>
-        <div><img src="/images/rainyIcon.svg" alt="rain" /></div>
+        <div>
+          <img id="dine1" src="/images/snowflakeIcon.svg" alt="winter" />
+        </div>
+        <div><img id="dine2" src="/images/rainyIcon.svg" alt="rain" /></div>
         <div>Display Top</div>
         <div>
-          <input type="number" id="drop" />
+          <input type="number" id="drop" onchange="input();" />
         </div>
       </div>
       <div class="mid">
@@ -119,7 +123,7 @@
           <div class="box-top">
             <div class="particular">
               <div class="colo">New Delhi</div>
-              <div <b>10:00 AM</b></div>
+              <div><b> 10:00 AM </b></div>
               <div>28 Mar 2020</div>
               <div class="hum">
                 <div><img src="/images/humidityIcon.svg" alt="drop" /></div>
@@ -145,7 +149,7 @@
           <div class="box-top">
             <div class="particular">
               <div class="colo">New Delhi</div>
-              <div <b>10:00 AM</b></div>
+              <div><b>10:00 AM</b></div>
               <div>28 Mar 2020</div>
               <div class="hum">
                 <div><img src="/images/humidityIcon.svg" alt="drop" /></div>
@@ -171,7 +175,7 @@
           <div class="box-top">
             <div class="particular">
               <div class="colo">New Delhi</div>
-              <div <b>10:00 AM</b></div>
+              <div><b>10:00 AM</b></div>
               <div>28 Mar 2020</div>
               <div class="hum">
                 <div><img src="/images/humidityIcon.svg" alt="drop" /></div>
@@ -197,7 +201,7 @@
           <div class="box-top">
             <div class="particular">
               <div class="colo">New Delhi</div>
-              <div <b>10:00 AM</b></div>
+              <div><b>10:00 AM</b></div>
               <div>28 Mar 2020</div>
               <div class="hum">
                 <div><img src="/images/humidityIcon.svg" alt="drop" /></div>
@@ -223,7 +227,7 @@
           <div class="box-top">
             <div class="particular">
               <div class="colo">New Delhi</div>
-              <div <b>10:00 AM</b></div>
+              <div><b>10:00 AM</b></div>
               <div>28 Mar 2020</div>
               <div class="hum">
                 <div><img src="/images/humidityIcon.svg" alt="drop" /></div>
@@ -249,7 +253,7 @@
           <div class="box-top">
             <div class="particular">
               <div class="colo">New Delhi</div>
-              <div <b>10:00 AM</b></div>
+              <div><b>10:00 AM</b></div>
               <div>28 Mar 2020</div>
               <div class="hum">
                 <div><img src="/images/humidityIcon.svg" alt="drop" /></div>
@@ -272,6 +276,7 @@
           </div>
         </div>
       </div>
+
       <div class="end">
         <div class="heading">Cities across continents as a Glance</div>
         <div class="continent">
@@ -444,5 +449,6 @@
         </div>
       </div>
     </div>
+    <script src="/JS/script.js"></script>
   </body>
 </html>
