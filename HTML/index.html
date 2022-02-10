@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather</title>
-    <link rel="stylesheet" href="/CSS/style.css" />
+    <link rel="stylesheet" href="/CSS/style.CSS" />
   </head>
   <body>
     <div class="head">
@@ -24,7 +24,7 @@
       <div class="date-time">
         <div class="date">
           <div id="time">00:00:00</div>
-          <div><img id="ampm" src="/images/amState.svg" alt="AM" /></div>
+          <div><img id="ampm" src="/assets/amState.svg" alt="AM" /></div>
         </div>
         <div class="time">
           <div id="date">Date-Mon-Year</div>
@@ -54,7 +54,7 @@
         <div class="now">
           <div>NOW</div>
           <div>|</div>
-          <div><img src="/images/cloudyIcon.svg" alt="cloud" /></div>
+          <div><img src="/assets/cloudyIcon.svg" alt="cloud" /></div>
           <div>6</div>
         </div>
         <div class="line">
@@ -63,7 +63,7 @@
         <div class="now">
           <div id="first">NIL</div>
           <div>|</div>
-          <div><img src="/images/precipitationIcon.svg" alt="cloud" /></div>
+          <div><img src="/assets/precipitationIcon.svg" alt="cloud" /></div>
           <div>6</div>
         </div>
         <div class="line">
@@ -73,7 +73,7 @@
         <div class="now">
           <div id="second">NIL</div>
           <div>|</div>
-          <div><img src="/images/rainyIconBlack.svg" alt="cloud" /></div>
+          <div><img src="/assets/rainyIconBlack.svg" alt="cloud" /></div>
           <div>6</div>
         </div>
         <div class="line">
@@ -82,7 +82,7 @@
         <div class="now">
           <div id="third">NIL</div>
           <div>|</div>
-          <div><img src="/images/sunnyIcon.svg" alt="cloud" /></div>
+          <div><img src="/assets/sunnyIcon.svg" alt="cloud" /></div>
           <div>6</div>
         </div>
         <div class="line">
@@ -91,7 +91,7 @@
         <div class="now">
           <div id="fourth">NIL</div>
           <div>|</div>
-          <div><img src="/images/snowflakeIcon.svg" alt="cloud" /></div>
+          <div><img src="/assets/snowflakeIcon.svg" alt="cloud" /></div>
           <div>6</div>
         </div>
         <div class="line">
@@ -100,7 +100,7 @@
         <div class="now">
           <div id="fifth">NIL</div>
           <div>|</div>
-          <div><img src="/images/windyIcon.svg" alt="cloud" /></div>
+          <div><img src="/assets/windyIcon.svg" alt="cloud" /></div>
           <div>6</div>
         </div>
       </div>
@@ -108,14 +108,22 @@
     <div class="bottom">
       <div class="heading">Top Cities Around World</div>
       <div class="top-icon">
-        <div><img id="dine" src="/images/sunnyIcon.svg" alt="sun" /></div>
+        <div><img id="dine" src="/assets/sunnyIcon.svg" alt="sun" /></div>
         <div>
-          <img id="dine1" src="/images/snowflakeIcon.svg" alt="winter" />
+          <img id="dine1" src="/assets/snowflakeIcon.svg" alt="winter" />
         </div>
-        <div><img id="dine2" src="/images/rainyIcon.svg" alt="rain" /></div>
+        <div><img id="dine2" src="/assets/rainyIcon.svg" alt="rain" /></div>
         <div>Display Top</div>
         <div>
-          <input type="number" id="drop" onchange="create();" />
+          <input
+            type="number"
+            value="5"
+            min="3"
+            max="10"
+            step="1"
+            id="drop"
+            onchange="create();"
+          />
         </div>
       </div>
       <div class="mid"></div>
@@ -125,11 +133,11 @@
         <div class="continent">
           <div class="c-name">
             <div>Continent Name</div>
-            <div><img src="/images/arrowDown.svg" alt="down" /></div>
+            <div><img src="/assets/arrowDown.svg" alt="down" /></div>
           </div>
           <div class="c-name">
             <div>Temperature</div>
-            <div><img src="/images/arrowUp.svg" alt="down" /></div>
+            <div><img src="/assets/arrowUp.svg" alt="down" /></div>
           </div>
         </div>
         <div class="grid-end">
@@ -141,7 +149,7 @@
             <div class="lower">
               <div>Delhi,10:10 AM</div>
               <div class="drop">
-                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div><img src="/assets/humidityIcon.svg" alt="" /></div>
                 <div>53%</div>
               </div>
             </div>
@@ -154,7 +162,7 @@
             <div class="lower">
               <div>Delhi,10:10 AM</div>
               <div class="drop">
-                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div><img src="/assets/humidityIcon.svg" alt="" /></div>
                 <div>53%</div>
               </div>
             </div>
@@ -167,7 +175,7 @@
             <div class="lower">
               <div>Delhi,10:10 AM</div>
               <div class="drop">
-                <div><img src="/Images/humidityIcon.svg" alt="" /></div>
+                <div><img src="/assets/humidityIcon.svg" alt="" /></div>
                 <div>53%</div>
               </div>
             </div>
@@ -180,7 +188,7 @@
             <div class="lower">
               <div>Delhi,10:10 AM</div>
               <div class="drop">
-                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div><img src="/assets/humidityIcon.svg" alt="" /></div>
                 <div>53%</div>
               </div>
             </div>
@@ -193,7 +201,7 @@
             <div class="lower">
               <div>Delhi,10:10 AM</div>
               <div class="drop">
-                <div><img src="/Images/humidityIcon.svg" alt="" /></div>
+                <div><img src="/assets/humidityIcon.svg" alt="" /></div>
                 <div>53%</div>
               </div>
             </div>
@@ -206,7 +214,7 @@
             <div class="lower">
               <div>Delhi,10:10 AM</div>
               <div class="drop">
-                <div><img src="/Images/humidityIcon.svg" alt="" /></div>
+                <div><img src="/assets/humidityIcon.svg" alt="" /></div>
                 <div>53%</div>
               </div>
             </div>
@@ -219,7 +227,7 @@
             <div class="lower">
               <div>Delhi,10:10 AM</div>
               <div class="drop">
-                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div><img src="/assets/humidityIcon.svg" alt="" /></div>
                 <div>53%</div>
               </div>
             </div>
@@ -232,7 +240,7 @@
             <div class="lower">
               <div>Delhi,10:10 AM</div>
               <div class="drop">
-                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div><img src="/assets/humidityIcon.svg" alt="" /></div>
                 <div>53%</div>
               </div>
             </div>
@@ -245,7 +253,7 @@
             <div class="lower">
               <div>Delhi,10:10 AM</div>
               <div class="drop">
-                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div><img src="/assets/humidityIcon.svg" alt="" /></div>
                 <div>53%</div>
               </div>
             </div>
@@ -258,7 +266,7 @@
             <div class="lower">
               <div>Delhi,10:10 AM</div>
               <div class="drop">
-                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div><img src="/assets/humidityIcon.svg" alt="" /></div>
                 <div>53%</div>
               </div>
             </div>
@@ -271,7 +279,7 @@
             <div class="lower">
               <div>Delhi,10:10 AM</div>
               <div class="drop">
-                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div><img src="/assets/humidityIcon.svg" alt="" /></div>
                 <div>53%</div>
               </div>
             </div>
@@ -284,7 +292,7 @@
             <div class="lower">
               <div>Delhi,10:10 AM</div>
               <div class="drop">
-                <div><img src="/images/humidityIcon.svg" alt="" /></div>
+                <div><img src="/assets/humidityIcon.svg" alt="" /></div>
                 <div>53%</div>
               </div>
             </div>
@@ -292,6 +300,6 @@
         </div>
       </div>
     </div>
-    <script src="/JS/script.js"></script>
+    <script src="/JavaScript/script.js"></script>
   </body>
 </html>

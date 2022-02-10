@@ -33,10 +33,10 @@ const text = [
   },
 ];
 const url = {
-  Newdelhi: "http://127.0.0.1:5500/Images/kolkata.svg",
-  NewYork: "http://127.0.0.1:5500/Images/newyork.svg",
-  Jamaica: "http://127.0.0.1:5500/Images/jamaica.svg",
-  Moscow: "http://127.0.0.1:5500/Images/moscow.svg",
+  Newdelhi: "/assets/kolkata.svg",
+  NewYork: "/assets/newyork.svg",
+  Jamaica: "/assets/jamaica.svg",
+  Moscow: "/assets/moscow.svg",
 };
 
 function selectdata() {
@@ -73,22 +73,8 @@ function selectdata() {
       document.getElementById("fourth").innerHTML = first + 4 + ` AM`;
       const fifth = parseInt(text[i]["dateAndTime"].slice(16, 18));
       document.getElementById("fifth").innerHTML = first + 5 + ` AM`;
-      if (
-        text[i]["temperature"].slice(0, 1) === "-" &&
-        text[i]["temperature"].slice(1, -2) > 10
-      ) {
-        let faren = text[i]["temperature"].slice(0, 3) * 1.8 + 32;
-        document.getElementById("far").innerHTML = `<b>${faren.toFixed(2)}</b>`;
-      } else if (
-        text[i]["temperature"].slice(0, 1) === "-" &&
-        text[i]["temperature"].slice(1, -2) < 10
-      ) {
-        let faren = text[i]["temperature"].slice(0, 2) * 1.8 + 32;
-        document.getElementById("far").innerHTML = `<b>${faren.toFixed(2)}</b>`;
-      } else {
-        let faren = text[i]["temperature"].slice(0, -2) * 1.8 + 32;
-        document.getElementById("far").innerHTML = `<b>${faren.toFixed(2)}</b>`;
-      }
+      let faren = text[i]["temperature"].slice(0, -2) * 1.8 + 32;
+      document.getElementById("far").innerHTML = `<b>${faren.toFixed(2)}</b>`;
       document.getElementById(
         "hum"
       ).innerHTML = `<b>${text[i]["humidity"]}</b>`;
@@ -128,9 +114,35 @@ function create() {
   while (mid.hasChildNodes()) {
     mid.removeChild(mid.lastChild);
   }
-  for (let i = 1; i <= inputdata; i++) {
+  if (inputdata >= text.length) {
+    inputdata = text.length;
+  }
+  for (let i = 0; i < inputdata; i++) {
     // console.log(i);
-    input(1);
+    input(i);
+  }
+}
+function tempicon(i) {
+  if (
+    text[i].temperature.slice(0, -2) > 29 &&
+    text[i].precipitation.slice(0, -1) >= 50 &&
+    text[i].humidity.slice(0, -1) < 50
+  ) {
+    return "/assets/sunnyIcon.svg";
+  } else if (
+    text[i].temperature.slice(0, -2) > 20 &&
+    text[i].temperature.slice(0, -2) < 28 &&
+    text[i].precipitation.slice(0, -1) < 50 &&
+    text[i].humidity.slice(0, -1) > 50
+  ) {
+    return "/assets/snowflakeIcon.svg";
+  } else if (
+    text[i].temperature.slice(0, -2) < 20 &&
+    text[i].humidity.slice(0, -1) >= 50
+  ) {
+    return "/assets/rainyIcon.svg";
+  } else {
+    return "/assets/sunnyIcon.svg";
   }
 }
 
@@ -164,7 +176,7 @@ function input(i) {
   hum.classList.add("hum");
   let i1 = document.createElement("div");
   hum.appendChild(i1);
-  i1.innerHTML = '<img src="http://127.0.0.1:5500/Images/humidityIcon.svg"/>';
+  i1.innerHTML = '<img src="/assets/humidityIcon.svg"/>';
   let i2 = document.createElement("div");
   hum.appendChild(i2);
   i2.innerHTML = text[i]["humidity"];
@@ -173,8 +185,7 @@ function input(i) {
   hum1.classList.add("hum");
   let i3 = document.createElement("div");
   hum1.appendChild(i3);
-  i3.innerHTML =
-    '<img src="http://127.0.0.1:5500/Images/precipitationIcon.svg"/>';
+  i3.innerHTML = '<img src="/assets/precipitationIcon.svg"/>';
   let i4 = document.createElement("div");
   i4.innerHTML = text[i]["precipitation"];
   hum1.appendChild(i4);
@@ -183,6 +194,7 @@ function input(i) {
   boxtemp.classList.add("box-temp");
   let i5 = document.createElement("div");
   boxtemp.appendChild(i5);
+  i5.innerHTML = `<img src="${tempicon(i)}" alt="sunny" />`;
   let i6 = document.createElement("div");
   boxtemp.appendChild(i6);
   let boximg = document.createElement("div");
