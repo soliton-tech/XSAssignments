@@ -1,0 +1,188 @@
+html,body{
+    padding: 0px;
+    background: url("background.svg") fixed no-repeat;
+    background-size: cover;
+    height: 100%;
+    position: relative;
+}
+.T1001{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.grid-container{
+    display: inline-grid;
+    grid-template-columns: auto auto ;
+    padding: 10px;
+    grid-gap: 20px;
+    margin-right: 20px;
+}
+#img1{
+    height: 120px;
+    width: 100px;
+}
+.cities {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-around;
+}
+#drop-menu{
+    height: 50px;
+    width: 120px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    background-color: rgb(0,0,0,0.25);
+    color: burlywood;
+    border: none;
+}
+#current-time{
+    padding-left: 100px;
+}
+#s1-forecast {
+    margin : 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 30px;
+    color:rgba(247, 243, 243, 0.678);
+    justify-items: center;
+    font-size: larger;
+    
+}
+.s1-val {
+    font-size: x-large;
+    font-family: fantasy;
+    text-align-last: center;
+}
+#vertical-line {
+  border-right: 1px solid rgba(247, 243, 243, 0.678);
+  padding-right: 30px;
+  height: 75%;
+  
+}
+#hourly-info{
+    color:rgba(255, 255, 255, 0.692)
+}
+#hourly-info.td{
+    padding: 20px;
+}
+
+.T1002{
+    background:black;
+    width: -webkit-fill-available;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    color:white;
+    padding: 5px;
+}
+.T1002-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.top-cities{
+    text-align: -webkit-center;
+    color: rgba(252, 250, 250, 0.527);
+    width: 200%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+}
+.spinner{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.T1002-2{
+    padding:10px;
+    background:black;
+    width: -webkit-fill-available;
+    margin:0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: white;
+}
+
+.T1003{
+    background: black;
+    color: white;
+    width: -webkit-fill-available;
+    padding:10px;
+}
+.T1003-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: larger;
+    color: rgba(199, 194, 194, 0.781)
+}
+
+.T1003-2{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    justify-content: space-around;
+    grid-row-gap: 35px;
+    grid-column-gap: 5px;
+    padding: 20px;
+    padding-top: 30px;
+}
+@media (max-width:1200px) {
+    .T1003-2{
+        display: grid;
+        grid-template-columns: repeat(3,auto);
+    }
+}
+@media (max-width:1000px) {
+    .T1003-2{
+        display: grid;
+        grid-template-columns: repeat(2,auto);
+    }
+}
+@keyframes anime {
+    from {background-color: rgba(97, 95, 95, 0.452);}
+    to {background-color: rgb(29, 47, 102);}
+}
+.card2{
+    background-color: rgba(97, 95, 95, 0.452);
+    border-radius:2px;
+    min-width: 300px;
+    animation-name: anime;
+    animation-duration: 4s;
+}
+.card2:hover{
+    transform: scale(1.2);
+    background-color: rgb(29, 47, 102);
+}
+@media (max-width:800px){
+    .card2{
+        min-width: 50px;
+    }
+}
+
+
+#card-carousel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+} 
+
+#card-s{
+    border-radius: 2px;
+    padding:10px;
+    margin:10px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    background-position: center;
+    background-color: rgba(131, 123, 123, 0.267);
+    align-items: center;
+    align-content: space-between;
+    box-shadow: 5px 5px rgba(112, 109, 109, 0.384);
+}
+
+.card-s:hover{
+    transform: scale(1.2);
+}
