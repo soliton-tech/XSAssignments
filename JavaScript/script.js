@@ -1,10 +1,3 @@
-const url = {
-  Newdelhi: "http://127.0.0.1:5500/Images/kolkata.svg",
-  NewYork: "http://127.0.0.1:5500/Images/newyork.svg",
-  Jamaica: "http://127.0.0.1:5500/Images/jamaica.svg",
-  Moscow: "http://127.0.0.1:5500/Images/moscow.svg",
-};
-
 const text = [
   {
     cityName: "Newdelhi",
@@ -39,13 +32,20 @@ const text = [
     precipitation: "42%",
   },
 ];
+const url = {
+  Newdelhi: "http://127.0.0.1:5500/Images/kolkata.svg",
+  NewYork: "http://127.0.0.1:5500/Images/newyork.svg",
+  Jamaica: "http://127.0.0.1:5500/Images/jamaica.svg",
+  Moscow: "http://127.0.0.1:5500/Images/moscow.svg",
+};
+
 function selectdata() {
   var selectvalue = document.getElementById("name").value;
   for (let i = 0; i < text.length; i++)
     if (selectvalue === text[i].cityName) {
       document.getElementById("dynamic").src = url[`${text[i].cityName}`];
       text[i]["dateAndTime"] = new Date(text[i]["dateAndTime"]).toString();
-
+      console.log(text[i]["dateAndTime"]);
       document.getElementById("time").innerHTML = `<big>${text[i][
         "dateAndTime"
       ].slice(16, 21)}</big><small>${text[i]["dateAndTime"].slice(
@@ -63,6 +63,16 @@ function selectdata() {
       document.getElementById(
         "cel"
       ).innerHTML = `<b>${text[i]["temperature"]}</b>`;
+      const first = parseInt(text[i]["dateAndTime"].slice(16, 18));
+      document.getElementById("first").innerHTML = first + 1 + ` AM`;
+      const second = parseInt(text[i]["dateAndTime"].slice(16, 18));
+      document.getElementById("second").innerHTML = first + 2 + ` AM`;
+      const third = parseInt(text[i]["dateAndTime"].slice(16, 18));
+      document.getElementById("third").innerHTML = first + 3 + ` AM`;
+      const fourth = parseInt(text[i]["dateAndTime"].slice(16, 18));
+      document.getElementById("fourth").innerHTML = first + 4 + ` AM`;
+      const fifth = parseInt(text[i]["dateAndTime"].slice(16, 18));
+      document.getElementById("fifth").innerHTML = first + 5 + ` AM`;
       if (
         text[i]["temperature"].slice(0, 1) === "-" &&
         text[i]["temperature"].slice(1, -2) > 10
@@ -94,6 +104,7 @@ dine.addEventListener("click", () => {
   dine1.style.borderBottom = "#00b9fb solid 0px";
   dine2.style.borderBottom = "#00b9fb solid 0px";
 });
+
 var dine1 = document.getElementById("dine1");
 dine1.addEventListener("click", () => {
   dine1.style.borderBottom = "#00b9fb solid 2px";
@@ -106,7 +117,76 @@ dine2.addEventListener("click", () => {
   dine1.style.borderBottom = "#00b9fb solid 0px";
   dine.style.borderBottom = "#00b9fb solid 0px";
 });
-function input() {
-  var input = document.getElementById("drop").value;
-  console.log(input);
+let mid = document.querySelector(".mid");
+(function () {
+  for (let i = 0; i < text.length; i++) {
+    input(i);
+  }
+})();
+function create() {
+  var inputdata = document.getElementById("drop").value;
+  while (mid.hasChildNodes()) {
+    mid.removeChild(mid.lastChild);
+  }
+  for (let i = 1; i <= inputdata; i++) {
+    // console.log(i);
+    input(1);
+  }
+}
+
+function input(i) {
+  let box = document.createElement("div");
+  mid.appendChild(box);
+  box.classList.add("box");
+  let boxtop = document.createElement("div");
+  box.appendChild(boxtop);
+  boxtop.classList.add("box-top");
+  let particular = document.createElement("div");
+  boxtop.appendChild(particular);
+  particular.classList.add("particular");
+  let colo = document.createElement("div");
+  particular.appendChild(colo);
+  colo.classList.add("colo");
+  colo.innerHTML = text[i].cityName;
+  let t = document.createElement("div");
+  particular.appendChild(t);
+  let tim = new Date(text[i]["dateAndTime"]);
+  t.innerHTML =
+    tim.toString().slice(16, 21) + tim.toLocaleString().slice(18, 21);
+  let d = document.createElement("div");
+  particular.appendChild(d);
+  d.innerHTML =
+    tim.toString().slice(8, 10) +
+    tim.toString().slice(3, 8) +
+    tim.toString().slice(10, 15);
+  let hum = document.createElement("div");
+  particular.appendChild(hum);
+  hum.classList.add("hum");
+  let i1 = document.createElement("div");
+  hum.appendChild(i1);
+  i1.innerHTML = '<img src="http://127.0.0.1:5500/Images/humidityIcon.svg"/>';
+  let i2 = document.createElement("div");
+  hum.appendChild(i2);
+  i2.innerHTML = text[i]["humidity"];
+  let hum1 = document.createElement("div");
+  particular.appendChild(hum1);
+  hum1.classList.add("hum");
+  let i3 = document.createElement("div");
+  hum1.appendChild(i3);
+  i3.innerHTML =
+    '<img src="http://127.0.0.1:5500/Images/precipitationIcon.svg"/>';
+  let i4 = document.createElement("div");
+  i4.innerHTML = text[i]["precipitation"];
+  hum1.appendChild(i4);
+  let boxtemp = document.createElement("div");
+  boxtop.appendChild(boxtemp);
+  boxtemp.classList.add("box-temp");
+  let i5 = document.createElement("div");
+  boxtemp.appendChild(i5);
+  let i6 = document.createElement("div");
+  boxtemp.appendChild(i6);
+  let boximg = document.createElement("div");
+  box.appendChild(boximg);
+  boximg.classList.add("box-img");
+  boximg.innerHTML = `<img src="${url[text[i].cityName]}"/>`;
 }

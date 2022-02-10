@@ -130,10 +130,10 @@
   width: 100%;
   height: auto;
   position: relative;
-  top: -4.5vh;
   border-radius: 25px 25px 0 0;
   background: rgb(20, 19, 19);
-  margin-top: 12px;
+  margin-top: -30px;
+  padding-bottom: 20px;
 }
 .bottom .heading {
   display: flex;
@@ -204,11 +204,9 @@
   column-gap: 10px;
 }
 .bottom .mid .box .box-img img {
-  position: absolute;
-  height: 60%;
-  width: 60%;
-  object-fit: cover;
-  transform: translateY(-100px) translateX(98px);
+  height: 115px;
+  width: 115px;
+  transform: translateX(120px) translateY(-90px);
   z-index: -1;
 }
 .bottom .mid .box {
@@ -345,15 +343,6 @@
     left: 10px;
     justify-self: center;
     font-size: small;
-  }
-  .bottom {
-    width: 100%;
-    height: auto;
-    top: -5vh;
-    position: relative;
-    border-radius: 25px 25px 0 0;
-    background: rgb(20, 19, 19);
-    margin-top: 10px;
   }
 }
 @media screen and (max-width: 1120px) {
