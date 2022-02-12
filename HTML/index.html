@@ -19,6 +19,25 @@
           <option value="Newdelhi">Newdelhi</option>
           <option value="Moscow">Moscow</option>
           <option value="Jamaica">Jamaica</option>
+          <option value="Seoul">Seoul</option>
+          <option value="Anadyr">Anadyr</option>
+          <option value="BrokenHill">BrokenHill</option>
+          <option value="Perth">Perth</option>
+          <option value="Auckland">Auckland</option>
+          <option value="Vostok">Vostok</option>
+          <option value="Troll">Troll</option>
+          <option value="BangKok">BangKok</option>
+          <option value="Yangon">Yangon</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Karachi">Karachi</option>
+          <option value="Dublin">Dublin</option>
+          <option value="Moscow">Moscow</option>
+          <option value="Vienna">Vienna</option>
+          <option value="London">London</option>
+          <option value="Maseru">Maseru</option>
+          <option value="Juba">Juba</option>
+          <option value="Winnipeg">Winnipeg</option>
+          <option value="LosAngeles">LosAngeles</option>
         </select>
       </div>
       <div class="date-time">
@@ -108,16 +127,35 @@
     <div class="bottom">
       <div class="heading">Top Cities Around World</div>
       <div class="top-icon">
-        <div><img id="dine" src="/assets/sunnyIcon.svg" alt="sun" /></div>
         <div>
-          <img id="dine1" src="/assets/snowflakeIcon.svg" alt="winter" />
+          <img
+            id="dine"
+            src="/assets/sunnyIcon.svg"
+            alt="sun"
+            onclick="sunny();"
+          />
         </div>
-        <div><img id="dine2" src="/assets/rainyIcon.svg" alt="rain" /></div>
+        <div>
+          <img
+            id="dine1"
+            src="/assets/snowflakeIcon.svg"
+            alt="winter"
+            onclick="snow();"
+          />
+        </div>
+        <div>
+          <img
+            id="dine2"
+            src="/assets/rainyIcon.svg"
+            alt="rain"
+            onclick="rain();"
+          />
+        </div>
         <div>Display Top</div>
         <div>
           <input
             type="number"
-            value="5"
+            value="4"
             min="3"
             max="10"
             step="1"
@@ -127,6 +165,12 @@
         </div>
       </div>
       <div class="mid"></div>
+      <div class="button">
+        <div class="left">
+          <button id="left"><</button>
+        </div>
+        <div class="right"><button id="left">></button></div>
+      </div>
 
       <div class="end">
         <div class="heading">Cities across continents as a Glance</div>

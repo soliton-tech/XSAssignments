@@ -1,42 +1,206 @@
 const text = [
   {
-    cityName: "Newdelhi",
-    dateAndTime: "3/24/2020, 3:07:13 AM",
+    cityName: "Nome",
+    dateAndTime: "2/12/2022, 1:11:52 AM",
     timeZone: "America/Nome",
-    temperature: "-13°C",
-    humidity: "100%",
-    precipitation: "0%",
-  },
-  {
-    cityName: "NewYork",
-    dateAndTime: "3/24/2020, 7:07:13 AM",
-    timeZone: "America/New_york",
     temperature: "7°C",
     humidity: "85%",
     precipitation: "14%",
   },
   {
+    cityName: "NewYork",
+    dateAndTime: "2/12/2022, 5:11:52 AM",
+    timeZone: "America/New_york",
+    temperature: "5°C",
+    humidity: "89%",
+    precipitation: "10%",
+  },
+  {
     cityName: "Jamaica",
-    dateAndTime: "3/24/2020, 6:07:13 AM",
+    dateAndTime: "2/12/2022, 5:11:52 AM",
     timeZone: "America/Jamaica",
-    temperature: "22°C",
-    humidity: "54%",
-    precipitation: "44%",
+    temperature: "26°C",
+    humidity: "45%",
+    precipitation: "52%",
+  },
+  {
+    cityName: "LosAngeles",
+    dateAndTime: "2/12/2022, 2:11:52 AM",
+    timeZone: "America/Los_Angeles",
+    temperature: "23°C",
+    humidity: "52%",
+    precipitation: "46%",
+  },
+  {
+    cityName: "Winnipeg",
+    dateAndTime: "2/12/2022, 4:11:52 AM",
+    timeZone: "America/Winnipeg",
+    temperature: "21°C",
+    humidity: "56%",
+    precipitation: "42%",
+  },
+  {
+    cityName: "Juba",
+    dateAndTime: "2/12/2022, 1:11:52 PM",
+    timeZone: "Africa/Juba",
+    temperature: "33°C",
+    humidity: "31%",
+    precipitation: "66%",
+  },
+  {
+    cityName: "Maseru",
+    dateAndTime: "2/12/2022, 12:11:52 PM",
+    timeZone: "Africa/Maseru",
+    temperature: "18°C",
+    humidity: "62%",
+    precipitation: "36%",
+  },
+  {
+    cityName: "London",
+    dateAndTime: "2/12/2022, 10:11:52 AM",
+    timeZone: "Europe/London",
+    temperature: "-2°C",
+    humidity: "100%",
+    precipitation: "0%",
+  },
+  {
+    cityName: "Vienna",
+    dateAndTime: "2/12/2022, 11:11:52 AM",
+    timeZone: "Europe/Vienna",
+    temperature: "12°C",
+    humidity: "75%",
+    precipitation: "24%",
   },
   {
     cityName: "Moscow",
-    dateAndTime: "5/28/2020, 7:07:13 AM",
-    timeZone: "Moscow",
-    temperature: "44°C",
-    humidity: "25%",
+    dateAndTime: "2/12/2022, 1:11:52 PM",
+    timeZone: "Europe/Moscow",
+    temperature: "18°C",
+    humidity: "62%",
+    precipitation: "36%",
+  },
+  {
+    cityName: "Dublin",
+    dateAndTime: "2/12/2022, 10:11:52 AM",
+    timeZone: "Europe/Dublin",
+    temperature: "43°C",
+    humidity: "10%",
+    precipitation: "86%",
+  },
+  {
+    cityName: "Karachi",
+    dateAndTime: "2/12/2022, 3:11:52 PM",
+    timeZone: "Asia/Karachi",
+    temperature: "27°C",
+    humidity: "43%",
+    precipitation: "54%",
+  },
+  {
+    cityName: "Kolkata",
+    dateAndTime: "2/12/2022, 3:41:52 PM",
+    timeZone: "Asia/Kolkata",
+    temperature: "33°C",
+    humidity: "31%",
+    precipitation: "66%",
+  },
+  {
+    cityName: "Yangon",
+    dateAndTime: "2/12/2022, 4:41:52 PM",
+    timeZone: "Asia/Yangon",
+    temperature: "30°C",
+    humidity: "37%",
+    precipitation: "60%",
+  },
+  {
+    cityName: "BangKok",
+    dateAndTime: "2/12/2022, 5:11:52 PM",
+    timeZone: "Asia/BangKok",
+    temperature: "29°C",
+    humidity: "39%",
+    precipitation: "58%",
+  },
+  {
+    cityName: "Seoul",
+    dateAndTime: "2/12/2022, 7:11:52 PM",
+    timeZone: "Asia/Seoul",
+    temperature: "13°C",
+    humidity: "72%",
+    precipitation: "26%",
+  },
+  {
+    cityName: "Anadyr",
+    dateAndTime: "2/12/2022, 10:11:52 PM",
+    timeZone: "Asia/Anadyr",
+    temperature: "0°C",
+    humidity: "100%",
+    precipitation: "0%",
+  },
+  {
+    cityName: "BrokenHill",
+    dateAndTime: "2/12/2022, 8:41:52 PM",
+    timeZone: "Australia/Broken_Hill",
+    temperature: "10°C",
+    humidity: "79%",
+    precipitation: "20%",
+  },
+  {
+    cityName: "Perth",
+    dateAndTime: "2/12/2022, 6:11:52 PM",
+    timeZone: "Australia/Perth",
+    temperature: "21°C",
+    humidity: "56%",
     precipitation: "42%",
   },
+  {
+    cityName: "Auckland",
+    dateAndTime: "2/12/2022, 11:11:52 PM",
+    timeZone: "Pacific/Auckland",
+    temperature: "11°C",
+    humidity: "77%",
+    precipitation: "22%",
+  },
+  {
+    cityName: "Vostok",
+    dateAndTime: "2/12/2022, 4:11:52 PM",
+    timeZone: "Antarctica/Vostok",
+    temperature: "-66°C",
+    humidity: "100%",
+    precipitation: "0%",
+  },
+  {
+    cityName: "Troll",
+    dateAndTime: "2/12/2022, 10:11:52 AM",
+    timeZone: "Antarctica/Troll",
+    temperature: "-59°C",
+    humidity: "100%",
+    precipitation: "0%",
+  },
 ];
+
 const url = {
+  Nome: "/assets/nome.svg",
   Newdelhi: "/assets/kolkata.svg",
   NewYork: "/assets/newyork.svg",
   Jamaica: "/assets/jamaica.svg",
   Moscow: "/assets/moscow.svg",
+  LosAngeles: "/assets/losangeles.svg",
+  Winnipeg: "/assets/winnipeg.svg",
+  Juba: "/assets/juba.svg",
+  Maseru: "/assets/maseru.svg",
+  London: "/assets/london.svg",
+  Vienna: "/assets/vienna.svg",
+  Dublin: "/assets/dublin.svg",
+  Karachi: "/assets/karachi.svg",
+  Kolkata: "/assets/kolkata.svg",
+  Yangon: "/assets/yangon.svg",
+  BangKok: "/assets/bangkok.svg",
+  Seoul: "/assets/seoul.svg",
+  Anadyr: "/assets/anadyr.svg",
+  BrokenHill: "/assets/brokenhill.svg",
+  Perth: "/assets/perth.svg",
+  Auckland: "/assets/auckland.svg",
+  Vostok: "/assets/vostok.svg",
+  Troll: "/assets/troll.svg",
 };
 
 function selectdata() {
@@ -109,18 +273,26 @@ let mid = document.querySelector(".mid");
     input(i);
   }
 })();
+let remove = [];
 function create() {
   var inputdata = document.getElementById("drop").value;
-  while (mid.hasChildNodes()) {
-    mid.removeChild(mid.lastChild);
+  while (mid.childNodes.length > inputdata) {
+    remove.push(mid.removeChild(mid.lastChild));
   }
+  console.dir(remove);
+  let q = 1;
+  while (mid.childNodes.length < inputdata) {
+    mid.appendChild(remove.at(-q));
+    q++;
+  }
+
   if (inputdata >= text.length) {
     inputdata = text.length;
   }
-  for (let i = 0; i < inputdata; i++) {
-    // console.log(i);
-    input(i);
-  }
+  // for (let i = 0; i < inputdata; i++) {
+  //   // console.log(i);
+  //   input(i);
+  // }
 }
 function tempicon(i) {
   if (
@@ -163,14 +335,30 @@ function input(i) {
   let t = document.createElement("div");
   particular.appendChild(t);
   let tim = new Date(text[i]["dateAndTime"]);
-  t.innerHTML =
-    tim.toString().slice(16, 21) + tim.toLocaleString().slice(18, 21);
+  console.log(tim.getMinutes());
+  if (tim.getHours() < 10) {
+    t.innerHTML =
+      `0` +
+      tim.getHours() +
+      ":" +
+      tim.getMinutes() +
+      " " +
+      tim.toLocaleString().slice(19, 22);
+  } else {
+    t.innerHTML =
+      tim.getHours() +
+      ":" +
+      tim.getMinutes() +
+      " " +
+      tim.toLocaleString().slice(19, 22);
+  }
+
   let d = document.createElement("div");
   particular.appendChild(d);
   d.innerHTML =
     tim.toString().slice(8, 10) +
     tim.toString().slice(3, 8) +
-    tim.toString().slice(10, 15);
+    tim.toString().slice(11, 15);
   let hum = document.createElement("div");
   particular.appendChild(hum);
   hum.classList.add("hum");
@@ -197,8 +385,63 @@ function input(i) {
   i5.innerHTML = `<img src="${tempicon(i)}" alt="sunny" />`;
   let i6 = document.createElement("div");
   boxtemp.appendChild(i6);
+  i6.innerHTML = `<big><strong>${text[i].temperature}</strong></big>`;
   let boximg = document.createElement("div");
   box.appendChild(boximg);
   boximg.classList.add("box-img");
   boximg.innerHTML = `<img src="${url[text[i].cityName]}"/>`;
+}
+function sunny() {
+  let a = [];
+  for (let i = 0; i < text.length; i++) {
+    a.push(text[i].temperature.slice(0, -2));
+  }
+  a.sort((a, b) => a - b);
+  a.reverse();
+  while (mid.hasChildNodes()) {
+    mid.removeChild(mid.lastChild);
+  }
+  for (let i = 0; i < text.length; i++)
+    for (let j = 0; j < text.length; j++) {
+      if (text[j].temperature.slice(0, -2) === a[i]) {
+        input(j);
+        console.log(text[j].temperature.slice(0, -2) === a[i], i, j, a);
+      }
+    }
+}
+function snow() {
+  let a = [];
+  for (let i = 0; i < text.length; i++) {
+    a.push(text[i].precipitation.slice(0, -1));
+  }
+  a.sort((a, b) => a - b);
+  a.reverse();
+  while (mid.hasChildNodes()) {
+    mid.removeChild(mid.lastChild);
+  }
+  for (let i = 0; i < text.length; i++)
+    for (let j = 0; j < text.length; j++) {
+      if (text[j].precipitation.slice(0, -1) === a[i]) {
+        input(j);
+        console.log(text[j].precipitation.slice(0, -2) === a[i], i, j, a);
+      }
+    }
+}
+function rain() {
+  let a = [];
+  for (let i = 0; i < text.length; i++) {
+    a.push(text[i].humidity.slice(0, -1));
+  }
+  a.sort((a, b) => a - b);
+  a.reverse();
+  while (mid.hasChildNodes()) {
+    mid.removeChild(mid.lastChild);
+  }
+  for (let i = 0; i < text.length; i++)
+    for (let j = 0; j < text.length; j++) {
+      if (text[j].humidity.slice(0, -1) === a[i]) {
+        input(j);
+        console.log(text[j].humidity.slice(0, -1) === a[i], i, j, a);
+      }
+    }
 }
