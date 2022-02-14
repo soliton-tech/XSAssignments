@@ -73,31 +73,115 @@ hourinfo = () => {
     }
 }
 
-/*T2002*/
+/*-----------------------------T2002---------------------------------*/
 
 // city0, temp1, humid2, precip3, windy4, img5
 const cards=[["Delhi",25,56,0,55,"yangon.svg"], 
              ["Chennai",32,25,56,45,"maseru.svg"],
-             ["Kolkata",19,51,90,8,"kolkata.svg"],
+             ["Kolkata",18,51,90,8,"kolkata.svg"],
              ["Mumbai",11,64,88,12,"seoul.svg"],
              ["Coimbatore",30,54,50,33,"karachi.svg"],
-             ["Goa",33,15,66,3,"jamaica.svg"]];
+             ["Goa",33,15,66,3,"jamaica.svg"],
+             ["Kashmir",20,77,21,12,"troll.svg"],
+             ["Bangalore",19,60,24,32,"bangkok.svg"],
+             ["Hyderabad",42,25,71,9,"bangkok.svg"],
+             ["Pune",26,66,22,45,"seoul.svg"]];
+
+//to remove any existing card-s
+function clearCards(dr) {
+    if(dr==null || typeof(dr)==undefined) return;
+    else {
+        dr.remove(dr);
+        clearCards(document.querySelector('#card-s'));
+    }
+}
 
 //onclick of sun icon
-document.getElementById("sunnycity").addEventListener('click',sunnyCity);
+document.getElementById("sunnycity").addEventListener('click',gotoSunnyCity);
 
+function gotoSunnyCity() {
+    clearCards(document.querySelector('#card-s'));
+    var ncty = document.getElementById("no-city").value;
+    if(ncty>=1 && ncty<=5) sunnyCity();
+    else {
+        alert("Select number of cities to be displayed");
+    }
+}
 //condition for sunny cities
 function sunnyCity() { 
-    for(let p=0;p<cards.length;p++)
+    let count=0;
+    var choice=1;
+    var ncty = document.getElementById("no-city").value;
+    for(let pn=0;pn<cards.length;pn++)
     {
-        if(cards[p][1]>29 && cards[p][2]<50 && cards[p][3]>=50) {
-            setSunnyCity(p);
+        if(count<ncty) {
+            if(cards[pn][1]>29 && cards[pn][2]<50 && cards[pn][3]>=50) {
+                setCity(pn,choice);
+                count++;
+            }
+        } 
+    }
+}
+
+// for snow-cold climate
+document.getElementById("snowcity").addEventListener('click',gotoSnowCity);
+
+function gotoSnowCity() {
+    clearCards(document.querySelector('#card-s')); //clear out card-s
+    var ncty = document.getElementById("no-city").value;
+    if(ncty>=1 && ncty<=5) snowCity();
+    else {
+        alert("Select number of cities to be displayed");
+    }
+}
+
+//condition for snow cities
+function snowCity() {
+    let count=0;
+    var choice=2;
+    var ncty = document.getElementById("no-city").value;
+    for(let pn=0;pn<cards.length;pn++)
+    {
+        if(count<ncty) {
+            if(cards[pn][1]>=20 && cards[pn][1]<=28 &&
+                 cards[pn][2]>50 && cards[pn][3]<50) {
+                setCity(pn,choice);
+                count++;
+            }
+        } 
+    }
+}
+
+//rainy city
+document.getElementById("raincity").addEventListener('click',gotoRainCity);
+
+function gotoRainCity() {
+    clearCards(document.querySelector('#card-s')); //clear out card-s
+    var ncty = document.getElementById("no-city").value;
+    if(ncty>=1 && ncty<=5) rainCity();
+    else {
+        alert("Select number of cities to be displayed");
+    }
+}
+
+//condition for rain cities
+function rainCity() {
+    let count=0;
+    var choice=3;
+    var ncty = document.getElementById("no-city").value;
+    for(let pn=0;pn<cards.length;pn++)
+    {
+        if(count<ncty) {
+            if(cards[pn][1]<20 && cards[pn][2]>=50) {
+                setCity(pn,choice);
+                count++;
+            }
         } 
     }
 }
 
 //setting values for each card
-function setSunnyCity(pos) {
+function setCity(pos,ch) {
     const divContainer = document.getElementById("card-carousel");
     const div1 = document.createElement('div');
     div1.id = ('card-s');
@@ -116,12 +200,15 @@ function setSunnyCity(pos) {
             div3.setAttribute("style","padding-left: 60px;");
 
             const div31 = document.createElement('img');
-            div31.src="sunnyIcon.svg";
-            div31.setAttribute("style","width: 20px;");
+            if(ch==1) div31.src="sunnyIcon.svg";
+            else if(ch==2) div31.src="snowflakeIcon.svg";
+            else if(ch==3) div31.src="rainyIconBlack.svg";
+            div31.setAttribute("style","width: 20px;vertical-align: bottom;");
             div3.append(div31);
 
             const div32 = document.createElement('span');
             div32.innerHTML=cards[pos][1]+v1.sup()+"C";
+            div32.setAttribute("style","padding-left:10px");
             div3.append(div32);
 
             div1.append(div3); //adds to main div1
@@ -134,21 +221,21 @@ function setSunnyCity(pos) {
             div411.src="humidityIcon.svg";
             div4.append(div411);
             const div412 = document.createElement('span');
-            div412.innerHTML = cards[pos][2]+"%<br>";
+            div412.innerHTML = " "+cards[pos][2]+"%<br>";
             div4.append(div412);
 
             const div421 = document.createElement('img');
             div421.src="windyIcon.svg";
             div4.append(div421);
             const div422 = document.createElement('span');
-            div422.innerHTML = cards[pos][4]+"km/hr<br>";
+            div422.innerHTML =  " "+cards[pos][4]+"km/hr<br>";
             div4.append(div422);
 
             const div431 = document.createElement('img');
             div431.src="precipitationIcon.svg";
             div4.append(div431);
             const div432 = document.createElement('span');
-            div432.innerHTML = cards[pos][3]+"%<br>";
+            div432.innerHTML =  " "+cards[pos][3]+"%<br>";
             div4.append(div432);
 
             div1.append(div4); //adds to main div1
@@ -166,3 +253,4 @@ function setSunnyCity(pos) {
         }
     }
 }
+
