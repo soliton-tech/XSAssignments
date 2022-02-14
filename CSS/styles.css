@@ -181,8 +181,17 @@ html,body{
     align-items: center;
     align-content: space-between;
     box-shadow: 5px 5px rgba(112, 109, 109, 0.384);
+    cursor:pointer;
 }
 
-.card-s:hover{
-    transform: scale(1.2);
+#card-s:hover{
+    transform: scale(1.1);
 }
+
+#ct-city {
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: larger;
+    color: rgba(204, 199, 199, 0.897);
+}
+
