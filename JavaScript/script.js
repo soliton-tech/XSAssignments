@@ -179,7 +179,6 @@ const text = [
 
 const url = {
   Nome: "/assets/nome.svg",
-  Newdelhi: "/assets/kolkata.svg",
   NewYork: "/assets/newyork.svg",
   Jamaica: "/assets/jamaica.svg",
   Moscow: "/assets/moscow.svg",
@@ -268,9 +267,11 @@ dine2.addEventListener("click", () => {
   dine.style.borderBottom = "#00b9fb solid 0px";
 });
 let mid = document.querySelector(".mid");
+let gridend = document.querySelector(".grid-end");
 (function () {
   for (let i = 0; i < text.length; i++) {
     input(i);
+    glance(i);
   }
 })();
 let remove = [];
@@ -285,7 +286,6 @@ function create() {
     mid.appendChild(remove.at(-q));
     q++;
   }
-
   if (inputdata >= text.length) {
     inputdata = text.length;
   }
@@ -294,6 +294,7 @@ function create() {
   //   input(i);
   // }
 }
+
 function tempicon(i) {
   if (
     text[i].temperature.slice(0, -2) > 29 &&
@@ -404,8 +405,10 @@ function sunny() {
   for (let i = 0; i < text.length; i++)
     for (let j = 0; j < text.length; j++) {
       if (text[j].temperature.slice(0, -2) === a[i]) {
-        input(j);
-        console.log(text[j].temperature.slice(0, -2) === a[i], i, j, a);
+        if (a[i] === a[i - 1]) {
+        } else {
+          input(j);
+        }
       }
     }
 }
@@ -422,8 +425,10 @@ function snow() {
   for (let i = 0; i < text.length; i++)
     for (let j = 0; j < text.length; j++) {
       if (text[j].precipitation.slice(0, -1) === a[i]) {
-        input(j);
-        console.log(text[j].precipitation.slice(0, -2) === a[i], i, j, a);
+        if (a[i] === a[i - 1]) {
+        } else {
+          input(j);
+        }
       }
     }
 }
@@ -440,8 +445,150 @@ function rain() {
   for (let i = 0; i < text.length; i++)
     for (let j = 0; j < text.length; j++) {
       if (text[j].humidity.slice(0, -1) === a[i]) {
-        input(j);
-        console.log(text[j].humidity.slice(0, -1) === a[i], i, j, a);
+        if (a[i] === a[i - 1]) {
+        } else {
+          input(j);
+        }
       }
     }
+}
+
+function glance(i) {
+  let rec = document.createElement("div");
+  gridend.appendChild(rec);
+  rec.classList.add("rec");
+  let upper = document.createElement("div");
+  rec.appendChild(upper);
+  upper.classList.add("upper");
+  let colo = document.createElement("div");
+  upper.appendChild(colo);
+  colo.classList.add("colo");
+  colo.innerHTML = text[i].cityName;
+  let t = document.createElement("div");
+  upper.appendChild(t);
+  t.innerHTML = `<big><b>${text[i].temperature}</b></big>`;
+  let lower = document.createElement("div");
+  rec.appendChild(lower);
+  lower.classList.add("lower");
+  let name = document.createElement("div");
+  lower.appendChild(name);
+  let tim = new Date(text[i].dateAndTime);
+  if (tim.getHours() < 10) {
+    name.innerHTML =
+      `0` +
+      tim.getHours() +
+      ":" +
+      tim.getMinutes() +
+      " " +
+      tim.toLocaleString().slice(19, 22);
+  } else {
+    name.innerHTML =
+      tim.getHours() +
+      ":" +
+      tim.getMinutes() +
+      " " +
+      tim.toLocaleString().slice(19, 22);
+  }
+
+  let drop = document.createElement("div");
+  lower.appendChild(drop);
+  drop.classList.add("drop");
+  let img = document.createElement("div");
+  drop.appendChild(img);
+  img.innerHTML = `<img src="/assets/humidityIcon.svg">`;
+  let temp = document.createElement("div");
+  drop.appendChild(temp);
+  temp.innerHTML = text[i].humidity;
+}
+let g = 1;
+function continentsort() {
+  if (g % 2 !== 0) {
+    document.getElementById("continentsort").src = "/assets/arrowUp.svg";
+    while (gridend.hasChildNodes()) {
+      gridend.removeChild(gridend.lastChild);
+    }
+    let arr = [];
+    for (let i = 0; i < text.length; i++) {
+      arr.push(text[i].cityName);
+    }
+    arr.sort();
+    console.log(arr);
+    for (let i = 0; i < text.length; i++) {
+      for (let j = 0; j < text.length; j++) {
+        if (text[j].cityName === arr[i]) {
+          glance(j);
+        }
+      }
+    }
+    g++;
+  } else {
+    document.getElementById("continentsort").src = "/assets/arrowDown.svg";
+    while (gridend.hasChildNodes()) {
+      gridend.removeChild(gridend.lastChild);
+    }
+    let arr = [];
+    for (let i = 0; i < text.length; i++) {
+      arr.push(text[i].cityName);
+    }
+    arr.sort();
+    arr.reverse();
+    console.log(arr);
+    for (let i = 0; i < text.length; i++) {
+      for (let j = 0; j < text.length; j++) {
+        if (text[j].cityName === arr[i]) {
+          glance(j);
+        }
+      }
+    }
+    g++;
+  }
+}
+let h = 1;
+function temperaturesort() {
+  if (h % 2 !== 0) {
+    document.getElementById("temperaturesort").src = "/assets/arrowDown.svg";
+    while (gridend.hasChildNodes()) {
+      gridend.removeChild(gridend.lastChild);
+    }
+    let arr = [];
+    for (let i = 0; i < text.length; i++) {
+      arr.push(text[i].temperature.slice(0, -2));
+    }
+    arr.sort((a, b) => a - b);
+    console.log(arr);
+    for (let i = 0; i < text.length; i++) {
+      for (let j = 0; j < text.length; j++) {
+        if (text[j].temperature.slice(0, -2) === arr[i]) {
+          if (arr[i] === arr[i - 1]) {
+          } else {
+            glance(j);
+          }
+        }
+      }
+    }
+    h++;
+  } else {
+    document.getElementById("temperaturesort").src = "/assets/arrowDown.svg";
+    while (gridend.hasChildNodes()) {
+      gridend.removeChild(gridend.lastChild);
+    }
+    let arr = [];
+    for (let i = 0; i < text.length; i++) {
+      arr.push(text[i].temperature.slice(0, -2));
+    }
+    arr.sort((a, b) => a - b);
+    arr.reverse();
+    console.log(arr);
+    for (let i = 0; i < text.length; i++) {
+      for (let j = 0; j < text.length; j++) {
+        if (text[j].temperature.slice(0, -2) === arr[i]) {
+          if (arr[i] === arr[i - 1]) {
+          } else {
+            glance(j);
+          }
+        }
+      }
+    }
+    h++;
+  }
 }

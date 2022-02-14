@@ -138,7 +138,7 @@
   position: relative;
   border-radius: 25px 25px 0 0;
   background: rgb(20, 19, 19);
-  margin-top: -30px;
+  margin-top: -18px;
   padding-bottom: 20px;
 }
 .bottom .heading {
@@ -224,21 +224,19 @@
   color: rgb(255, 255, 255);
   z-index: 0;
 }
-::-webkit-scrollbar {
-  display: none;
-}
 
 .bottom .mid {
   display: flex;
   align-items: center;
-  overflow-x: scroll;
+  overflow: hidden;
   column-gap: 20px;
   margin-right: 80px;
   margin-left: 80px;
   cursor: pointer;
-  overflow-y: hidden;
   position: relative;
 }
+/* .box :hover {
+} */
 .bottom .button {
   position: absolute;
   display: flex;
@@ -304,6 +302,9 @@
   background-color: rgb(25, 25, 26);
   margin: 10px;
 }
+/* .rec :hover {
+  border: 10px solid white;
+} */
 .bottom .end .grid-end .rec .upper {
   display: flex;
   justify-content: space-between;
