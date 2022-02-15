@@ -1,182 +1,4 @@
-const text = [
-  {
-    cityName: "Nome",
-    dateAndTime: "2/12/2022, 1:11:52 AM",
-    timeZone: "America/Nome",
-    temperature: "7°C",
-    humidity: "85%",
-    precipitation: "14%",
-  },
-  {
-    cityName: "NewYork",
-    dateAndTime: "2/12/2022, 5:11:52 AM",
-    timeZone: "America/New_york",
-    temperature: "5°C",
-    humidity: "89%",
-    precipitation: "10%",
-  },
-  {
-    cityName: "Jamaica",
-    dateAndTime: "2/12/2022, 5:11:52 AM",
-    timeZone: "America/Jamaica",
-    temperature: "26°C",
-    humidity: "45%",
-    precipitation: "52%",
-  },
-  {
-    cityName: "LosAngeles",
-    dateAndTime: "2/12/2022, 2:11:52 AM",
-    timeZone: "America/Los_Angeles",
-    temperature: "23°C",
-    humidity: "52%",
-    precipitation: "46%",
-  },
-  {
-    cityName: "Winnipeg",
-    dateAndTime: "2/12/2022, 4:11:52 AM",
-    timeZone: "America/Winnipeg",
-    temperature: "21°C",
-    humidity: "56%",
-    precipitation: "42%",
-  },
-  {
-    cityName: "Juba",
-    dateAndTime: "2/12/2022, 1:11:52 PM",
-    timeZone: "Africa/Juba",
-    temperature: "33°C",
-    humidity: "31%",
-    precipitation: "66%",
-  },
-  {
-    cityName: "Maseru",
-    dateAndTime: "2/12/2022, 12:11:52 PM",
-    timeZone: "Africa/Maseru",
-    temperature: "18°C",
-    humidity: "62%",
-    precipitation: "36%",
-  },
-  {
-    cityName: "London",
-    dateAndTime: "2/12/2022, 10:11:52 AM",
-    timeZone: "Europe/London",
-    temperature: "-2°C",
-    humidity: "100%",
-    precipitation: "0%",
-  },
-  {
-    cityName: "Vienna",
-    dateAndTime: "2/12/2022, 11:11:52 AM",
-    timeZone: "Europe/Vienna",
-    temperature: "12°C",
-    humidity: "75%",
-    precipitation: "24%",
-  },
-  {
-    cityName: "Moscow",
-    dateAndTime: "2/12/2022, 1:11:52 PM",
-    timeZone: "Europe/Moscow",
-    temperature: "18°C",
-    humidity: "62%",
-    precipitation: "36%",
-  },
-  {
-    cityName: "Dublin",
-    dateAndTime: "2/12/2022, 10:11:52 AM",
-    timeZone: "Europe/Dublin",
-    temperature: "43°C",
-    humidity: "10%",
-    precipitation: "86%",
-  },
-  {
-    cityName: "Karachi",
-    dateAndTime: "2/12/2022, 3:11:52 PM",
-    timeZone: "Asia/Karachi",
-    temperature: "27°C",
-    humidity: "43%",
-    precipitation: "54%",
-  },
-  {
-    cityName: "Kolkata",
-    dateAndTime: "2/12/2022, 3:41:52 PM",
-    timeZone: "Asia/Kolkata",
-    temperature: "33°C",
-    humidity: "31%",
-    precipitation: "66%",
-  },
-  {
-    cityName: "Yangon",
-    dateAndTime: "2/12/2022, 4:41:52 PM",
-    timeZone: "Asia/Yangon",
-    temperature: "30°C",
-    humidity: "37%",
-    precipitation: "60%",
-  },
-  {
-    cityName: "BangKok",
-    dateAndTime: "2/12/2022, 5:11:52 PM",
-    timeZone: "Asia/BangKok",
-    temperature: "29°C",
-    humidity: "39%",
-    precipitation: "58%",
-  },
-  {
-    cityName: "Seoul",
-    dateAndTime: "2/12/2022, 7:11:52 PM",
-    timeZone: "Asia/Seoul",
-    temperature: "13°C",
-    humidity: "72%",
-    precipitation: "26%",
-  },
-  {
-    cityName: "Anadyr",
-    dateAndTime: "2/12/2022, 10:11:52 PM",
-    timeZone: "Asia/Anadyr",
-    temperature: "0°C",
-    humidity: "100%",
-    precipitation: "0%",
-  },
-  {
-    cityName: "BrokenHill",
-    dateAndTime: "2/12/2022, 8:41:52 PM",
-    timeZone: "Australia/Broken_Hill",
-    temperature: "10°C",
-    humidity: "79%",
-    precipitation: "20%",
-  },
-  {
-    cityName: "Perth",
-    dateAndTime: "2/12/2022, 6:11:52 PM",
-    timeZone: "Australia/Perth",
-    temperature: "21°C",
-    humidity: "56%",
-    precipitation: "42%",
-  },
-  {
-    cityName: "Auckland",
-    dateAndTime: "2/12/2022, 11:11:52 PM",
-    timeZone: "Pacific/Auckland",
-    temperature: "11°C",
-    humidity: "77%",
-    precipitation: "22%",
-  },
-  {
-    cityName: "Vostok",
-    dateAndTime: "2/12/2022, 4:11:52 PM",
-    timeZone: "Antarctica/Vostok",
-    temperature: "-66°C",
-    humidity: "100%",
-    precipitation: "0%",
-  },
-  {
-    cityName: "Troll",
-    dateAndTime: "2/12/2022, 10:11:52 AM",
-    timeZone: "Antarctica/Troll",
-    temperature: "-59°C",
-    humidity: "100%",
-    precipitation: "0%",
-  },
-];
-
+let text;
 const url = {
   Nome: "/assets/nome.svg",
   NewYork: "/assets/newyork.svg",
@@ -268,7 +90,13 @@ dine2.addEventListener("click", () => {
 });
 let mid = document.querySelector(".mid");
 let gridend = document.querySelector(".grid-end");
-(function () {
+(async function () {
+  let response = await fetch("https://soliton.glitch.me/all-timezone-cities");
+  if (response.ok) {
+    text = await response.json();
+  } else {
+    alert((Error = response.status));
+  }
   for (let i = 0; i < text.length; i++) {
     input(i);
     glance(i);
@@ -336,7 +164,7 @@ function input(i) {
   let t = document.createElement("div");
   particular.appendChild(t);
   let tim = new Date(text[i]["dateAndTime"]);
-  console.log(tim.getMinutes());
+
   if (tim.getHours() < 10) {
     t.innerHTML =
       `0` +
@@ -392,65 +220,104 @@ function input(i) {
   boximg.classList.add("box-img");
   boximg.innerHTML = `<img src="${url[text[i].cityName]}"/>`;
 }
+let c = [];
 function sunny() {
-  let a = [];
-  for (let i = 0; i < text.length; i++) {
-    a.push(text[i].temperature.slice(0, -2));
-  }
-  a.sort((a, b) => a - b);
-  a.reverse();
   while (mid.hasChildNodes()) {
     mid.removeChild(mid.lastChild);
   }
-  for (let i = 0; i < text.length; i++)
-    for (let j = 0; j < text.length; j++) {
-      if (text[j].temperature.slice(0, -2) === a[i]) {
-        if (a[i] === a[i - 1]) {
-        } else {
-          input(j);
-        }
-      }
+  let d = [];
+  for (let i = 0; i < text.length; i++) {
+    c[i] = i;
+  }
+  d = c.filter((j) => text[j]["temperature"].slice(0, -2) > 29);
+  d = d.filter((j) => text[j]["humidity"].slice(0, -1) < 50);
+  d = d.filter((j) => text[j]["precipitation"].slice(0, -1) >= 50);
+  d = d.sort(
+    (a, b) =>
+      text[a]["temperature"].slice(0, -2) - text[b]["temperature"].slice(0, -2)
+  );
+  d.reverse();
+  console.log(d);
+  if (d.length < 10 && d.length > 3) {
+    for (let i = 0; i < d.length; i++) {
+      input(d[i]);
     }
+  } else if (d.length > 10) {
+    for (let i = 0; i < 10; i++) {
+      input(d[i]);
+    }
+  } else {
+    for (let i = 0; i < 3; i++) {
+      input(d[i]);
+    }
+  }
 }
+
 function snow() {
-  let a = [];
-  for (let i = 0; i < text.length; i++) {
-    a.push(text[i].precipitation.slice(0, -1));
-  }
-  a.sort((a, b) => a - b);
-  a.reverse();
   while (mid.hasChildNodes()) {
     mid.removeChild(mid.lastChild);
   }
-  for (let i = 0; i < text.length; i++)
-    for (let j = 0; j < text.length; j++) {
-      if (text[j].precipitation.slice(0, -1) === a[i]) {
-        if (a[i] === a[i - 1]) {
-        } else {
-          input(j);
-        }
-      }
+  let d = [];
+  for (let i = 0; i < text.length; i++) {
+    c[i] = i;
+  }
+  d = c.filter(
+    (j) =>
+      text[j]["temperature"].slice(0, -2) > 20 &&
+      text[j]["temperature"].slice(0, -2) < 28
+  );
+  d = d.filter((j) => text[j]["humidity"].slice(0, -1) > 50);
+  d = d.filter((j) => text[j]["precipitation"].slice(0, -1) < 50);
+  d = d.sort(
+    (a, b) =>
+      text[a]["precipitation"].slice(0, -1) -
+      text[b]["precipitation"].slice(0, -1)
+  );
+  d.reverse();
+  console.log(d);
+  if (d.length < 10 && d.length > 3) {
+    for (let i = 0; i < d.length; i++) {
+      input(d[i]);
     }
+  } else if (d.length > 10) {
+    for (let i = 0; i < 10; i++) {
+      input(d[i]);
+    }
+  } else {
+    for (let i = 0; i < d.length; i++) {
+      input(d[i]);
+    }
+  }
 }
 function rain() {
-  let a = [];
-  for (let i = 0; i < text.length; i++) {
-    a.push(text[i].humidity.slice(0, -1));
-  }
-  a.sort((a, b) => a - b);
-  a.reverse();
   while (mid.hasChildNodes()) {
     mid.removeChild(mid.lastChild);
   }
-  for (let i = 0; i < text.length; i++)
-    for (let j = 0; j < text.length; j++) {
-      if (text[j].humidity.slice(0, -1) === a[i]) {
-        if (a[i] === a[i - 1]) {
-        } else {
-          input(j);
-        }
-      }
+  let d = [];
+  for (let i = 0; i < text.length; i++) {
+    c[i] = i;
+  }
+  d = c.filter((j) => text[j]["temperature"].slice(0, -2) < 20);
+  d = d.filter((j) => text[j]["humidity"].slice(0, -1) >= 50);
+  d = d.sort(
+    (a, b) =>
+      text[a]["humidity"].slice(0, -1) - text[b]["humidity"].slice(0, -1)
+  );
+  d.reverse();
+  console.log(d);
+  if (d.length < 10 && d.length > 3) {
+    for (let i = 0; i < d.length; i++) {
+      input(d[i]);
     }
+  } else if (d.length > 10) {
+    for (let i = 0; i < 10; i++) {
+      input(d[i]);
+    }
+  } else {
+    for (let i = 0; i < d.length; i++) {
+      input(d[i]);
+    }
+  }
 }
 
 function glance(i) {
@@ -463,7 +330,7 @@ function glance(i) {
   let colo = document.createElement("div");
   upper.appendChild(colo);
   colo.classList.add("colo");
-  colo.innerHTML = text[i].cityName;
+  colo.innerHTML = text[i].timeZone.slice(0, text[i].timeZone.indexOf("/"));
   let t = document.createElement("div");
   upper.appendChild(t);
   t.innerHTML = `<big><b>${text[i].temperature}</b></big>`;
@@ -472,9 +339,12 @@ function glance(i) {
   lower.classList.add("lower");
   let name = document.createElement("div");
   lower.appendChild(name);
+  name.classList.add("name");
   let tim = new Date(text[i].dateAndTime);
   if (tim.getHours() < 10) {
     name.innerHTML =
+      text[i].cityName +
+      ` , ` +
       `0` +
       tim.getHours() +
       ":" +
@@ -483,6 +353,8 @@ function glance(i) {
       tim.toLocaleString().slice(19, 22);
   } else {
     name.innerHTML =
+      text[i].cityName +
+      ` , ` +
       tim.getHours() +
       ":" +
       tim.getMinutes() +
@@ -500,27 +372,34 @@ function glance(i) {
   drop.appendChild(temp);
   temp.innerHTML = text[i].humidity;
 }
-let g = 1;
+let h = 1;
 function continentsort() {
-  if (g % 2 !== 0) {
+  let f = [];
+  if (h % 2 !== 0) {
     document.getElementById("continentsort").src = "/assets/arrowUp.svg";
     while (gridend.hasChildNodes()) {
       gridend.removeChild(gridend.lastChild);
     }
     let arr = [];
     for (let i = 0; i < text.length; i++) {
-      arr.push(text[i].cityName);
+      arr.push(text[i].timeZone.slice(0, text[i].timeZone.indexOf("/")));
     }
     arr.sort();
+    arr.reverse();
     console.log(arr);
     for (let i = 0; i < text.length; i++) {
       for (let j = 0; j < text.length; j++) {
-        if (text[j].cityName === arr[i]) {
-          glance(j);
+        if (
+          text[j].timeZone.slice(0, text[j].timeZone.indexOf("/")) === arr[i]
+        ) {
+          if (arr[i] === arr[i - 1]) {
+          } else {
+            glance(j);
+          }
         }
       }
     }
-    g++;
+    h++;
   } else {
     document.getElementById("continentsort").src = "/assets/arrowDown.svg";
     while (gridend.hasChildNodes()) {
@@ -528,67 +407,160 @@ function continentsort() {
     }
     let arr = [];
     for (let i = 0; i < text.length; i++) {
-      arr.push(text[i].cityName);
+      arr.push(text[i].timeZone.slice(0, text[i].timeZone.indexOf("/")));
     }
     arr.sort();
-    arr.reverse();
+    // arr.reverse();
     console.log(arr);
     for (let i = 0; i < text.length; i++) {
       for (let j = 0; j < text.length; j++) {
-        if (text[j].cityName === arr[i]) {
-          glance(j);
+        if (
+          text[j].timeZone.slice(0, text[j].timeZone.indexOf("/")) === arr[i]
+        ) {
+          if (arr[i] === arr[i - 1]) {
+          } else {
+            glance(j);
+          }
         }
       }
     }
-    g++;
+    h++;
   }
 }
-let h = 1;
+let g = 1;
 function temperaturesort() {
-  if (h % 2 !== 0) {
-    document.getElementById("temperaturesort").src = "/assets/arrowDown.svg";
-    while (gridend.hasChildNodes()) {
-      gridend.removeChild(gridend.lastChild);
-    }
-    let arr = [];
-    for (let i = 0; i < text.length; i++) {
-      arr.push(text[i].temperature.slice(0, -2));
-    }
-    arr.sort((a, b) => a - b);
-    console.log(arr);
-    for (let i = 0; i < text.length; i++) {
-      for (let j = 0; j < text.length; j++) {
-        if (text[j].temperature.slice(0, -2) === arr[i]) {
-          if (arr[i] === arr[i - 1]) {
-          } else {
-            glance(j);
-          }
+  let f = [];
+  if (g % 2 !== 0) {
+    if (h % 2 === 0) {
+      let f = [];
+      document.getElementById("temperaturesort").src = "/assets/arrowUp.svg";
+      while (gridend.hasChildNodes()) {
+        gridend.removeChild(gridend.lastChild);
+      }
+      for (let i = 0; i < text.length; i++) {
+        c[i] = i;
+        f[i] = text[i].timeZone.slice(0, text[i].timeZone.indexOf("/"));
+      }
+      let duplicate = [...new Set(f)];
+      let sort = [...duplicate.sort()];
+      sort.reverse();
+      let d = [];
+      for (let h = 0; h < sort.length; h++) {
+        d = c
+          .filter(
+            (i) =>
+              text[i].timeZone.slice(0, text[i].timeZone.indexOf("/")) ===
+              sort[h]
+          )
+          .sort(
+            (a, b) =>
+              text[a]["temperature"].slice(0, -2) -
+              text[b]["temperature"].slice(0, -2)
+          );
+        d = d.reverse();
+        for (let k = 0; k < d.length; k++) {
+          glance(d[k]);
         }
       }
+      g++;
+    } else {
+      let f = [];
+      document.getElementById("temperaturesort").src = "/assets/arrowDown.svg";
+      while (gridend.hasChildNodes()) {
+        gridend.removeChild(gridend.lastChild);
+      }
+      for (let i = 0; i < text.length; i++) {
+        c[i] = i;
+        f[i] = text[i].timeZone.slice(0, text[i].timeZone.indexOf("/"));
+      }
+      let duplicate = [...new Set(f)];
+      let sort = [...duplicate.sort()];
+      // sort.reverse();
+      let d = [];
+      for (let h = 0; h < sort.length; h++) {
+        d = c
+          .filter(
+            (i) =>
+              text[i].timeZone.slice(0, text[i].timeZone.indexOf("/")) ===
+              sort[h]
+          )
+          .sort(
+            (a, b) =>
+              text[a]["temperature"].slice(0, -2) -
+              text[b]["temperature"].slice(0, -2)
+          );
+        d = d.reverse();
+        for (let k = 0; k < d.length; k++) {
+          glance(d[k]);
+        }
+      }
+      g++;
     }
-    h++;
   } else {
-    document.getElementById("temperaturesort").src = "/assets/arrowDown.svg";
-    while (gridend.hasChildNodes()) {
-      gridend.removeChild(gridend.lastChild);
-    }
-    let arr = [];
-    for (let i = 0; i < text.length; i++) {
-      arr.push(text[i].temperature.slice(0, -2));
-    }
-    arr.sort((a, b) => a - b);
-    arr.reverse();
-    console.log(arr);
-    for (let i = 0; i < text.length; i++) {
-      for (let j = 0; j < text.length; j++) {
-        if (text[j].temperature.slice(0, -2) === arr[i]) {
-          if (arr[i] === arr[i - 1]) {
-          } else {
-            glance(j);
-          }
+    if (h % 2 === 0) {
+      let f = [];
+      document.getElementById("temperaturesort").src = "/assets/arrowDown.svg";
+      while (gridend.hasChildNodes()) {
+        gridend.removeChild(gridend.lastChild);
+      }
+      for (let i = 0; i < text.length; i++) {
+        c[i] = i;
+        f[i] = text[i].timeZone.slice(0, text[i].timeZone.indexOf("/"));
+      }
+      let duplicate = [...new Set(f)];
+      let sort = [...duplicate.sort()];
+      sort.reverse();
+      let d = [];
+      for (let h = 0; h < sort.length; h++) {
+        d = c
+          .filter(
+            (i) =>
+              text[i].timeZone.slice(0, text[i].timeZone.indexOf("/")) ===
+              sort[h]
+          )
+          .sort(
+            (a, b) =>
+              text[a]["temperature"].slice(0, -2) -
+              text[b]["temperature"].slice(0, -2)
+          );
+        // d = d.reverse();
+        for (let k = 0; k < d.length; k++) {
+          glance(d[k]);
         }
       }
+      g++;
+    } else {
+      let f = [];
+      document.getElementById("temperaturesort").src = "/assets/arrowUp.svg";
+      while (gridend.hasChildNodes()) {
+        gridend.removeChild(gridend.lastChild);
+      }
+      for (let i = 0; i < text.length; i++) {
+        c[i] = i;
+        f[i] = text[i].timeZone.slice(0, text[i].timeZone.indexOf("/"));
+      }
+      let duplicate = [...new Set(f)];
+      let sort = [...duplicate.sort()];
+      // sort.reverse();
+      let d = [];
+      for (let h = 0; h < sort.length; h++) {
+        d = c
+          .filter(
+            (i) =>
+              text[i].timeZone.slice(0, text[i].timeZone.indexOf("/")) ===
+              sort[h]
+          )
+          .sort(
+            (a, b) =>
+              text[a]["temperature"].slice(0, -2) -
+              text[b]["temperature"].slice(0, -2)
+          );
+        // d = d.reverse();
+        for (let k = 0; k < d.length; k++) {
+          glance(d[k]);
+        }
+      }
+      g++;
     }
-    h++;
   }
 }
