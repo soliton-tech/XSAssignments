@@ -23,51 +23,124 @@ const url = {
   Vostok: "/assets/vostok.svg",
   Troll: "/assets/troll.svg",
 };
+const offset = {
+  Nome: "-9",
+  NewYork: "-5",
+  Jamaica: "-5",
+  Moscow: "+3",
+  LosAngeles: "-8",
+  Winnipeg: "-6",
+  Juba: "+2",
+  Maseru: "+2",
+  London: "0",
+  Vienna: "+1",
+  Dublin: "0",
+  Karachi: "+5",
+  Kolkata: "+5.3",
+  Yangon: "+6.3",
+  BangKok: "+7",
+  Seoul: "+9",
+  Anadyr: "+12",
+  BrokenHill: "+10.3",
+  Perth: "+8",
+  Auckland: "+13",
+  Vostok: "+10",
+  Troll: "0",
+};
+function datetime(offset) {
+  var b = new Date();
+  var utc = b.getTime() + b.getTimezoneOffset() * 60000;
+  var newdate = new Date(utc + 3600000 * offset);
+  return newdate;
+}
+var selectvalue;
 
 function selectdata() {
-  var selectvalue = document.getElementById("name").value;
-  for (let i = 0; i < text.length; i++)
-    if (selectvalue === text[i].cityName) {
-      document.getElementById("dynamic").src = url[`${text[i].cityName}`];
-      text[i]["dateAndTime"] = new Date(text[i]["dateAndTime"]).toString();
-      console.log(text[i]["dateAndTime"]);
-      document.getElementById("time").innerHTML = `<big>${text[i][
-        "dateAndTime"
-      ].slice(16, 21)}</big><small>${text[i]["dateAndTime"].slice(
-        21,
-        24
-      )}</small>`;
-      text[i]["dateAndTime"] = new Date(text[i]["dateAndTime"]).toString();
+  setInterval(function () {
+    selectvalue = document.getElementById("name").value;
+    for (let i = 0; i < text.length; i++)
+      if (selectvalue === text[i].cityName) {
+        document.getElementById("dynamic").src = url[`${text[i].cityName}`];
+        let dt = datetime(offset[`${text[i].cityName}`]);
+        let hour = dt.getHours();
+        let ampm = "AM";
+        if (hour > 12) {
+          hour = hour - 12;
+          ampm = "PM";
+        } else if (hour == 0) {
+          hour = 12;
+        }
+        Number.prototype.pad = function (digit) {
+          for (var n = this.toString(); n.length < digit; n = 0 + n);
+          return n;
+        };
+        if (ampm === "AM") {
+          document.querySelector(
+            "#ampm"
+          ).innerHTML = `<img  src="/assets/amState.svg" alt="AM" />`;
+        } else {
+          document.querySelector("#ampm").innerHTML = " &nbsp;<big> PM </big>";
+        }
 
-      document.getElementById("date").innerHTML =
-        text[i]["dateAndTime"].slice(8, 10) +
-        "-" +
-        text[i]["dateAndTime"].slice(4, 7) +
-        "-" +
-        text[i]["dateAndTime"].slice(10, 15);
-      document.getElementById(
-        "cel"
-      ).innerHTML = `<b>${text[i]["temperature"]}</b>`;
-      const first = parseInt(text[i]["dateAndTime"].slice(16, 18));
-      document.getElementById("first").innerHTML = first + 1 + ` AM`;
-      const second = parseInt(text[i]["dateAndTime"].slice(16, 18));
-      document.getElementById("second").innerHTML = first + 2 + ` AM`;
-      const third = parseInt(text[i]["dateAndTime"].slice(16, 18));
-      document.getElementById("third").innerHTML = first + 3 + ` AM`;
-      const fourth = parseInt(text[i]["dateAndTime"].slice(16, 18));
-      document.getElementById("fourth").innerHTML = first + 4 + ` AM`;
-      const fifth = parseInt(text[i]["dateAndTime"].slice(16, 18));
-      document.getElementById("fifth").innerHTML = first + 5 + ` AM`;
-      let faren = text[i]["temperature"].slice(0, -2) * 1.8 + 32;
-      document.getElementById("far").innerHTML = `<b>${faren.toFixed(2)}</b>`;
-      document.getElementById(
-        "hum"
-      ).innerHTML = `<b>${text[i]["humidity"]}</b>`;
-      document.getElementById(
-        "per"
-      ).innerHTML = `<b>${text[i]["precipitation"]}</b>`;
-    }
+        document.getElementById("time").innerHTML =
+          `<big>${hour.pad(2)}</big>` +
+          `<big>:</big>` +
+          `<big>${dt.getMinutes().pad(2)}</big>` +
+          `<big>:</big>` +
+          `<small>${dt.getSeconds().pad(2)}</small>`;
+
+        document.getElementById("date").innerHTML =
+          dt.toString().slice(8, 10) +
+          "-" +
+          dt.toString().slice(4, 7) +
+          "-" +
+          dt.toString().slice(11, 15);
+        document.getElementById(
+          "cel"
+        ).innerHTML = `<b>${text[i]["temperature"]}</b>`;
+        const first = parseInt(hour.pad(2));
+        first >= 12
+          ? (document.querySelector("#first").innerHTML =
+              first - 12 + 1 + "&nbsp;PM")
+          : (document.getElementById("first").innerHTML =
+              first + 1 + "&nbsp;" + ampm);
+        first >= 11
+          ? (document.querySelector("#second").innerHTML =
+              first - 12 + 2 + "&nbsp;PM")
+          : (document.getElementById("second").innerHTML =
+              first + 2 + "&nbsp;" + ampm);
+        first >= 10
+          ? (document.querySelector("#third").innerHTML =
+              first - 12 + 3 + "&nbsp;PM")
+          : (document.getElementById("third").innerHTML =
+              first + 3 + "&nbsp;" + ampm);
+        first >= 9
+          ? (document.querySelector("#fourth").innerHTML =
+              first - 12 + 4 + "&nbsp;PM")
+          : (document.getElementById("fourth").innerHTML =
+              first + 4 + "&nbsp;" + ampm);
+        first >= 8
+          ? (document.querySelector("#fifth").innerHTML =
+              first - 12 + 5 + "&nbsp;PM")
+          : (document.getElementById("fifth").innerHTML =
+              first + 5 + "&nbsp;" + ampm);
+        let faren = text[i]["temperature"].slice(0, -2) * 1.8 + 32;
+        document.getElementById("far").innerHTML = `<b>${faren.toFixed(2)}</b>`;
+        document.getElementById(
+          "hum"
+        ).innerHTML = `<b>${text[i]["humidity"]}</b>`;
+        document.getElementById(
+          "per"
+        ).innerHTML = `<b>${text[i]["precipitation"]}</b>`;
+      }
+  }, 1);
 }
+
+// function removeselection() {
+//   dine.style.borderBottom = "#00b9fb solid 0px";
+//   dine1.style.borderBottom = "#00b9fb solid 0px";
+//   dine2.style.borderBottom = "#00b9fb solid 0px";
+// }
 
 var dine = document.getElementById("dine");
 dine.addEventListener("click", () => {
@@ -90,37 +163,38 @@ dine2.addEventListener("click", () => {
 });
 let mid = document.querySelector(".mid");
 let gridend = document.querySelector(".grid-end");
-(async function () {
+async function first() {
   let response = await fetch("https://soliton.glitch.me/all-timezone-cities");
   if (response.ok) {
     text = await response.json();
   } else {
-    alert((Error = response.status));
+    alert("HTTP-Error: " + response.status);
   }
   for (let i = 0; i < text.length; i++) {
     input(i);
     glance(i);
   }
-})();
+}
+
+let gx = 0;
 let remove = [];
 function create() {
   var inputdata = document.getElementById("drop").value;
   while (mid.childNodes.length > inputdata) {
     remove.push(mid.removeChild(mid.lastChild));
+    gx = 2;
   }
-  console.dir(remove);
   let q = 1;
-  while (mid.childNodes.length < inputdata) {
-    mid.appendChild(remove.at(-q));
-    q++;
+  if (gx == 2) {
+    while (mid.childNodes.length < inputdata) {
+      mid.appendChild(remove.at(-q));
+      q++;
+    }
   }
   if (inputdata >= text.length) {
     inputdata = text.length;
   }
-  // for (let i = 0; i < inputdata; i++) {
-  //   // console.log(i);
-  //   input(i);
-  // }
+  button();
 }
 
 function tempicon(i) {
@@ -145,6 +219,28 @@ function tempicon(i) {
   } else {
     return "/assets/sunnyIcon.svg";
   }
+}
+function button() {
+  let a;
+  let b;
+  b = document.querySelector(".mid").offsetWidth;
+  a = mid.childElementCount * 268;
+  // console.log(a, b);
+  if (a > b) {
+    document.querySelector(".button").style.display = "flex";
+  } else {
+    document.querySelector(".button").style.display = "none";
+  }
+  lef = [];
+}
+let lef = [];
+
+function right() {
+  mid.scrollLeft += 260;
+}
+
+function left() {
+  mid.scrollLeft -= 280;
 }
 
 function input(i) {
@@ -219,12 +315,14 @@ function input(i) {
   box.appendChild(boximg);
   boximg.classList.add("box-img");
   boximg.innerHTML = `<img src="${url[text[i].cityName]}"/>`;
+  button();
 }
 let c = [];
 function sunny() {
   while (mid.hasChildNodes()) {
     mid.removeChild(mid.lastChild);
   }
+
   let d = [];
   for (let i = 0; i < text.length; i++) {
     c[i] = i;
@@ -247,10 +345,11 @@ function sunny() {
       input(d[i]);
     }
   } else {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < d.length; i++) {
       input(d[i]);
     }
   }
+  remove = [];
 }
 
 function snow() {
@@ -288,6 +387,7 @@ function snow() {
       input(d[i]);
     }
   }
+  remove = [];
 }
 function rain() {
   while (mid.hasChildNodes()) {
@@ -318,6 +418,7 @@ function rain() {
       input(d[i]);
     }
   }
+  remove = [];
 }
 
 function glance(i) {

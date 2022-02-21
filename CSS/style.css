@@ -228,22 +228,24 @@
 .bottom .mid {
   display: flex;
   align-items: center;
-  overflow-x: scroll;
-  overflow-y: hidden;
   column-gap: 20px;
   margin-right: 80px;
   margin-left: 80px;
   cursor: pointer;
   position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
-/* .box :hover {
-} */
+::-webkit-scrollbar {
+  display: none;
+}
 .bottom .button {
-  position: absolute;
+  position: relative;
   display: flex;
   justify-content: space-between;
   width: 100%;
   transform: translateY(-140px);
+  display: none;
 }
 .bottom .button .left {
   margin-left: 20px;

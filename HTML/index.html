@@ -7,7 +7,7 @@
     <title>Weather</title>
     <link rel="stylesheet" href="/CSS/style.CSS" />
   </head>
-  <body>
+  <body onload="first();">
     <div class="head">
       <div class="image">
         <img id="dynamic" alt="country icon" />
@@ -42,7 +42,7 @@
       <div class="date-time">
         <div class="date">
           <div id="time">00:00:00</div>
-          <div><img id="ampm" src="/assets/amState.svg" alt="AM" /></div>
+          <div id="ampm"></div>
         </div>
         <div class="time">
           <div id="date">Date-Mon-Year</div>
@@ -166,9 +166,9 @@
       <div class="mid"></div>
       <div class="button">
         <div class="left">
-          <button id="left"><</button>
+          <button onclick="left();"><</button>
         </div>
-        <div class="right"><button id="left">></button></div>
+        <div class="right"><button onclick="right();">></button></div>
       </div>
 
       <div class="end">
