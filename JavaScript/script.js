@@ -1,4 +1,5 @@
 let text;
+
 const url = {
   Nome: "/assets/nome.svg",
   NewYork: "/assets/newyork.svg",
@@ -54,6 +55,19 @@ function datetime(offset) {
   return newdate;
 }
 var selectvalue;
+function criteria(t) {
+  if (t >= 23 && t <= 29) {
+    return "/assets/cloudyIcon.svg";
+  } else if (t < 18) {
+    return "/assets/rainyIconBlack.svg";
+  } else if (t >= 18 && t <= 22) {
+    return "/assets/windyIcon.svg";
+  } else if (t > 29) {
+    return "/assets/sunnyIcon.svg";
+  } else {
+    return "";
+  }
+}
 
 function selectdata() {
   setInterval(function () {
@@ -99,15 +113,19 @@ function selectdata() {
           "cel"
         ).innerHTML = `<b>${text[i]["temperature"]}</b>`;
         let t = text[i]["temperature"].slice(0, -2);
-        if (t > 23 && t < 29) {
-          document.querySelector(".nowimg").src = "/assets/cloudyIcon.svg";
-        } else if (t < 18) {
-          document.querySelector(".nowimg").src = "/assets/rainyIconBlack.svg";
-        } else if (t > 18 && t < 22) {
-          document.querySelector(".nowimg").src = "/assets/windyIcon.svg";
-        } else if (t > 29) {
-          document.querySelector(".nowimg").src = "/assets/sunnyIcon.svg";
-        }
+        document.querySelector(".nowimg").src = criteria(t);
+        document.querySelector(".firstimg").src = criteria(parseInt(t) + 1);
+        document.querySelector(".secondimg").src = criteria(parseInt(t) + 2);
+        document.querySelector(".thirdimg").src = criteria(parseInt(t) + 3);
+        document.querySelector(".fourthimg").src = criteria(parseInt(t) + 4);
+        document.querySelector(".fifthimg").src = criteria(parseInt(t) + 5);
+        document.querySelector(".nowt").innerHTML = t;
+        document.querySelector(".firstt").innerHTML = parseInt(t) + 1;
+        document.querySelector(".secondt").innerHTML = parseInt(t) + 2;
+        document.querySelector(".thirdt").innerHTML = parseInt(t) + 3;
+        document.querySelector(".fourtht").innerHTML = parseInt(t) + 4;
+        document.querySelector(".fiftht").innerHTML = parseInt(t) + 5;
+
         const first = parseInt(hour.pad(2));
         first >= 12
           ? (document.querySelector("#first").innerHTML =
@@ -143,7 +161,7 @@ function selectdata() {
           "per"
         ).innerHTML = `<b>${text[i]["precipitation"]}</b>`;
       }
-  }, 1);
+  }, 1000);
 }
 
 // function removeselection() {
@@ -176,12 +194,12 @@ let gridend = document.querySelector(".grid-end");
 
 async function first() {
   let response = await fetch("https://soliton.glitch.me/all-timezone-cities");
+  console.log(response);
   if (response.ok) {
     text = await response.json();
   } else {
     alert("HTTP-Error: " + response.status);
   }
-  console.log(text);
   for (let i = 0; i < text.length; i++) {
     input(i);
     glance(i);
