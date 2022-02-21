@@ -1,0 +1,104 @@
+let a4=document.querySelector(".a4");
+let x=0,y=0;
+
+    let continent =document.getElementById("continentSort");
+    let temper =document.getElementById("temSort");
+    continentSort(x,y);
+    continent.addEventListener('click', function(){
+        if(x==0){x=1;}
+        else{x=0;}
+        continentSort(x,y);});
+    temper.addEventListener('click', function(){
+        if(y==0){y++;}
+        else{y=0;}
+        continentSort (x,y)});
+   
+   function continentSort(x,y){
+   var requestOptions = {
+    method: 'GET',
+    
+    };
+    
+    fetch("https://soliton.glitch.me/all-timezone-cities", requestOptions)
+    .then(response => response.json())
+    .catch(error => console.log('error', error))
+    .then((data)=>so(data));
+    
+        function so(data){
+        let a=[{}];
+        for(let i=0;i<22;i++){
+        let {temperature,humidity,timeZone,dateAndTime,cityName}=data[i];
+        a[i]=[{tem:parseInt(temperature,10),hum:parseInt(humidity),timeZone:timeZone,dt:dateAndTime,nam:cityName}];
+        }   
+        if(x==0 && y==0){continent.setAttribute('src','../assets/background/arrowDown.svg');
+        temper.setAttribute('src','../assets/background/arrowDown.svg');
+        x=y=1;
+        }
+        else if(x==1 && y==0){ continent.setAttribute('src','../assets/background/arrowUp.svg');
+        temper.setAttribute('src','../assets/background/arrowDown.svg');
+        x=0;
+        a.sort(function(g,h){
+            let x=g[0].timeZone;
+            let y=h[0].timeZone;
+            if(x<y){
+                return -1;
+            }
+            else{
+                return 1;
+            }
+        });}
+        else if(x==0 && y==1){x=1;y=0; 
+        continent.setAttribute('src','../assets/background/arrowDown.svg');
+        temper.setAttribute('src','../assets/background/arrowUp.svg'); 
+        a.sort(function(g,h){
+            return h[0].tem - g[0].tem;
+        });}
+      
+        else {x=y=0;
+            continent.setAttribute('src','../assets/background/arrowUp.svg');
+            temper.setAttribute('src','../assets/background/arrowUp.svg');
+            a.sort(function(g,h){
+                let p=g[0].timeZone.split('/');
+                let q=h[0].timeZone.split('/');
+            if(p[0]<q[0]){
+                return -1;
+            }
+            else if(p[0]>q[0]) {
+                return 1;
+            }
+            
+                return h[0].tem - g[0].tem;
+            });
+            
+        }
+    a4.innerHTML="";
+    for(let i=0;i<16;i++){
+      
+    let a4b=document.createElement("div");
+    a4.appendChild(a4b);
+    a4b.classList.add('a4b');
+    let a4b1=document.createElement("div");
+    a4b.appendChild(a4b1);
+    a4b1.setAttribute('id','a4b1');
+    let x=a[i][0].timeZone;
+    let y=x.split('/');
+    setInterval(()=>{
+    let t=td3(a[i][0].nam);
+    a4b1.innerHTML=`<span style='color:yellow'>${y[0]}</span><br>${y[1]} ${t}`;  },1000);
+    let a4b2=document.createElement("div");
+    a4b.appendChild(a4b2);
+    a4b2.setAttribute('id','a4b2');
+    a4b2.innerHTML=a[i][0].tem+" °C"+"<br>"+"<img src=\"../assets/background/humidityIcon.svg\"alt=\"loading\" width=\"15px\">&nbsp;"+a[i][0].hum+" %";
+    }
+    }
+}
+function td3(city){
+    const offset1={
+        'Yangon':6.30,'Vienna':6.30,'Anadyr':3,'Moscow':3,'Juba':2,'Bangkok':7,'Perth':8,'Brokenhill':3,'Karachi':5,'NewYork':-5,'Seoul':9,'Winnipeg':-6,'Dublin':-8,'LosAngeles':-8,'Nome':1,'Troll':1,'Auckland':13,'Jamaica':-5,'Maseru':2,'London':0,'Kolkata':0
+    }
+    let offset=offset1[city];
+    let d=new Date();
+    let utc=d.getTime()+(d.getTimezoneOffset()*60000);
+    let t=new Date(utc+(3600000*offset));
+       return t.toLocaleTimeString();
+}

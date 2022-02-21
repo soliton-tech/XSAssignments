@@ -2,139 +2,68 @@
 <html lang="en">
     <head>
         <meta name="viewport"
-        content="width=device-width, initial scale=1.0">
+        content="width=device-width,initial-scale=1.0">
         <link rel="stylesheet" href="../CSS/wf.css">
         <title>Weather Forecasting</title>
     </head>
 
     <body>
        <div class="one">
-        <div class="c1"><img src="../assets/cities/yangon.svg" height="120px";
+        <div class="c1"><img id="hai"  src="../assets/cities/yangon.svg" height="120px";
             width="120px" alt="loading" >
         </div>
        <div class="c2">   
-        <select class="sb"
-         id="cities" name="cities" size="1" style="
-         width: 102px";>
-            <option  value="London">yangon</option><option value="Mumbai">Mumbai</option><option value="Dubai">Anadyr</option><option value="Dubai">Auckland</option>
-            <option value="Dubai">Bangkok</option><option value="Dubai">Brokenhill</option><option value="Dubai">Dublin</option><option value="Dubai">Jamaica</option>
-            <option value="Dubai">Juba</option><option value="Dubai">Karachi</option> <option value="Dubai">Losangeles</option><option value="Dubai">Maseru</option>
-            <option value="Dubai">Moscow</option><option value="Dubai">New York</option><option value="Dubai">Nome</option><option value="Dubai">London</option>
-            <option value="Dubai">Perth</option> <option value="Dubai">Seoul</option> <option value="Dubai">Troll</option><option value="Dubai">Vienna</option>
-            <option value="Dubai">Vostok</option><option value="Dubai">Winnipeg</option>
+        <select class="sb" onchange="displayWeather()"
+         id="cities" name="cities" size="1"><option  value="yangon">yangon</option><option>-select a city-</option>
+            <option value="Anadyr">Anadyr</option><option value="Auckland">Auckland</option>
+            <option value="Bangkok">Bangkok</option><option value="Brokenhill">Brokenhill</option><option value="Dublin">Dublin</option><option value="Jamaica">Jamaica</option>
+            <option value="Juba">Juba</option><option value="Juba">Kolkata</option><option value="Karachi">Karachi</option> <option value="Losangeles">Losangeles</option><option value="Maseru">Maseru</option>
+            <option value="Moscow">Moscow</option><option value="New York">New York</option><option value="Nome">Nome</option><option value="London">London</option>
+            <option value="Perth">Perth</option> <option value="Seoul">Seoul</option> <option value="Troll">Troll</option><option value="Vienna">Vienna</option>
+            <option value="Vostok">Vostok</option><option value="Winnipeg">Winnipeg</option>
         </select>
+       
          <br>
-         <p id="time">10:44:<small>55</small>
-            <img  src="../assets/background/amState.svg" width="70px
-            " height="60px"alt="loading"></p><p>27-JAN-2022</p>
+         <p id="time"></p><p id='date'></p>
         </div>
-        <div class="c3"><p>Temp °C</p><span id="deg">25°C</span><p>Temp F</p><span id="deg">78 F</span></div>
+        <div class="c3"><p>Temp °C</p><span id="deg"></span><p>Temp F</p><span id="fah"></span></div>
         <div class="c4"><br><br><div class="line"> </div> <br><div class="line"> </div></div>
-        <div class="c5"><p>Humidity %</p><span id="deg">28 %</span>
-            <p>Precipitation</p><span id="deg">0 %</span></div> 
-            <div class="c6"><br><h4>now </h4><h4>|</h4> <img class="image" src="../assets/background/cloudyIcon.svg" alt="loading"><h4>6</h4></div>
+        <div class="c5"><p>Humidity %</p><span id="hum"></span>
+            <p>Precipitation</p><span id="pre"></span></div> 
+            <div class="c6"><br><h3>now </h3><h4>|</h4> <img id="img1" alt="loading"><h4 id="now"></h4></div>
             <div class="c7"><br><br><br><h4> | </h4></div>
-            <div class="c6"><br><h4>11 AM <h4>|<h4> <img class="image" src="../assets/background/cloudyIcon.svg" alt="loading"><h4><h4>8</h4></div>
+            <div class="c6"><br><h4 id='t1'> <h4>|<h4> <img id="img2"  alt="loading"><h4 id="now+1"></h4></div>
             <div class="c7"><br><br><br><h4> | </h4></div>
-            <div class="c6"><br><h4>12 PM <h4>|<h4> <img class="image" src="../assets/background/windyIcon.svg" alt="loading"><h4><h4>9</h4></div>
+            <div class="c6"><br><h4 id='t2'><h4>|<h4> <img id="img3"  alt="loading"><h4 id="now+2"></h4></div>
             <div class="c7"><br><br><br><h4> | </h4></div>
-            <div class="c6"><br><h4>1 PM <h4>|<h4> <img class="image" src="../assets/background/windyIcon.svg"alt="loading" ><h4><h4>8</h4></div>
+            <div class="c6"><br><h4 id='t3'> <h4>|<h4> <img id="img4" alt="loading" ><h4 id="now+3"></h4></div>
             <div class="c7"><br><br><br><h4> | </h4></div>
-            <div class="c6"><br><h4>2 PM <h4>|<h4> <img class="image" src="../assets/background/cloudyIcon.svg"alt="loading" ><h4><h4>13</h4></div>
+            <div class="c6"><br><h4 id='t4'><h4>|<h4> <img id="img5" alt="loading" ><h4 id="now+4"></h4></div>
             <div class="c7"><br><br><br><h4> | </h4></div>
-            <div class="c6"><br><h4>3 PM <h4>|<h4> <img class="image" src="../assets/background/cloudyIcon.svg" alt="loading"><h4><h4>13</h4></div>
-          
+            <div class="c6"><br><h4 id='t5'> <h4>|<h4> <img id="img6"  alt="loading"><h4 id="now+5"></h4></div>
+            <script src="../JavaScript/block1js.js"></script>
     </div>
        <div class="two">
           <div class="a1">
               <div class="b1"><h2>Cities Around The World</h2></div>
-              <div class="b2"><img class="line2" src="../assets/background/sunnyIcon.svg"alt="loading">&emsp;<img src="../assets/background/snowflakeIcon.svg"alt="loading" width=30px;>&emsp;<img src="../assets/background/rainyIcon.svg"alt="loading" width= 30px;>&ensp;<b>display top:</b>
-                &nbsp;&nbsp;<input class="sb" type="number" value="5" min="1" max="5" step="1"></p></div>
+              <div class="b2"><img id="sun" src="../assets/background/sunnyIcon.svg"alt="loading">&emsp;<img id="snow" src="../assets/background/snowflakeIcon.svg"alt="loading" width=30px;>&emsp;<img id="rain"src="../assets/background/rainyIcon.svg"alt="loading" width= 30px;>&ensp;<b>display top:</b>
+                &nbsp;&nbsp;<input id="sb" type="number" value="5" onchange="sb()" min="1" max="22" step="1"></p></div>
           </div>
-            
-            <div class="a2">
-                <div class="a2b"><div id="a2b1">New Delhi<br>
-                    7:00 AM<br>01-FEB-2022<br><img src="../assets/background/humidityIcon.svg" alt="loading">&nbsp;&nbsp;54%<br><img src="../assets/background/precipitationIcon.svg"alt="loading">&nbsp;&nbsp;10%
-                    </div>
-                    <div id="a2b2"><img id="i1"src="../assets/background/sunnyIcon.svg"alt="loading">&nbsp;&nbsp;25 °C</div>
-                </div>
-                <div class="a2b"><div id="a2b1">New Delhi<br>
-                    7:00 AM<br>01-FEB-2022<br><img src="../assets/background/humidityIcon.svg"alt="loading">&nbsp;&nbsp;54%<br><img src="../assets/background/precipitationIcon.svg"alt="loading">&nbsp;&nbsp;10%
-                    </div>
-                    <div id="a2b2"><img id="i1"src="../assets/background/sunnyIcon.svg"alt="loading">&nbsp;&nbsp;25 °C</div>
-                </div>
-                <div class="a2b"><div id="a2b1">New Delhi<br>
-                    7:00 AM<br>01-FEB-2022<br><img src="../assets/background/humidityIcon.svg"alt="loading">&nbsp;&nbsp;54%<br><img src="../assets/background/precipitationIcon.svg"alt="loading">&nbsp;&nbsp;10%
-                    </div>
-                    <div id="a2b2"><img id="i1"src="../assets/background/sunnyIcon.svg"alt="loading">&nbsp;&nbsp;25 °C</div>
-                </div>
-                <div class="a2b"><div id="a2b1">New Delhi<br>
-                    7:00 AM<br>01-FEB-2022<br><img src="../assets/background/humidityIcon.svg"alt="loading">&nbsp;&nbsp;54%<br><img src="../assets/background/precipitationIcon.svg"alt="loading">&nbsp;&nbsp;10%
-                    </div>
-                    <div id="a2b2"><img id="i1"src="../assets/background/sunnyIcon.svg"alt="loading">&nbsp;&nbsp;25 °C</div>
-                </div>
-                <div class="a2b"><div id="a2b1">New Delhi<br>
-                    7:00 AM<br>01-FEB-2022<br><img src="../assets/background/humidityIcon.svg"alt="loading">&nbsp;&nbsp;54%<br><img src="../assets/background/precipitationIcon.svg"alt="loading">&nbsp;&nbsp;10%
-                    </div>
-                    <div id="a2b2"><img id="i1"src="../assets/background/sunnyIcon.svg"alt="loading">&nbsp;&nbsp;25 °C</div>
-                </div>
-            </div>
-            
+          <div class="a22">
+             <div class='arrow-left' ></div>
+                 <div class="a2"></div>
+            <div class='arrow-right'></div>
+             <script src="../JavaScript/block2js.js"></script>
+          </div>
+          
             <div class= a3>
                 <div id="a31"><p><b>Cities across continents at a glance</b></p></div>
-                <div id="a32"><p>Continent Name&nbsp;<img src="../assets/background/arrowDown.svg"alt="loading" width="20px">&nbsp;&nbsp;Temperature&nbsp;<img src="../assets/background/arrowUp.svg" width="20px"></p></div>
+                <div id="a32"><p>Continent Name&nbsp;<img id="continentSort" src="../assets/background/arrowDown.svg"alt="loading"  width="20px">&nbsp;&nbsp;Temperature&nbsp;<img id="temSort"src="../assets/background/arrowUp.svg" width="20px"></p></div>
             </div> 
             <div class=a4>
-                <div class="a4b"><div id="a4b1"><div class="fontcolor">Asia</div>Delhi, 10:00AM</div>
-                    <div id="a4b2">38 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                     </div>
-                <div class="a4b"><div id="a4b1"><div class="fontcolor">Africa</div>Egypt, 10:00AM</div>
-                     <div id="a4b2">37 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                    </div>
-                 <div class="a4b"><div id="a4b1"><div class="fontcolor">Europe</div>London, 10:00AM</div>
-                      <div id="a4b2">35 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                     </div>
-                     <div class="a4b"><div id="a4b1"><div class="fontcolor">Russia</div>Moscow, 10:00AM</div>
-                     <div id="a4b2">32 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                    </div>
-                    <div class="a4b"><div id="a4b1"><div class="fontcolor">Asia</div>Delhi, 10:00AM</div>
-                    <div id="a4b2">37 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                   </div>
-                   <div class="a4b"><div id="a4b1"><div class="fontcolor">Africa</div>Egypt, 10:00AM</div>
-                   <div id="a4b2">35 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                  </div>
-                  <div class="a4b"><div id="a4b1"><div class="fontcolor">Europe</div>London, 10:00AM</div>
-                  <div id="a4b2">37 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                 </div>
-                 <div class="a4b"><div id="a4b1"><div class="fontcolor">Russia</div>Moscow, 10:00AM</div>
-                     <div id="a4b2">32 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                    </div>
-                <div class="a4b"><div id="a4b1"><div class="fontcolor">Asia</div>Chennai, 10:00AM</div>
-                      <div id="a4b2">34 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                     </div>
-                     <div class="a4b"><div id="a4b1"><div class="fontcolor">Africa</div>Durban, 10:00AM</div>
-                     <div id="a4b2">37 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                    </div>
-                    <div class="a4b"><div id="a4b1"><div class="fontcolor">Europe</div>Beijing, 10:00AM</div>
-                    <div id="a4b2">35 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                   </div>
-                   <div class="a4b"><div id="a4b1"><div class="fontcolor">Russia</div>Kazan, 10:00AM</div>
-                     <div id="a4b2">32 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                    </div>
-                  <div class="a4b"><div id="a4b1"><div class="fontcolor">Asia</div>Chennai, 10:00AM</div>
-                  <div id="a4b2">38 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                 </div>
-                 <div class="a4b"><div id="a4b1"><div class="fontcolor">Africa</div>Durban, 10:00AM</div>
-                     <div id="a4b2">37 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                    </div>
-                    <div class="a4b"><div id="a4b1"><div class="fontcolor">Europe</div>Beijing, 10:00AM</div>
-                    <div id="a4b2">35 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                   </div>
-                   <div class="a4b"><div id="a4b1"><div class="fontcolor">Russia</div>Kazan, 10:00AM</div>
-                   <div id="a4b2">32 °C<br><img src="../assets/background/humidityIcon.svg"alt="loading" width="15px">&nbsp;<small>53 %</small></div>
-                  </div>
-
+                <script src="../JavaScript/block3js"></script>
              </div>
+             
        </div>
             
         

@@ -2,7 +2,7 @@
 [contenteditable]{
     outline: 0px solid transparent;
 }
-body{margin: 0%;
+body{margin: 0%;scroll-behavior: smooth;
 }
 .one{
     height:auto;
@@ -10,7 +10,7 @@ body{margin: 0%;
     background-size: 150%;
     display: grid;
     background-position: left;
-    animation: anime 20s linear 0s infinite normal both;
+    animation: anime 75s linear 0s infinite normal ;
    color: white;padding-bottom: 20px;
    grid-template-columns: 0.5fr 0.35fr 0.3fr 0.01fr 0.4fr 0.27fr  0.27fr  0.27fr  0.27fr  0.27fr  0.27fr 0.27fr  0.27fr  0.27fr  0.27fr  0.27fr;
    justify-content: space-evenly;
@@ -31,7 +31,8 @@ body{margin: 0%;
    padding-top: 20%;
     font-size:20px;
     color: white;
-}
+}.sb{width: 102px;
+height:30px;}
 .sb:hover{
     background-color: lightblue;
 }
@@ -48,7 +49,7 @@ body{margin: 0%;
     border-left: 2px solid white;
     height: 75px; 
 }
-#deg{
+#deg,#hum,#pre,#fah{
     font-size: 25px;
 }
 .c5{padding-top: 29px;
@@ -87,16 +88,13 @@ body{margin: 0%;
     }
 
 }
-
 .two{
   border-radius:15px ;
     height: auto;
     padding-bottom:35px ;
     background: linear-gradient(rgb(0, 255, 149),rgba(40, 40, 109, 0),rgba(250, 249, 249, 0.959));
-    
     background-size: contain;
 }
-
 .a1{
     display: grid;
     grid-template-rows: 1fr;
@@ -110,15 +108,18 @@ body{margin: 0%;
     text-align: end;
 }
 .b2{
-    align-items: center;
+  
     text-align: end;
   padding-top: 10px;
 }
-.line2{
-    border-bottom: 4px solid rgb(141, 136, 136);
-    width: 35px;
-    height: 35px;
+#sun,#snow,#rain{position: relative;
+   transform: translate(0,30%);
+    
+}#sb:hover{background-color:lightblue}
+#sb{
+    width: 30px;
 }
+
 @media screen and (max-width:700px){
     .a1{display: grid;
     grid-template-columns: 1fr;
@@ -129,16 +130,68 @@ body{margin: 0%;
         text-align: center;
     }
 }
-
+.a22{display: flex;
+    justify-content: space-around;
+    position: relative;
+}
 .a2{
-    display: grid;
-    grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit,250px);
-  justify-content: space-around;
-  padding-right: 30px;
+    display: flex;position: relative;
+    column-gap: 1.5px;max-width: 1380px;
+    overflow-x: scroll;overflow-y: hidden;scroll-behavior: smooth;
 }
 
-.a2b{width: 250px;
+#arrow-left,#arrow-right{min-width: 45px;
+    position: inherit;
+    top:75px;
+    height:25px;width:30px;   
+    border-radius: 50px;
+    cursor: pointer;transform: rotate(90deg);
+}
+#arrow-left::before,#arrow-left::after{
+    content: "";
+    position: absolute;
+    top:25%;
+    left:50%;
+    border: 6px solid lightseagreen;
+    height: 20px;
+    width:20px;
+    transform: translate(-50%,-50%)rotate(45deg);
+    border-top:transparent;
+    border-left: transparent;
+    animation: arrow 1s ease-in-out forwards infinite ;
+}#arrow-left::after{animation-delay:0.2s ;
+    top:5%
+}
+
+#arrow-right::before,#arrow-right::after{ 
+    content: "";
+    position: absolute;
+    top:5%;
+   left:50%;
+    border: 6px solid lightseagreen;
+    height: 20px;
+    width:20px;
+    transform: translate(-50%,-50%)rotate(45deg);
+    border-bottom:transparent;
+    border-right: transparent;
+    animation: arrow1 1s ease-in-out reverse infinite ;
+}#arrow-right::after{animation-delay:0.2s ;
+    top:25%
+}
+@keyframes arrow{
+    0%{opacity:0}
+    30%{opacity: 1;}
+    60%{opacity: 1;}
+    100%{opacity: 0;top:90%}
+}@keyframes arrow1{
+    0%{opacity:0}
+    30%{opacity: 1;}
+    60%{opacity: 1;}
+    100%{opacity: 0;top:90%}
+}
+
+
+.a2b{min-width: 245px;
     height: 150px;
     background-image: url('../assets/cities/newyork.svg');
     background-color: black;
@@ -151,21 +204,19 @@ body{margin: 0%;
   color: whitesmoke;
   padding: 15px;
   line-height: 200%;
-  
-  border-radius: 15px;
+  border-radius: 15px;transition: 1.5s;
 }
-
+div.a2b:hover{
+    transform: scale(0.9);
+    box-shadow: 8px 6px 6px rgb(31, 30, 30);
+    z-index: 2;
+}
+#a2b1{
+    width: 100px;
+}
 #a2b2{
     text-align:center;
   
-}
-#a2b2 > img{
-    width: 30px;
-}
-#i1{
-    transform: translate(1px,5px);
-    position: relative;
-    width:22px;
 }
 .a3{
     display: grid;
@@ -217,11 +268,23 @@ body{margin: 0%;
     padding: 15px;
     line-height: 200%;
     padding-bottom: 25px;
+    transition: 1.5s;
+}
+div.a4b:hover{
+    transform: scale(1.2);
+    box-shadow: 4px 6px 3px rgb(0, 0, 0);
+    z-index: 2;
+}
+#a4b1{
+    width:170px;
 }
 #a4b2{
     text-align: end;
     align-items: center;
+    
 }
-.fontcolor{
-color: yellow;
+
+#continentSort,#temSort{
+   
+    filter:brightness(0);
 }
