@@ -98,6 +98,16 @@ function selectdata() {
         document.getElementById(
           "cel"
         ).innerHTML = `<b>${text[i]["temperature"]}</b>`;
+        let t = text[i]["temperature"].slice(0, -2);
+        if (t > 23 && t < 29) {
+          document.querySelector(".nowimg").src = "/assets/cloudyIcon.svg";
+        } else if (t < 18) {
+          document.querySelector(".nowimg").src = "/assets/rainyIconBlack.svg";
+        } else if (t > 18 && t < 22) {
+          document.querySelector(".nowimg").src = "/assets/windyIcon.svg";
+        } else if (t > 29) {
+          document.querySelector(".nowimg").src = "/assets/sunnyIcon.svg";
+        }
         const first = parseInt(hour.pad(2));
         first >= 12
           ? (document.querySelector("#first").innerHTML =
@@ -163,6 +173,7 @@ dine2.addEventListener("click", () => {
 });
 let mid = document.querySelector(".mid");
 let gridend = document.querySelector(".grid-end");
+
 async function first() {
   let response = await fetch("https://soliton.glitch.me/all-timezone-cities");
   if (response.ok) {
@@ -170,6 +181,7 @@ async function first() {
   } else {
     alert("HTTP-Error: " + response.status);
   }
+  console.log(text);
   for (let i = 0; i < text.length; i++) {
     input(i);
     glance(i);
@@ -259,31 +271,33 @@ function input(i) {
   colo.innerHTML = text[i].cityName;
   let t = document.createElement("div");
   particular.appendChild(t);
-  let tim = new Date(text[i]["dateAndTime"]);
-
-  if (tim.getHours() < 10) {
-    t.innerHTML =
-      `0` +
-      tim.getHours() +
-      ":" +
-      tim.getMinutes() +
-      " " +
-      tim.toLocaleString().slice(19, 22);
-  } else {
-    t.innerHTML =
-      tim.getHours() +
-      ":" +
-      tim.getMinutes() +
-      " " +
-      tim.toLocaleString().slice(19, 22);
+  let dt = datetime(offset[`${text[i].cityName}`]);
+  let hour = dt.getHours();
+  let ampm = "AM";
+  if (hour > 12) {
+    hour = hour - 12;
+    ampm = "PM";
+  } else if (hour == 0) {
+    hour = 12;
   }
-
+  Number.prototype.pad = function (digit) {
+    for (var n = this.toString(); n.length < digit; n = 0 + n);
+    return n;
+  };
+  t.innerHTML =
+    hour.pad(2) +
+    `:` +
+    dt.getMinutes().pad(2) +
+    `&nbsp;
+    ${ampm}`;
   let d = document.createElement("div");
   particular.appendChild(d);
   d.innerHTML =
-    tim.toString().slice(8, 10) +
-    tim.toString().slice(3, 8) +
-    tim.toString().slice(11, 15);
+    dt.toString().slice(8, 10) +
+    "&nbsp;" +
+    dt.toString().slice(4, 7) +
+    "&nbsp;" +
+    dt.toString().slice(11, 15);
   let hum = document.createElement("div");
   particular.appendChild(hum);
   hum.classList.add("hum");
@@ -350,6 +364,7 @@ function sunny() {
     }
   }
   remove = [];
+  // setInterval(sunny, 3000);
 }
 
 function snow() {
@@ -388,6 +403,7 @@ function snow() {
     }
   }
   remove = [];
+  // setInterval(snow, 3000);
 }
 function rain() {
   while (mid.hasChildNodes()) {
@@ -419,6 +435,7 @@ function rain() {
     }
   }
   remove = [];
+  // setInterval(rain, 3000);
 }
 
 function glance(i) {
@@ -441,27 +458,26 @@ function glance(i) {
   let name = document.createElement("div");
   lower.appendChild(name);
   name.classList.add("name");
-  let tim = new Date(text[i].dateAndTime);
-  if (tim.getHours() < 10) {
-    name.innerHTML =
-      text[i].cityName +
-      ` , ` +
-      `0` +
-      tim.getHours() +
-      ":" +
-      tim.getMinutes() +
-      " " +
-      tim.toLocaleString().slice(19, 22);
-  } else {
-    name.innerHTML =
-      text[i].cityName +
-      ` , ` +
-      tim.getHours() +
-      ":" +
-      tim.getMinutes() +
-      " " +
-      tim.toLocaleString().slice(19, 22);
+  let dt = datetime(offset[`${text[i].cityName}`]);
+  let hour = dt.getHours();
+  let ampm = "AM";
+  if (hour > 12) {
+    hour = hour - 12;
+    ampm = "PM";
+  } else if (hour == 0) {
+    hour = 12;
   }
+  Number.prototype.pad = function (digit) {
+    for (var n = this.toString(); n.length < digit; n = 0 + n);
+    return n;
+  };
+  name.innerHTML =
+    text[i].cityName +
+    `&nbsp;${hour.pad(2)}` +
+    `:` +
+    dt.getMinutes().pad(2) +
+    `&nbsp;
+      ${ampm}`;
 
   let drop = document.createElement("div");
   lower.appendChild(drop);
