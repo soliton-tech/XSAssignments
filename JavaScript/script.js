@@ -54,7 +54,7 @@ function datetime(offset) {
   var newdate = new Date(utc + 3600000 * offset);
   return newdate;
 }
-var selectvalue;
+
 function criteria(t) {
   if (t >= 23 && t <= 29) {
     return "/assets/cloudyIcon.svg";
@@ -68,7 +68,7 @@ function criteria(t) {
     return "";
   }
 }
-
+var selectvalue;
 function selectdata() {
   setInterval(function () {
     selectvalue = document.getElementById("name").value;
@@ -194,7 +194,6 @@ let gridend = document.querySelector(".grid-end");
 
 async function first() {
   let response = await fetch("https://soliton.glitch.me/all-timezone-cities");
-  console.log(response);
   if (response.ok) {
     text = await response.json();
   } else {
@@ -266,11 +265,11 @@ function button() {
 let lef = [];
 
 function right() {
-  mid.scrollLeft += 260;
+  mid.scrollLeft += 270;
 }
 
 function left() {
-  mid.scrollLeft -= 280;
+  mid.scrollLeft -= 270;
 }
 
 function input(i) {
@@ -382,6 +381,7 @@ function sunny() {
     }
   }
   remove = [];
+  gx = 0;
   // setInterval(sunny, 3000);
 }
 
@@ -421,6 +421,7 @@ function snow() {
     }
   }
   remove = [];
+  gx = 0;
   // setInterval(snow, 3000);
 }
 function rain() {
@@ -454,6 +455,7 @@ function rain() {
   }
   remove = [];
   // setInterval(rain, 3000);
+  gx = 0;
 }
 
 function glance(i) {

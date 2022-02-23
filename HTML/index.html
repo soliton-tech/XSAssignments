@@ -13,31 +13,38 @@
         <img id="dynamic" alt="country icon" />
       </div>
       <div class="select">
-        <select name="country" id="name" onchange="selectdata();">
-          <option value="Select">Select</option>
-          <option value="NewYork">Newyork</option>
-          <option value="Moscow">Moscow</option>
-          <option value="Jamaica">Jamaica</option>
-          <option value="Seoul">Seoul</option>
-          <option value="Anadyr">Anadyr</option>
-          <option value="BrokenHill">BrokenHill</option>
-          <option value="Perth">Perth</option>
-          <option value="Auckland">Auckland</option>
-          <option value="Vostok">Vostok</option>
-          <option value="Troll">Troll</option>
-          <option value="BangKok">BangKok</option>
-          <option value="Yangon">Yangon</option>
-          <option value="Kolkata">Kolkata</option>
-          <option value="Karachi">Karachi</option>
-          <option value="Dublin">Dublin</option>
-          <option value="Moscow">Moscow</option>
-          <option value="Vienna">Vienna</option>
-          <option value="London">London</option>
-          <option value="Maseru">Maseru</option>
-          <option value="Juba">Juba</option>
-          <option value="Winnipeg">Winnipeg</option>
-          <option value="LosAngeles">LosAngeles</option>
-        </select>
+        <input
+          placeholder="select"
+          type="text"
+          list="na"
+          id="name"
+          onchange="selectdata();"
+        />
+        <!-- <select placeholder="select" value="country"  id="name" onchange="selectdata();" /> -->
+        <datalist id="na">
+          <option value="NewYork"></option>
+          <option value="Moscow"></option>
+          <option value="Jamaica"></option>
+          <option value="Seoul"></option>
+          <option value="Anadyr"></option>
+          <option value="BrokenHill"></option>
+          <option value="Perth"></option>
+          <option value="Auckland"></option>
+          <option value="Vostok"></option>
+          <option value="Troll"></option>
+          <option value="BangKok"></option>
+          <option value="Yangon"></option>
+          <option value="Kolkata"></option>
+          <option value="Karachi"></option>
+          <option value="Dublin"></option>
+          <option value="Vienna"></option>
+          <option value="London"></option>
+          <option value="Maseru"></option>
+          <option value="Juba"></option>
+          <option value="Winnipeg"></option>
+          <option value="LosAngeles"></option>
+          <!-- </select> -->
+        </datalist>
       </div>
       <div class="date-time">
         <div class="date">

@@ -16,19 +16,19 @@
   background-image: url(/assets/background.svg);
   background-repeat: no-repeat;
   background-size: cover;
-  animation: dynamic 30s linear 0s infinite normal;
+  /* animation: dynamic 30s linear 0s infinite normal; */
 }
-@keyframes dynamic {
+/* @keyframes dynamic {
   0% {
     background-position: right;
   }
-}
+} */
 .select #name {
-  width: 120px;
-  color: rgb(220, 224, 228);
-  margin-top: 10px;
-  margin-left: 25px;
-  padding-left: 10px;
+  width: 130px;
+  color: rgb(212, 216, 216);
+  margin-top: 20px;
+  margin-left: 20px;
+  padding-left: 15px;
   padding-bottom: 15px;
   padding-top: 16px;
   cursor: pointer;
@@ -259,6 +259,7 @@
   border-radius: 50px;
   font-weight: 1000;
   font-size: x-large;
+  background-color: #aeb0b3;
 }
 .bottom .end .heading {
   display: flex;
