@@ -70,98 +70,111 @@ function criteria(t) {
 }
 var selectvalue;
 function selectdata() {
-  setInterval(function () {
-    selectvalue = document.getElementById("name").value;
-    for (let i = 0; i < text.length; i++)
-      if (selectvalue === text[i].cityName) {
-        document.getElementById("dynamic").src = url[`${text[i].cityName}`];
-        let dt = datetime(offset[`${text[i].cityName}`]);
-        let hour = dt.getHours();
-        let ampm = "AM";
-        if (hour > 12) {
-          hour = hour - 12;
-          ampm = "PM";
-        } else if (hour == 0) {
-          hour = 12;
-        }
-        Number.prototype.pad = function (digit) {
-          for (var n = this.toString(); n.length < digit; n = 0 + n);
-          return n;
-        };
-        if (ampm === "AM") {
-          document.querySelector(
-            "#ampm"
-          ).innerHTML = `<img  src="/assets/amState.svg" alt="AM" />`;
-        } else {
-          document.querySelector("#ampm").innerHTML = " &nbsp;<big> PM </big>";
-        }
+  let index = [],
+    filterindex = [];
+  let id;
+  selectvalue = document.getElementById("name").value;
+  for (let k = 0; k < text.length; k++) {
+    index[k] = k;
+  }
+  filterindex = index.filter((l) => selectvalue === text[l].cityName);
+  // console.log(filterindex);
+  const i = filterindex[0];
 
-        document.getElementById("time").innerHTML =
-          `<big>${hour.pad(2)}</big>` +
-          `<big>:</big>` +
-          `<big>${dt.getMinutes().pad(2)}</big>` +
-          `<big>:</big>` +
-          `<small>${dt.getSeconds().pad(2)}</small>`;
+  if (filterindex[0]) {
+    document.getElementById("dynamic").src = url[`${text[i].cityName}`];
+    let dt = datetime(offset[`${text[i].cityName}`]);
+    let hour = dt.getHours();
+    let ampm = "AM";
+    if (hour > 12) {
+      hour = hour - 12;
+      ampm = "PM";
+    } else if (hour == 0) {
+      hour = 12;
+    }
+    Number.prototype.pad = function (digit) {
+      for (var n = this.toString(); n.length < digit; n = 0 + n);
+      return n;
+    };
+    if (ampm === "AM") {
+      document.querySelector(
+        "#ampm"
+      ).innerHTML = `<img  src="/assets/amState.svg" alt="AM" />`;
+    } else {
+      document.querySelector("#ampm").innerHTML = " &nbsp;<big> PM </big>";
+    }
 
-        document.getElementById("date").innerHTML =
-          dt.toString().slice(8, 10) +
-          "-" +
-          dt.toString().slice(4, 7) +
-          "-" +
-          dt.toString().slice(11, 15);
-        document.getElementById(
-          "cel"
-        ).innerHTML = `<b>${text[i]["temperature"]}</b>`;
-        let t = text[i]["temperature"].slice(0, -2);
-        document.querySelector(".nowimg").src = criteria(t);
-        document.querySelector(".firstimg").src = criteria(parseInt(t) + 1);
-        document.querySelector(".secondimg").src = criteria(parseInt(t) + 2);
-        document.querySelector(".thirdimg").src = criteria(parseInt(t) + 3);
-        document.querySelector(".fourthimg").src = criteria(parseInt(t) + 4);
-        document.querySelector(".fifthimg").src = criteria(parseInt(t) + 5);
-        document.querySelector(".nowt").innerHTML = t;
-        document.querySelector(".firstt").innerHTML = parseInt(t) + 1;
-        document.querySelector(".secondt").innerHTML = parseInt(t) + 2;
-        document.querySelector(".thirdt").innerHTML = parseInt(t) + 3;
-        document.querySelector(".fourtht").innerHTML = parseInt(t) + 4;
-        document.querySelector(".fiftht").innerHTML = parseInt(t) + 5;
+    document.getElementById("time").innerHTML =
+      `<big>${hour.pad(2)}</big>` +
+      `<big>:</big>` +
+      `<big>${dt.getMinutes().pad(2)}</big>` +
+      `<big>:</big>` +
+      `<small>${dt.getSeconds().pad(2)}</small>`;
 
-        const first = parseInt(hour.pad(2));
-        first >= 12
-          ? (document.querySelector("#first").innerHTML =
-              first - 12 + 1 + "&nbsp;PM")
-          : (document.getElementById("first").innerHTML =
-              first + 1 + "&nbsp;" + ampm);
-        first >= 11
-          ? (document.querySelector("#second").innerHTML =
-              first - 12 + 2 + "&nbsp;PM")
-          : (document.getElementById("second").innerHTML =
-              first + 2 + "&nbsp;" + ampm);
-        first >= 10
-          ? (document.querySelector("#third").innerHTML =
-              first - 12 + 3 + "&nbsp;PM")
-          : (document.getElementById("third").innerHTML =
-              first + 3 + "&nbsp;" + ampm);
-        first >= 9
-          ? (document.querySelector("#fourth").innerHTML =
-              first - 12 + 4 + "&nbsp;PM")
-          : (document.getElementById("fourth").innerHTML =
-              first + 4 + "&nbsp;" + ampm);
-        first >= 8
-          ? (document.querySelector("#fifth").innerHTML =
-              first - 12 + 5 + "&nbsp;PM")
-          : (document.getElementById("fifth").innerHTML =
-              first + 5 + "&nbsp;" + ampm);
-        let faren = text[i]["temperature"].slice(0, -2) * 1.8 + 32;
-        document.getElementById("far").innerHTML = `<b>${faren.toFixed(2)}</b>`;
-        document.getElementById(
-          "hum"
-        ).innerHTML = `<b>${text[i]["humidity"]}</b>`;
-        document.getElementById(
-          "per"
-        ).innerHTML = `<b>${text[i]["precipitation"]}</b>`;
-      }
-  }, 1000);
+    document.getElementById("date").innerHTML =
+      dt.toString().slice(8, 10) +
+      "-" +
+      dt.toString().slice(4, 7) +
+      "-" +
+      dt.toString().slice(11, 15);
+
+    document.getElementById(
+      "cel"
+    ).innerHTML = `<b>${text[i]["temperature"]}</b>`;
+    let t = text[i]["temperature"].slice(0, -2);
+    document.querySelector(".nowimg").src = criteria(t);
+    document.querySelector(".firstimg").src = criteria(parseInt(t) + 1);
+    document.querySelector(".secondimg").src = criteria(parseInt(t) + 2);
+    document.querySelector(".thirdimg").src = criteria(parseInt(t) + 3);
+    document.querySelector(".fourthimg").src = criteria(parseInt(t) + 4);
+    document.querySelector(".fifthimg").src = criteria(parseInt(t) + 5);
+    document.querySelector(".nowt").innerHTML = t;
+    document.querySelector(".firstt").innerHTML = parseInt(t) + 1;
+    document.querySelector(".secondt").innerHTML = parseInt(t) + 2;
+    document.querySelector(".thirdt").innerHTML = parseInt(t) + 3;
+    document.querySelector(".fourtht").innerHTML = parseInt(t) + 4;
+    document.querySelector(".fiftht").innerHTML = parseInt(t) + 5;
+
+    const first = parseInt(hour.pad(2));
+    first >= 12
+      ? (document.querySelector("#first").innerHTML =
+          first - 12 + 1 + "&nbsp;PM")
+      : (document.getElementById("first").innerHTML =
+          first + 1 + "&nbsp;" + ampm);
+    first >= 11
+      ? (document.querySelector("#second").innerHTML =
+          first - 12 + 2 + "&nbsp;PM")
+      : (document.getElementById("second").innerHTML =
+          first + 2 + "&nbsp;" + ampm);
+    first >= 10
+      ? (document.querySelector("#third").innerHTML =
+          first - 12 + 3 + "&nbsp;PM")
+      : (document.getElementById("third").innerHTML =
+          first + 3 + "&nbsp;" + ampm);
+    first >= 9
+      ? (document.querySelector("#fourth").innerHTML =
+          first - 12 + 4 + "&nbsp;PM")
+      : (document.getElementById("fourth").innerHTML =
+          first + 4 + "&nbsp;" + ampm);
+    first >= 8
+      ? (document.querySelector("#fifth").innerHTML =
+          first - 12 + 5 + "&nbsp;PM")
+      : (document.getElementById("fifth").innerHTML =
+          first + 5 + "&nbsp;" + ampm);
+    let faren = text[i]["temperature"].slice(0, -2) * 1.8 + 32;
+
+    document.getElementById("far").innerHTML = `<b>${faren.toFixed(2)}</b>`;
+    document.getElementById("hum").innerHTML = `<b>${text[i]["humidity"]}</b>`;
+    document.getElementById(
+      "per"
+    ).innerHTML = `<b>${text[i]["precipitation"]}</b>`;
+    setTimeout(selectdata, 1000);
+    document.getElementById("error").style.display = "none";
+  } else {
+    let g = document.querySelector("#name");
+    document.getElementById("error").style.display = "block";
+    document.getElementById("error").innerHTML = "**Enter valid details";
+  }
 }
 
 // function removeselection() {
@@ -252,17 +265,15 @@ function tempicon(i) {
 function button() {
   let a;
   let b;
-  b = document.querySelector(".mid").offsetWidth;
-  a = mid.childElementCount * 268;
-  // console.log(a, b);
+  b = mid.offsetWidth;
+  a = mid.childNodes.length * 268;
+  // console.log(mid.childNodes.length, mid.childElementCount);
   if (a > b) {
     document.querySelector(".button").style.display = "flex";
   } else {
     document.querySelector(".button").style.display = "none";
   }
-  lef = [];
 }
-let lef = [];
 
 function right() {
   mid.scrollLeft += 270;
@@ -382,7 +393,6 @@ function sunny() {
   }
   remove = [];
   gx = 0;
-  // setInterval(sunny, 3000);
 }
 
 function snow() {
@@ -491,6 +501,7 @@ function glance(i) {
     for (var n = this.toString(); n.length < digit; n = 0 + n);
     return n;
   };
+
   name.innerHTML =
     text[i].cityName +
     `&nbsp;${hour.pad(2)}` +
@@ -498,7 +509,6 @@ function glance(i) {
     dt.getMinutes().pad(2) +
     `&nbsp;
       ${ampm}`;
-
   let drop = document.createElement("div");
   lower.appendChild(drop);
   drop.classList.add("drop");

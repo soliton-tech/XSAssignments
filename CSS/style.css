@@ -44,6 +44,16 @@
   align-self: center;
   justify-self: center;
 }
+.head .select #error {
+  transform: translateX(28px) translateY(-75px);
+  color: rgb(255, 97, 97);
+  font-size: smaller;
+  font-weight: 100;
+  position: absolute;
+  width: 120px;
+  height: 20px;
+  text-align: center;
+}
 .head .image {
   display: inline;
   width: 80px;
@@ -131,6 +141,12 @@
   align-self: center;
   font-size: 15px;
   color: aliceblue;
+}
+.head .date-time #time,
+#ampm {
+  color: #fff4b6;
+  font-weight: 600;
+  font-size: larger;
 }
 .bottom {
   width: 100%;
@@ -341,6 +357,16 @@
   block-size: 20px;
 }
 @media screen and (max-width: 1120px) {
+  .head .select #error {
+    transform: translateX(150px) translateY(-30px);
+    color: rgb(255, 97, 97);
+    font-size: smaller;
+    font-weight: 100;
+    position: absolute;
+    width: 120px;
+    height: 20px;
+    text-align: center;
+  }
   .bottom .top-icon {
     display: flex;
     justify-content: center;
@@ -364,6 +390,16 @@
     background-image: url(/assets/background.svg);
     background-repeat: no-repeat;
     background-size: cover;
+  }
+  .head .select #error {
+    transform: translateX(150px) translateY(-30px);
+    color: rgb(255, 97, 97);
+    font-size: smaller;
+    font-weight: 100;
+    position: absolute;
+    width: 120px;
+    height: 20px;
+    text-align: center;
   }
   .head .time-basis {
     grid-row: 3/4;
@@ -465,5 +501,17 @@
     justify-content: flex-end;
     column-gap: 20px;
     color: #696a6b;
+  }
+}
+@media screen and (max-width: 1120px) {
+  .head .select #error {
+    transform: translateX(35px) translateY(10px);
+    color: rgb(255, 97, 97);
+    font-size: smaller;
+    font-weight: 100;
+    position: absolute;
+    width: 120px;
+    height: 20px;
+    text-align: center;
   }
 }
