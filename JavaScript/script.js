@@ -173,7 +173,7 @@ function selectdata() {
     document.getElementById("error").style.display = "none";
   } else {
     document.getElementById("error").style.display = "block";
-    document.getElementById("error").innerHTML = "**Enter valid details";
+    document.getElementById("error").innerHTML = "!! Enter valid City";
   }
 }
 
