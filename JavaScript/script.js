@@ -70,6 +70,7 @@ function criteria(t) {
 }
 var selectvalue;
 function selectdata() {
+  console.log("hii");
   let index = [],
     filterindex = [];
   let id;
@@ -79,7 +80,7 @@ function selectdata() {
   }
   filterindex = index.filter((l) => selectvalue === text[l].cityName);
   // console.log(filterindex);
-  const i = filterindex[0];
+  let i = filterindex[0];
 
   if (filterindex[0]) {
     document.getElementById("dynamic").src = url[`${text[i].cityName}`];
@@ -171,7 +172,6 @@ function selectdata() {
     setTimeout(selectdata, 1000);
     document.getElementById("error").style.display = "none";
   } else {
-    let g = document.querySelector("#name");
     document.getElementById("error").style.display = "block";
     document.getElementById("error").innerHTML = "**Enter valid details";
   }
@@ -218,22 +218,20 @@ async function first() {
   }
 }
 
-let gx = 0;
 let remove = [];
 function create() {
   var inputdata = document.getElementById("drop").value;
   while (mid.childNodes.length > inputdata) {
     remove.push(mid.removeChild(mid.lastChild));
-    gx = 2;
   }
   let q = 1;
-  if (gx == 2) {
+  if (remove[0] !== null) {
+    console.log(remove[0]);
     while (mid.childNodes.length < inputdata) {
       mid.appendChild(remove.at(-q));
       q++;
     }
-  }
-  if (inputdata >= text.length) {
+  } else if (inputdata >= text.length) {
     inputdata = text.length;
   }
   button();
