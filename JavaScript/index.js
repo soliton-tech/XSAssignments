@@ -1,15 +1,3 @@
-// let intl = [];
-
-// fetch("./data.json")
-//    .then(function(resp){
-//        return resp.json();
-//    })
-//    .then(function(data){
-//        intl.push(data[0]);
-//    });
-    
-// console.log(intl);
-
 /*T2001*/
 //using iife-immediately invoked function expression
 (function() {
