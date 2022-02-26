@@ -7,40 +7,35 @@ function change(data,i){
         document.getElementById('deg').innerHTML=temperature;
         document.getElementById('hum').innerHTML=humidity;
         document.getElementById('pre').innerHTML=precipitation;
-        document.getElementById('fah').innerHTML=Math.round((f*1.8)+32)+" F";
-        
+        document.getElementById('fah').innerHTML=Math.round((f*1.8)+32)+" F";       
        hrTemp(f);
 }
-
-function td(offset=6.30){
-   
+function td(offset){ 
     let d=new Date();
     let utc=d.getTime()+(d.getTimezoneOffset()*60000);
     let t=new Date(utc+(3600000*offset));
-        var hr = t.getHours();
-        var min = t.getMinutes();
-        var sec = t.getSeconds();
-        min = (min < 10 ? "0" : "") + min;
-        sec = (sec < 10 ? "0" : "") + sec;
-        var timeOfDay = (hr < 12) ? "<img src=\"../assets/background/amState.svg\" width=\"70px\" height=\"60px\">" : "<br>"+"PM";
-        nextHours(hr,timeOfDay);
-        hr = (hr > 12) ? hr - 12 :hr;
-        hr = (hr == 0) ? 12 :hr;
-        hr = (hr < 10 ? "0" : "") + hr;
-        var dd = t.getDate();
-        var yyyy = t.getFullYear();
-        const months=["Jan","Feb","Mar","Apr","May","Jun","July","Aug","Sep","Oct","Nov","Dec"];
-        const mm=months[t.getMonth()];
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-        var today = dd + '-' + mm + '-' + yyyy ;    
-    time=document.getElementById('time');
+    var hr = t.getHours();
+    var min = t.getMinutes();
+    var sec = t.getSeconds();
+    min = (min < 10 ? "0" : "") + min;
+    sec = (sec < 10 ? "0" : "") + sec;
+    var timeOfDay = (hr < 12) ? "<img src=\"../assets/background/amState.svg\" width=\"70px\" height=\"60px\">" : "<br>"+"PM";
+    nextHours(hr,timeOfDay);
+    hr = (hr > 12) ? hr - 12 :hr;
+    hr = (hr == 0) ? 12 :hr;
+    hr = (hr < 10 ? "0" : "") + hr;
+    var dd = t.getDate();
+    var yyyy = t.getFullYear();
+    const months=["Jan","Feb","Mar","Apr","May","Jun","July","Aug","Sep","Oct","Nov","Dec"];
+    const mm=months[t.getMonth()];
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    var today = dd + '-' + mm + '-' + yyyy ;    
+    time=document.getElementById('time'); 
     time.innerHTML=hr+':'+min+':'+"<small>"+sec+"</small>"+"<br>"+timeOfDay;
     document.getElementById('date').innerHTML=today;
-   
     timeOfDay=(timeOfDay!= "PM")?"AM":timeOfDay;
-    
      let block=[hr,min,sec,today,timeOfDay]; 
      return block;
 }
@@ -104,12 +99,14 @@ function displayWeather(){
         .catch(error => console.log('error', error))
         .then((data)=>climate(data));
 
-    
-function climate(data){setInterval(()=>{
+function climate(data){
     let img=document.getElementById('hai');
     let cities=document.getElementById('cities');
- 
+    setInterval(() => {
+        
+   
     switch(cities.value){
+        
         case "yangon":
             img.src="../assets/cities/yangon.svg";
             change(data,13);
@@ -133,7 +130,7 @@ function climate(data){setInterval(()=>{
         case "Juba":
             img.src="../assets/cities/juba.svg"
             change(data,5);
-          td('2');
+            td('4');
             break;
         case "Bangkok":
             img.src="../assets/cities/bangkok.svg"
@@ -214,12 +211,12 @@ function climate(data){setInterval(()=>{
             change(data,7);
             td('0');
             break;
-            case "Kolkata":
+        case "Kolkata":
             img.src="../assets/cities/kolkata.svg"
             change(data,12);
-            td('0');
+            td(5.30);
             break;
-
            }
-        },1000);
+           
+} , 1000);
 }}

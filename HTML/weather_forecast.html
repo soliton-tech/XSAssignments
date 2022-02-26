@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta name="viewport"
+        <meta name="viewport" charset='utf-8'
         content="width=device-width,initial-scale=1.0">
         <link rel="stylesheet" href="../CSS/wf.css">
         <title>Weather Forecasting</title>
     </head>
-
     <body>
        <div class="one">
         <div class="c1"><img id="hai"  src="../assets/cities/yangon.svg" height="120px";
@@ -14,15 +13,14 @@
         </div>
        <div class="c2">   
         <select class="sb" onchange="displayWeather()"
-         id="cities" name="cities" size="1"><option  value="yangon">yangon</option><option>-select a city-</option>
+         id="cities" title="cities"  size="1"><option  value="yangon">yangon</option><option>-select a city-</option>
             <option value="Anadyr">Anadyr</option><option value="Auckland">Auckland</option>
             <option value="Bangkok">Bangkok</option><option value="Brokenhill">Brokenhill</option><option value="Dublin">Dublin</option><option value="Jamaica">Jamaica</option>
-            <option value="Juba">Juba</option><option value="Juba">Kolkata</option><option value="Karachi">Karachi</option> <option value="Losangeles">Losangeles</option><option value="Maseru">Maseru</option>
+            <option value="Juba">Juba</option><option value="Kolkata">Kolkata</option><option value="Karachi">Karachi</option> <option value="Losangeles">Losangeles</option><option value="Maseru">Maseru</option>
             <option value="Moscow">Moscow</option><option value="New York">New York</option><option value="Nome">Nome</option><option value="London">London</option>
             <option value="Perth">Perth</option> <option value="Seoul">Seoul</option> <option value="Troll">Troll</option><option value="Vienna">Vienna</option>
             <option value="Vostok">Vostok</option><option value="Winnipeg">Winnipeg</option>
-        </select>
-       
+        </select>  
          <br>
          <p id="time"></p><p id='date'></p>
         </div>
@@ -41,31 +39,27 @@
             <div class="c6"><br><h4 id='t4'><h4>|<h4> <img id="img5" alt="loading" ><h4 id="now+4"></h4></div>
             <div class="c7"><br><br><br><h4> | </h4></div>
             <div class="c6"><br><h4 id='t5'> <h4>|<h4> <img id="img6"  alt="loading"><h4 id="now+5"></h4></div>
-            <script src="../JavaScript/block1js.js"></script>
+            <script  src="../JavaScript/block1js.js"></script>
     </div>
        <div class="two">
           <div class="a1">
               <div class="b1"><h2>Cities Around The World</h2></div>
               <div class="b2"><img id="sun" src="../assets/background/sunnyIcon.svg"alt="loading">&emsp;<img id="snow" src="../assets/background/snowflakeIcon.svg"alt="loading" width=30px;>&emsp;<img id="rain"src="../assets/background/rainyIcon.svg"alt="loading" width= 30px;>&ensp;<b>display top:</b>
-                &nbsp;&nbsp;<input id="sb" type="number" value="5" onchange="sb()" min="1" max="22" step="1"></p></div>
+                &nbsp;&nbsp;<input id="sb" placeholder="5"type="number" value="5" onchange="sb()" min="1" max="22" step="1"></p></div>
           </div>
           <div class="a22">
              <div class='arrow-left' ></div>
                  <div class="a2"></div>
             <div class='arrow-right'></div>
-             <script src="../JavaScript/block2js.js"></script>
-          </div>
-          
+             <script  src="../JavaScript/block2js.js"></script>
+          </div> 
             <div class= a3>
                 <div id="a31"><p><b>Cities across continents at a glance</b></p></div>
-                <div id="a32"><p>Continent Name&nbsp;<img id="continentSort" src="../assets/background/arrowDown.svg"alt="loading"  width="20px">&nbsp;&nbsp;Temperature&nbsp;<img id="temSort"src="../assets/background/arrowUp.svg" width="20px"></p></div>
+                <div id="a32"><p>Continent Name&nbsp;<img id="continentSort" src="../assets/background/arrowDown.svg"alt="loading"  width="20px">&nbsp;&nbsp;Temperature&nbsp;<img id="temSort"src="../assets/background/arrowUp.svg" alt="loading" width="20px"></p></div>
             </div> 
             <div class=a4>
-                <script src="../JavaScript/block3js"></script>
-             </div>
-             
+                <script  src="../JavaScript/block3js"></script>
+             </div>    
        </div>
-            
-        
     </body>
 </html-en>

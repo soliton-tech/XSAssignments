@@ -1,9 +1,7 @@
-
 let a2=document.querySelector(".a2");
 let s=0;
-let a=[];
 let valofSb=document.getElementById("sb");
-(async function(){
+window.onload=(async function(){
     let response=await fetch("https://soliton.glitch.me/all-timezone-cities");
     if(response.ok){
         a=await response.json();
@@ -19,7 +17,6 @@ snow.style.borderBottom="";
 rain.style.borderBottom="";
 sunfun();
 });
-
 let snow =document.getElementById("snow");
 snow.addEventListener("click",function underscore(){
 snow.style.borderBottom="blue solid 4px";s=2;
@@ -36,8 +33,8 @@ snow.style.borderBottom="";
 sun.style.borderBottom="";
 rainfun();
 });
-function sb(){if (s==0){climateBlock(a,x="all");}
-    else if (s==1){
+function sb(){
+     if (s==1){
         sunfun();
     }else if(s==2){
         snowfun();
@@ -76,7 +73,6 @@ function snowfun(){
         let x="../assets/background/snowflakeIcon.svg"
         climateBlock(d,x); 
 }
-
 function rainfun(){
     let d=[];
     d=a.filter((tem)=>{
@@ -85,13 +81,13 @@ function rainfun(){
         return parseInt(hum.humidity,10)>=50
     });
     d.sort(function(g,h){
-        return parseInt(g.humidity,10) - parseInt(h.humidity,10)});
-        
+        return parseInt(g.humidity,10) - parseInt(h.humidity,10)});      
         let x="../assets/background/rainyIcon.svg"
         climateBlock(d,x); 
     }
- 
-function climateBlock(d,x){ 
+function climateBlock(d,x){
+    if(d==0){d=a;
+    console.log(d);} 
     a2.innerHTML="";let i;
     for( i=0;i<valofSb.value && i<d.length;i++){
     let a2b=document.createElement("div");
@@ -99,32 +95,46 @@ function climateBlock(d,x){
     a2b.classList.add("a2b");
     let a2b1=document.createElement("div");
     a2b.appendChild(a2b1);
-    a2b1.setAttribute("id","a2b1");
+    a2b1.classList.add("a2b1");
     let a2b2=document.createElement("div");
     a2b.appendChild(a2b2);
-    a2b2.setAttribute("id","a2b2");
+    a2b2.classList.add("a2b2");
     let cn=d[i].cityName;let hum=d[i].humidity;let pre=d[i].precipitation;
     setInterval(()=>{let t=td3(cn);
     a2b1.innerHTML=cn+",<br>"+t+",<br>"+"<img src=\"../assets/background/humidityIcon.svg\"alt=\"loading\">&nbsp;&nbsp;"+hum+"<br><img src=\"../assets/background/precipitationIcon.svg\"alt=\"loading\">&nbsp;&nbsp;"+pre;},1000);
      let img=document.createElement("img");
      if(x=="all"){
-         if(parseInt(d[i]["temperature"],10)>29){img.src="../assets/background/sunnyIcon.svg";}
+         if(parseInt(d[i]["temperature"],10)>29){
+             img.src="../assets/background/sunnyIcon.svg";img.alt="loading";}
          else if((parseInt(d[i].temperature,10) < 29)&&(parseInt(d[i].temperature,10) >21)){
-             img.src="../assets/background/snowflakeIcon.svg";
-         }else {img.src="../assets/background/rainyIcon.svg";}
+             img.src="../assets/background/snowflakeIcon.svg";img.alt="loading";
+         }else {
+             img.src="../assets/background/rainyIcon.svg";img.alt="loading";}
      }
      else{
-     img.src=x;}
+     img.src=x;img.alt="loading"}
      a2b2.appendChild(img);
-     img.setAttribute("id","i1");
     a2b2.innerHTML+="&emsp;"+d[i]["temperature"];
     }
-    
+    const right=document.querySelector('.arrow-right');
+    const left=document.querySelector('.arrow-left');
+    if(i>5){  
+        right.setAttribute('id','arrow-right');  
+         right.addEventListener('click',()=>{
+        a2.scrollLeft+=277;
+        });
+        left.setAttribute('id','arrow-left');  
+        left.addEventListener('click',()=>{
+        a2.scrollLeft-=250;
+        });
+    }
+    else{ right.removeAttribute('id','arrow-right');  
+        left.removeAttribute('id','arrow-left');  
+    }
 }
-
 function td3(city){
     const offset1={
-        'Yangon':6.30,'Vienna':6.30,'Anadyr':3,'Moscow':3,'Juba':2,'Bangkok':7,'Perth':8,'Brokenhill':3,'Karachi':5,'NewYork':-5,'Seoul':9,'Winnipeg':-6,'Dublin':-8,'LosAngeles':-8,'Nome':1,'Troll':1,'Auckland':13,'Jamaica':-5,'Maseru':2,'London':0,'Kolkata':0
+        'Yangon':6.30,'Vienna':6.30,'Anadyr':3,'Moscow':3,'Juba':2,'BangKok':7,'Perth':8,'BrokenHill':3,'Karachi':5,'NewYork':-5,'Seoul':9,'Winnipeg':-6,'Dublin':-8,'LosAngeles':-8,'Nome':1,'Troll':1,'Auckland':13,'Jamaica':-5,'Maseru':2,'London':0,'Kolkata':0
     }
     let offset=offset1[city];
     let d=new Date();
@@ -132,19 +142,3 @@ function td3(city){
     let t=new Date(utc+(3600000*offset));
        return t.toLocaleTimeString();
 }
-
-valofSb.addEventListener('change',()=>{
-    const right=document.querySelector('.arrow-right');
-    const left=document.querySelector('.arrow-left');
-    if( valofSb.value>5){  right.setAttribute('id','arrow-right');  
-    right.addEventListener('click',()=>{
-        a2.scrollLeft+=277;
-    });
-   left.setAttribute('id','arrow-left');  
-    left.addEventListener('click',()=>{
-        a2.scrollLeft-=250;
-    });
-    }
-    else{ right.removeAttribute('id','arrow-right');  
-    left.removeAttribute('id','arrow-left');  
-    }});
