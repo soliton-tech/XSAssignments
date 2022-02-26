@@ -1,28 +1,27 @@
 let text;
-
 const url = {
-  Nome: "/assets/nome.svg",
-  NewYork: "/assets/newyork.svg",
-  Jamaica: "/assets/jamaica.svg",
-  Moscow: "/assets/moscow.svg",
-  LosAngeles: "/assets/losangeles.svg",
-  Winnipeg: "/assets/winnipeg.svg",
-  Juba: "/assets/juba.svg",
-  Maseru: "/assets/maseru.svg",
-  London: "/assets/london.svg",
-  Vienna: "/assets/vienna.svg",
-  Dublin: "/assets/dublin.svg",
-  Karachi: "/assets/karachi.svg",
-  Kolkata: "/assets/kolkata.svg",
-  Yangon: "/assets/yangon.svg",
-  BangKok: "/assets/bangkok.svg",
-  Seoul: "/assets/seoul.svg",
-  Anadyr: "/assets/anadyr.svg",
-  BrokenHill: "/assets/brokenhill.svg",
-  Perth: "/assets/perth.svg",
-  Auckland: "/assets/auckland.svg",
-  Vostok: "/assets/vostok.svg",
-  Troll: "/assets/troll.svg",
+  Nome: "../assets/nome.svg",
+  NewYork: "../assets/newyork.svg",
+  Jamaica: "../assets/jamaica.svg",
+  Moscow: "../assets/moscow.svg",
+  LosAngeles: "../assets/losangeles.svg",
+  Winnipeg: "../assets/winnipeg.svg",
+  Juba: "../assets/juba.svg",
+  Maseru: "../assets/maseru.svg",
+  London: "../assets/london.svg",
+  Vienna: "../assets/vienna.svg",
+  Dublin: "../assets/dublin.svg",
+  Karachi: "../assets/karachi.svg",
+  Kolkata: "../assets/kolkata.svg",
+  Yangon: "../assets/yangon.svg",
+  BangKok: "../assets/bangkok.svg",
+  Seoul: "../assets/seoul.svg",
+  Anadyr: "../assets/anadyr.svg",
+  BrokenHill: "../assets/brokenhill.svg",
+  Perth: "../assets/perth.svg",
+  Auckland: "../assets/auckland.svg",
+  Vostok: "../assets/vostok.svg",
+  Troll: "../assets/troll.svg",
 };
 const offset = {
   Nome: "-9",
@@ -57,20 +56,20 @@ function datetime(offset) {
 
 function criteria(t) {
   if (t >= 23 && t <= 29) {
-    return "/assets/cloudyIcon.svg";
+    return "../assets/cloudyIcon.svg";
   } else if (t < 18) {
-    return "/assets/rainyIconBlack.svg";
+    return "../assets/rainyIconBlack.svg";
   } else if (t >= 18 && t <= 22) {
-    return "/assets/windyIcon.svg";
+    return "../assets/windyIcon.svg";
   } else if (t > 29) {
-    return "/assets/sunnyIcon.svg";
+    return "../assets/sunnyIcon.svg";
   } else {
     return "";
   }
 }
+
 var selectvalue;
 function selectdata() {
-  console.log("hii");
   let index = [],
     filterindex = [];
   let id;
@@ -97,10 +96,11 @@ function selectdata() {
       for (var n = this.toString(); n.length < digit; n = 0 + n);
       return n;
     };
+
     if (ampm === "AM") {
       document.querySelector(
         "#ampm"
-      ).innerHTML = `<img  src="/assets/amState.svg" alt="AM" />`;
+      ).innerHTML = `<img  src="../assets/amState.svg" alt="AM" />`;
     } else {
       document.querySelector("#ampm").innerHTML = " &nbsp;<big> PM </big>";
     }
@@ -243,21 +243,21 @@ function tempicon(i) {
     text[i].precipitation.slice(0, -1) >= 50 &&
     text[i].humidity.slice(0, -1) < 50
   ) {
-    return "/assets/sunnyIcon.svg";
+    return "../assets/sunnyIcon.svg";
   } else if (
     text[i].temperature.slice(0, -2) > 20 &&
     text[i].temperature.slice(0, -2) < 28 &&
     text[i].precipitation.slice(0, -1) < 50 &&
     text[i].humidity.slice(0, -1) > 50
   ) {
-    return "/assets/snowflakeIcon.svg";
+    return "../assets/snowflakeIcon.svg";
   } else if (
     text[i].temperature.slice(0, -2) < 20 &&
     text[i].humidity.slice(0, -1) >= 50
   ) {
-    return "/assets/rainyIcon.svg";
+    return "../assets/rainyIcon.svg";
   } else {
-    return "/assets/sunnyIcon.svg";
+    return "../assets/sunnyIcon.svg";
   }
 }
 function button() {
@@ -273,12 +273,25 @@ function button() {
   }
 }
 
+let rightinit = 0;
 function right() {
-  mid.scrollLeft += 270;
+  console.log(rightinit);
+  if (rightinit < mid.childElementCount * 205) {
+    rightinit += 250;
+  }
+  mid.scroll({
+    left: rightinit,
+    behavior: "smooth",
+  });
 }
-
 function left() {
-  mid.scrollLeft -= 270;
+  if (rightinit > 0) {
+    rightinit -= 250;
+  }
+  mid.scroll({
+    left: rightinit,
+    behavior: "smooth",
+  });
 }
 
 function input(i) {
@@ -329,7 +342,7 @@ function input(i) {
   hum.classList.add("hum");
   let i1 = document.createElement("div");
   hum.appendChild(i1);
-  i1.innerHTML = '<img src="/assets/humidityIcon.svg"/>';
+  i1.innerHTML = '<img src="../assets/humidityIcon.svg"/>';
   let i2 = document.createElement("div");
   hum.appendChild(i2);
   i2.innerHTML = text[i]["humidity"];
@@ -338,7 +351,7 @@ function input(i) {
   hum1.classList.add("hum");
   let i3 = document.createElement("div");
   hum1.appendChild(i3);
-  i3.innerHTML = '<img src="/assets/precipitationIcon.svg"/>';
+  i3.innerHTML = '<img src="../assets/precipitationIcon.svg"/>';
   let i4 = document.createElement("div");
   i4.innerHTML = text[i]["precipitation"];
   hum1.appendChild(i4);
@@ -358,6 +371,7 @@ function input(i) {
   button();
 }
 let c = [];
+// let sunnyTimeout, rainTimeout, snowTimeout;
 function sunny() {
   while (mid.hasChildNodes()) {
     mid.removeChild(mid.lastChild);
@@ -389,8 +403,14 @@ function sunny() {
       input(d[i]);
     }
   }
+  rightinit = 0;
   remove = [];
   gx = 0;
+  // if (snowTimeout !== undefined || rainTimeout !== undefined) {
+  // clearTimeout(snowTimeout);
+  // clearTimeout(rainTimeout);
+  // }
+  // sunnyTimeout = setTimeout(sunny, 60000);
 }
 
 function snow() {
@@ -428,9 +448,14 @@ function snow() {
       input(d[i]);
     }
   }
+  rightinit = 0;
   remove = [];
   gx = 0;
-  // setInterval(snow, 3000);
+  // if (sunnyTimeout !== undefined || rainTimeout !== undefined) {
+  //   clearTimeout(sunnyTimeout);
+  //   clearTimeout(rainTimeout);
+  // }
+  // snowTimeout = setTimeout(snow, 60000);
 }
 function rain() {
   while (mid.hasChildNodes()) {
@@ -461,9 +486,14 @@ function rain() {
       input(d[i]);
     }
   }
+  rightinit = 0;
   remove = [];
-  // setInterval(rain, 3000);
   gx = 0;
+  // if (sunnyTimeout !== undefined || snowTimeout !== undefined) {
+  //   clearTimeout(sunnyTimeout);
+  //   clearTimeout(snowTimeout);
+  // }
+  // rainTimeout = setTimeout(rain, 60000);
 }
 
 function glance(i) {
@@ -512,7 +542,7 @@ function glance(i) {
   drop.classList.add("drop");
   let img = document.createElement("div");
   drop.appendChild(img);
-  img.innerHTML = `<img src="/assets/humidityIcon.svg">`;
+  img.innerHTML = `<img src="../assets/humidityIcon.svg">`;
   let temp = document.createElement("div");
   drop.appendChild(temp);
   temp.innerHTML = text[i].humidity;
@@ -521,7 +551,7 @@ let h = 1;
 function continentsort() {
   let f = [];
   if (h % 2 !== 0) {
-    document.getElementById("continentsort").src = "/assets/arrowUp.svg";
+    document.getElementById("continentsort").src = "../assets/arrowUp.svg";
     while (gridend.hasChildNodes()) {
       gridend.removeChild(gridend.lastChild);
     }
@@ -546,7 +576,7 @@ function continentsort() {
     }
     h++;
   } else {
-    document.getElementById("continentsort").src = "/assets/arrowDown.svg";
+    document.getElementById("continentsort").src = "../assets/arrowDown.svg";
     while (gridend.hasChildNodes()) {
       gridend.removeChild(gridend.lastChild);
     }
@@ -578,7 +608,7 @@ function temperaturesort() {
   if (g % 2 !== 0) {
     if (h % 2 === 0) {
       let f = [];
-      document.getElementById("temperaturesort").src = "/assets/arrowUp.svg";
+      document.getElementById("temperaturesort").src = "../assets/arrowUp.svg";
       while (gridend.hasChildNodes()) {
         gridend.removeChild(gridend.lastChild);
       }
@@ -610,7 +640,8 @@ function temperaturesort() {
       g++;
     } else {
       let f = [];
-      document.getElementById("temperaturesort").src = "/assets/arrowDown.svg";
+      document.getElementById("temperaturesort").src =
+        "../assets/arrowDown.svg";
       while (gridend.hasChildNodes()) {
         gridend.removeChild(gridend.lastChild);
       }
@@ -644,7 +675,8 @@ function temperaturesort() {
   } else {
     if (h % 2 === 0) {
       let f = [];
-      document.getElementById("temperaturesort").src = "/assets/arrowDown.svg";
+      document.getElementById("temperaturesort").src =
+        "../assets/arrowDown.svg";
       while (gridend.hasChildNodes()) {
         gridend.removeChild(gridend.lastChild);
       }
@@ -676,7 +708,7 @@ function temperaturesort() {
       g++;
     } else {
       let f = [];
-      document.getElementById("temperaturesort").src = "/assets/arrowUp.svg";
+      document.getElementById("temperaturesort").src = "../assets/arrowUp.svg";
       while (gridend.hasChildNodes()) {
         gridend.removeChild(gridend.lastChild);
       }

@@ -17,7 +17,7 @@ body {
   display: grid;
   grid-template-columns: 0.2fr 0.3fr 0.2fr 0.2fr 1fr;
   grid-template-rows: 14vh 14vh;
-  background-image: url(/assets/background.svg);
+  background-image: url(../assets/background.svg);
   background-repeat: no-repeat;
   background-size: cover;
   /* animation: dynamic 30s linear 0s infinite normal; */
@@ -390,7 +390,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr;
     grid-template-rows: 15vh 18vh 15vh;
-    background-image: url(/assets/background.svg);
+    background-image: url(../assets/background.svg);
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -432,7 +432,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr;
     grid-template-rows: 15vh 18vh 15vh;
-    background-image: url(/assets/background.svg);
+    background-image: url(../assets/background.svg);
     background-repeat: no-repeat;
     background-size: cover;
   }
