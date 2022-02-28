@@ -163,7 +163,6 @@ function selectdata() {
       : (document.getElementById("fifth").innerHTML =
           first + 5 + "&nbsp;" + ampm);
     let faren = text[i]["temperature"].slice(0, -2) * 1.8 + 32;
-
     document.getElementById("far").innerHTML = `<b>${faren.toFixed(2)}</b>`;
     document.getElementById("hum").innerHTML = `<b>${text[i]["humidity"]}</b>`;
     document.getElementById(
@@ -176,12 +175,6 @@ function selectdata() {
     document.getElementById("error").innerHTML = "!! Enter valid City";
   }
 }
-
-// function removeselection() {
-//   dine.style.borderBottom = "#00b9fb solid 0px";
-//   dine1.style.borderBottom = "#00b9fb solid 0px";
-//   dine2.style.borderBottom = "#00b9fb solid 0px";
-// }
 
 var dine = document.getElementById("dine");
 dine.addEventListener("click", () => {
@@ -272,7 +265,6 @@ function button() {
     document.querySelector(".button").style.display = "none";
   }
 }
-
 let rightinit = 0;
 function right() {
   console.log(rightinit);
@@ -329,6 +321,28 @@ function input(i) {
     dt.getMinutes().pad(2) +
     `&nbsp;
     ${ampm}`;
+  let set = () => {
+    let dt = datetime(offset[`${text[i].cityName}`]);
+    let hour = dt.getHours();
+    let ampm = "AM";
+    if (hour > 12) {
+      hour = hour - 12;
+      ampm = "PM";
+    } else if (hour == 0) {
+      hour = 12;
+    }
+    Number.prototype.pad = function (digit) {
+      for (var n = this.toString(); n.length < digit; n = 0 + n);
+      return n;
+    };
+    t.innerHTML =
+      hour.pad(2) +
+      `:` +
+      dt.getMinutes().pad(2) +
+      `&nbsp;
+    ${ampm}`;
+  };
+  setInterval(set, 60000);
   let d = document.createElement("div");
   particular.appendChild(d);
   d.innerHTML =
@@ -371,7 +385,6 @@ function input(i) {
   button();
 }
 let c = [];
-// let sunnyTimeout, rainTimeout, snowTimeout;
 function sunny() {
   while (mid.hasChildNodes()) {
     mid.removeChild(mid.lastChild);
@@ -406,11 +419,6 @@ function sunny() {
   rightinit = 0;
   remove = [];
   gx = 0;
-  // if (snowTimeout !== undefined || rainTimeout !== undefined) {
-  // clearTimeout(snowTimeout);
-  // clearTimeout(rainTimeout);
-  // }
-  // sunnyTimeout = setTimeout(sunny, 60000);
 }
 
 function snow() {
@@ -451,11 +459,6 @@ function snow() {
   rightinit = 0;
   remove = [];
   gx = 0;
-  // if (sunnyTimeout !== undefined || rainTimeout !== undefined) {
-  //   clearTimeout(sunnyTimeout);
-  //   clearTimeout(rainTimeout);
-  // }
-  // snowTimeout = setTimeout(snow, 60000);
 }
 function rain() {
   while (mid.hasChildNodes()) {
@@ -489,11 +492,6 @@ function rain() {
   rightinit = 0;
   remove = [];
   gx = 0;
-  // if (sunnyTimeout !== undefined || snowTimeout !== undefined) {
-  //   clearTimeout(sunnyTimeout);
-  //   clearTimeout(snowTimeout);
-  // }
-  // rainTimeout = setTimeout(rain, 60000);
 }
 
 function glance(i) {
@@ -529,14 +527,40 @@ function glance(i) {
     for (var n = this.toString(); n.length < digit; n = 0 + n);
     return n;
   };
-
   name.innerHTML =
     text[i].cityName +
     `&nbsp;${hour.pad(2)}` +
     `:` +
     dt.getMinutes().pad(2) +
+    // `:` +
+    // dt.getSeconds().pad(2) +
     `&nbsp;
       ${ampm}`;
+  let set = () => {
+    let dt = datetime(offset[`${text[i].cityName}`]);
+    let hour = dt.getHours();
+    let ampm = "AM";
+    if (hour > 12) {
+      hour = hour - 12;
+      ampm = "PM";
+    } else if (hour == 0) {
+      hour = 12;
+    }
+    Number.prototype.pad = function (digit) {
+      for (var n = this.toString(); n.length < digit; n = 0 + n);
+      return n;
+    };
+    name.innerHTML =
+      text[i].cityName +
+      `&nbsp;${hour.pad(2)}` +
+      `:` +
+      dt.getMinutes().pad(2) +
+      // `:` +
+      // dt.getSeconds().pad(2) +
+      `&nbsp;
+      ${ampm}`;
+  };
+  setInterval(set, 60000);
   let drop = document.createElement("div");
   lower.appendChild(drop);
   drop.classList.add("drop");
