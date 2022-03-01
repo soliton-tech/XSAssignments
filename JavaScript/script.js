@@ -3,19 +3,21 @@
     function cl(object){
         //console.log(object);
     }
-
-
-
-        
+     
    //Global Variables Declaration
         const full_month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
         const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
         
         const response = await fetch('../Assets/files/data.json');
         const jsondata = await response.json();
+
         let keysno = (Object.keys(jsondata)).length;
+        let allCityNames = Object.keys(jsondata);
+        //console.log(allCityNames);
         let currentcity = {};
         let cityssortedbycontinents = {};
+
+        let flexcard = document.getElementsByClassName("flex-card")[0];
         //console.log(jsondata);
         
         // ----------------------------------------------------Initialize-------------------------------------------------  //
@@ -24,6 +26,9 @@
         //------Startup-Functions-----------//
         citySelect();
         sortSection3(true,true);
+        setconfiguredCities();
+
+
 
         // ----------------------------------------------------Event Listeners and Loops-------------------------------------------------  //
 
@@ -38,6 +43,24 @@
         document.getElementsByClassName('temperature-sort')[0].addEventListener('click',function(){
             sortByTemperature();  
         });
+
+        document.getElementsByClassName('left-arrow')[0].addEventListener('click',function(){
+            scrolllefted();
+        });
+
+        document.getElementsByClassName('right-arrow')[0].addEventListener('click',function(){
+            scrollrighted();
+        });
+
+        document.getElementsByClassName("custom-radio")[0].addEventListener('change',function(){
+            setconfiguredCities();
+        });
+
+        document.getElementById("quantity").addEventListener('change',function(){
+            setconfiguredCities();
+        });
+
+
         // ----------------------------------------------------Declarations-------------------------------------------------  //
 
 
@@ -45,11 +68,6 @@
         //-------------------------Section - 1---------------------------//
 
         //----Select----//
-        function dummy(){
-            //console.log("Hello");
-        }
-
-
 
         function citySelect() {
             var cityIdNode = document.getElementsByClassName('name')[0];
@@ -155,7 +173,7 @@
                     setNextFiveHrs(currentTime);
 
                 }
-              }
+            }
 
 
         }
@@ -214,10 +232,190 @@
                     //To be Developed
         }
 
-        //--------------------------Section 2-----------------------------//
+        //----------------------------------Section 2--------------------------------------------//
         
+        //-----------Top level Functions--------//
 
-        //--------------------------Section 3-----------------------------//
+        function setconfiguredCities(){
+
+            let weather = document.querySelector('input[name="weather-category"]:checked').value;
+            let displayno = document.querySelector('input[name="quantity"]').value;
+            let wathericonname = "";
+            if(displayno < 3){
+                displayno = 3;
+                document.querySelector('input[name="quantity"]').value = 3;
+            }else if(displayno > 10){
+                displayno = 10;
+                document.querySelector('input[name="quantity"]').value = 10;
+            }
+
+            let filteredcities = [];
+            if(weather === "Sunny"){
+                    filteredcities = filterSunnyCities();
+                    weathericonname = "sunnyIcon";
+                }
+            else if(weather === "Snowy"){
+                    filteredcities = filterSnowyCities();
+                    weathericonname = "snowflakeIcon";
+                }
+            else if(weather === "Rainy"){
+                    filteredcities = filterRainyCities();
+                    weathericonname = "rainyIcon";
+                }    
+            else{
+                    alert("Error");
+                }
+
+            let filteredCityNo = filteredcities.length;
+            let requiredCardSize = Math.min(filteredCityNo,displayno);
+            //console.log(requiredCardSize);
+            let finalizedcities = filteredcities.slice(0,requiredCardSize);
+            //console.log(finalizedcities);        
+            
+            removeAllCards();
+            addCards(requiredCardSize);
+            updateCards(finalizedcities,weathericonname);
+            enableordisableScrollers();
+
+        }
+
+        //------- Scrolling Functions---------//
+
+        function scrolllefted(){
+            
+            let scroller = document.getElementsByClassName("scroll-container")[0];
+            scroller.scrollLeft -= 150 ;
+               
+
+        }
+
+        function scrollrighted(){
+            let scroller = document.getElementsByClassName("scroll-container")[0];
+            for ( let i = 0; i<=100 ; i++)
+                scroller.scrollLeft += 150 ;
+        }
+
+        function enableordisableScrollers(){
+            let visibility = 'hidden';
+            if(document.body.querySelector(".scroll-container").scrollWidth > document.body.querySelector(".scroll-container").clientWidth){
+                visibility = 'visible';
+                
+            }
+            else{
+                visibility = 'hidden';
+            }
+                document.body.querySelectorAll(".scrollerarrow")[0].style.visibility = visibility;
+                document.body.querySelectorAll(".scrollerarrow")[1].style.visibility = visibility;
+        }
+
+        //-------- Weather Functions Function-------//
+
+        function filterSunnyCities(){
+            //console.log(jsondata);
+            let sunnyCities = allCityNames.filter( function(city){
+                return ( (parseInt(jsondata[city]["temperature"]) >= 29) && (parseInt(jsondata[city]["humidity"]) < 50) && (parseInt(jsondata[city]["precipitation"]) >= 50)  );
+            }
+            );
+            let sortedSunnyCities = sunnyCities.sort(function (city1,city2) {
+                return  (parseInt(jsondata[city2]["temperature"]) - parseInt(jsondata[city1]["temperature"])); 
+            });
+            //console.log(sortedSunnyCities);
+            return sortedSunnyCities;
+        } 
+
+        function filterSnowyCities(){
+            //console.log(jsondata);
+            let snowyCities = allCityNames.filter( function(city){
+                return ( (parseInt(jsondata[city]["temperature"]) >= 20 && parseInt(jsondata[city]["temperature"]) <= 28 ) && (parseInt(jsondata[city]["humidity"]) > 50) && (parseInt(jsondata[city]["precipitation"]) < 50)  );
+            }
+            );
+            let sortedSnowyCities = snowyCities.sort(function (city1,city2) {
+                return  (parseInt(jsondata[city2]["precipitation"]) - parseInt(jsondata[city1]["precipitation"])); 
+            });
+            //console.log(sortedSunnyCities);
+            return sortedSnowyCities;
+        }
+
+        function filterRainyCities(){
+            //console.log(jsondata);
+            let rainyCities = allCityNames.filter( function(city){
+                return ( (parseInt(jsondata[city]["temperature"]) < 20) && (parseInt(jsondata[city]["humidity"]) >= 50));
+            }
+            );
+            let sortedRainyCities = rainyCities.sort(function (city1,city2) {
+                return  (parseInt(jsondata[city2]["humidity"]) - parseInt(jsondata[city1]["humidity"])); 
+            });
+            //console.log(sortedSunnyCities);
+            return sortedRainyCities;
+        }
+
+        //-----------Card Manipulation Functions--------//
+
+        function getCurrentCardCount(){
+            return document.getElementsByClassName("flex-card").length;
+        }
+
+        function addCards(quantity) {
+            
+            //document.appendChild(flexcardclone);
+            //console.log(quantity);
+            for(let i = 0;i < quantity; i++)
+                {   //console.log(i);
+                    let flexcardclone = flexcard.cloneNode(true);
+                    let division = document.getElementsByClassName("flex-scroll")[0];
+                    division.appendChild(flexcardclone);
+                }
+            let count = document.getElementsByClassName("flex-card").length;
+            //console.log(count);
+        }
+
+        function removeAllCards(){
+            while( document.getElementsByClassName("flex-card").length != 0 )
+                {//console.log(i);
+                //console.log(document.getElementsByClassName("flex-card").length);
+                document.getElementsByClassName("flex-card")[document.getElementsByClassName("flex-card").length-1].remove();
+                }   
+        }
+
+        function removeSelectedCards(quantity){
+            //console.log(quantity);
+            //console.log(document.getElementsByClassName("flex-card").length);
+            if(document.getElementsByClassName("flex-card").length >= quantity)
+            {
+                for(let i = 0; i< quantity;i++)
+                {//console.log(i);
+                //console.log(document.getElementsByClassName("flex-card").length);
+                document.getElementsByClassName("flex-card")[document.getElementsByClassName("flex-card").length-1].remove();
+                }  
+            } 
+            else{
+                alert("Input Quantity Out of Range!");
+            }   
+        }
+
+        function updateCards(cities,weathericonname){
+            let flexcards = document.getElementsByClassName("flex-card");
+            for ( let i = 0; i < flexcards.length; i++)
+             {              flexcards[i].querySelector(".cityname").innerHTML = jsondata[cities[i]]["cityName"];
+                            flexcards[i].querySelector(".temperature").innerHTML = jsondata[cities[i]]["temperature"];
+                            flexcards[i].querySelector(".humiditycard").innerHTML = jsondata[cities[i]]["humidity"];
+                            flexcards[i].querySelector(".precipitationcard").innerHTML = jsondata[cities[i]]["precipitation"];
+                            flexcards[i].querySelector(".weather-select").src = `../Assets/Weather Icons/${weathericonname}.svg`;
+                            //console.log(flexcards[i].querySelector(".precipitationcard").innerHTML);
+                            let cityname = cities[i];
+                            //console.log(cityname);
+                            flexcards[i].style.backgroundImage = `url("../Assets/Icons for cities/${cityname}.svg")`;
+
+                            
+
+             }
+
+
+
+            
+        }
+
+        //-----------------------------------------------Section 3-------------------------------------------------//
 
         function sortByNames(){
             let path = document.getElementById("small-icon-name").src;
@@ -244,7 +442,6 @@
             sortSection3(!downarrow,downarrow2);
         }
         
-
         function sortByTemperature(){
             let path = document.getElementById("small-icon-temp").src;
             let downarrow = false;
@@ -280,7 +477,7 @@
             for( let i = 0 ; i < sortedregions.length; i++){
                 cities.forEach(city => {
                    if(jsondata[city]["timeZone"].includes(sortedregions[i])){
-                       sortedcities.push(jsondata[city]["temperature"]+"@"+ city+ "@" + sortedregions[i]);
+                       sortedcities.push(jsondata[city]["temperature"]+"@"+ city+ "@" + sortedregions[i]);  
                    }
                 });
             }
@@ -288,13 +485,17 @@
             let first12cities =sortedcities.slice(0, 12);
             let last12cities =sortedcities.reverse().slice(0,12);
             let cities12nos = [];
+
+
             if(isContinentAscending)
                 cities12nos = first12cities;
             else{
                 cities12nos = last12cities;  
                 sortedregions = sortedregions.reverse();  
             }
-            console.log(sortedregions);
+
+            //console.log(sortedregions);
+
             let city12nossorted = new Set();
             let cities12sorted = [];
             for( let i = 0 ; i < sortedregions.length; i++)   
@@ -360,7 +561,6 @@
                 card.getElementsByClassName("factor")[0].appendChild(img);
             }
         }
-
 
 }) ();  
 

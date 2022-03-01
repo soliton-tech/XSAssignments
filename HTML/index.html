@@ -127,22 +127,20 @@
         <div class="middle-header">
             <h3> Top Cities Around the World</h3>
             <div class="custom-radio" style = " display: inline;">
-                <input type="radio" class = "radio-button" id="Sunny" name="fav_language" value="Sunny" checked>
+                <input type="radio" class = "radio-button" id="Sunny" name="weather-category" value="Sunny" checked>
                 <label for="Sunny"><img src="..\Assets\Weather Icons\sunnyIcon.svg" alt="sunny" style ="height: 20px;width: 20px;"></label>
-                <input type="radio" class = "radio-button" id="Snowy" name="fav_language" value="Snowy">
+                <input type="radio" class = "radio-button" id="Snowy" name="weather-category" value="Snowy">
                 <label for="Snowy"><img src="..\Assets\Weather Icons\snowflakeIcon.svg" alt="snowy" style ="height: 20px;width: 20px;"></label>
-                <input type="radio" class = "radio-button" id="Rainy" name="fav_language" value="Rainy">
+                <input type="radio" class = "radio-button" id="Rainy" name="weather-category" value="Rainy">
                 <label for="Rainy"><img src="..\Assets\Weather Icons\rainyIcon.svg" alt="rainy" style ="height: 20px;width: 20px;"></label>  
             </div>
             <div class = "display-top">
                 <label for="quantity">Display-top:</label>
-                <input type="number" id="quantity" name="quantity" min="4" max="10" value="4" >
+                <input type="number" id="quantity" name="quantity" min="3" max="10" value="3" >
              </div>
         </div>
-
-
-        <div id = "cards-display">
-            <div class = "flex-card">
+        <!-- <div id = "cards-display" style="background-color: yellow;">
+            <div id = "flex-card">
                 <div class = "card-interior">
                     <div class="cityname"> New Delhi </div>
                     <div class="weather-symbol"><img src="..\Assets\Weather Icons\cloudyIcon.svg"></div>
@@ -154,7 +152,7 @@
                     <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\precipitationIcon.svg"> 10% </div>   
                 </div>    
             </div>
-            <div class = "flex-card">
+            <div id = "flex-card">
                 <div class = "card-interior">
                     <div class="cityname"> New Delhi </div>
                     <div class="weather-symbol"><img src="..\Assets\Weather Icons\cloudyIcon.svg"></div>
@@ -166,7 +164,7 @@
                     <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\precipitationIcon.svg"> 10% </div>   
                 </div>    
             </div>
-            <div class = "flex-card">
+            <div id = "flex-card">
                 <div class = "card-interior">
                     <div class="cityname"> New Delhi </div>
                     <div class="weather-symbol"><img src="..\Assets\Weather Icons\cloudyIcon.svg"></div>
@@ -178,7 +176,7 @@
                     <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\precipitationIcon.svg"> 10% </div>   
                 </div>    
             </div>
-            <div class = "flex-card">
+            <div id = "flex-card">
                 <div class = "card-interior">
                     <div class="cityname"> New Delhi </div>
                     <div class="weather-symbol"><img src="..\Assets\Weather Icons\cloudyIcon.svg"></div>
@@ -190,12 +188,56 @@
                     <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\precipitationIcon.svg"> 10% </div>   
                 </div>    
             </div>
+            <div id = "flex-card">
+                <div class = "card-interior">
+                    <div class="cityname"> New Delhi </div>
+                    <div class="weather-symbol"><img src="..\Assets\Weather Icons\cloudyIcon.svg"></div>
+                    <div class = "temperature"> 25*C</div>
+                </div>
+                <div class = "weather-factors"> 
+                    <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg"> 53% </div>
+                    <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\cloudyIcon.svg"> 5km/hr </div>
+                    <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\precipitationIcon.svg"> 10% </div>   
+                </div>    
+            </div>
+            <div id = "flex-card">
+                <div class = "card-interior">
+                    <div class="cityname"> New Delhi </div>
+                    <div class="weather-symbol"><img src="..\Assets\Weather Icons\cloudyIcon.svg"></div>
+                    <div class = "temperature"> 25*C</div>
+                </div>
+                <div class = "weather-factors"> 
+                    <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg"> 53% </div>
+                    <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\cloudyIcon.svg"> 5km/hr </div>
+                    <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\precipitationIcon.svg"> 10% </div>   
+                </div>    
+            </div>
+         
+        </div> -->
+        <!-- <div class = "section-splitter"></div> -->
+        <div class = "scroll-bar">
+            <div class="grid-element"><img src="..\Assets\General Images & Icons\backwardArrow.svg" alt="left" class="scrollerarrow left-arrow"></div>
+            <div class="scroll-container">
+                <div class="flex-scroll">
+                    <div class = "flex-card">
+                        <div class = "card-interior">
+                            <div class="cityname"> New Delhi </div>
+                            <div class="weather-symbol"><img class = "weather-select" src="..\Assets\Weather Icons\cloudyIcon.svg"></div>
+                            <div class = "temperature"> 25*C</div>
+                        </div>
+                        <div class = "weather-factors"> 
+                            <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg"><span class = "humiditycard">53% </span> </div>
+                            <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\cloudyIcon.svg"> <span class = "windspeedcard">5km/hr </span></div>
+                            <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\precipitationIcon.svg"> <span class = "precipitationcard">10% </span></div>   
+                        </div>    
+                    </div>
+                </div>  
+            </div>  
+        <div class="grid-element"><img src="..\Assets\General Images & Icons\forwardArrow.svg" alt="right" class="scrollerarrow right-arrow"></div>
+        </div>    
+            <!-- <div class = "section-splitter"></div>         -->
 
-            
-        </div>
-
-    </div>
-
+        </div>    
     <div class = "bottom-section">
         <!-- Header Section -->
         <div class = "header">
@@ -310,6 +352,8 @@
         </div>
 
     </div>
+
+    
 
     <!-- JavaScript Section -->
     <script src="..\JavaScript\script.js"></script>

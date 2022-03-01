@@ -211,9 +211,9 @@ body , html {
 .middle-section{
   background-color: var(--light-black);
   background-size: 100%;
-  height: 300px;
+  height: max-content;
   position: relative;
-
+  background-color: transparent;
 }
 
 .middle-header{
@@ -270,16 +270,38 @@ body , html {
   text-align: center;
 }
 
-
-#cards-display {
-  border: none;
-  display: flex;
-  height: auto;
-  width: 100%;
-  justify-content: space-evenly;
+.scroll-bar{
+  box-sizing: content-box;
+  position: relative;
+  display: grid;
+  grid-template-columns: 5% 90% 5%;
+  background-color: transparent;
   align-items: center;
-  flex-direction: row;
-  }
+  text-align: center;
+}
+
+.scrollerarrow{
+  text-align: center;
+  height: 30px;
+  width: 30px;
+  color: transparent;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  background-color: transparent;
+  top: 50%;
+  
+}
+
+.grid-element{
+  
+  background-color: transparent;
+  align-items: center;
+  vertical-align: middle;
+  
+}
+
+
 
 .flex-card {
   /* Add shadows to create the "card" effect */
@@ -287,10 +309,10 @@ body , html {
   background-color: var(--silver);
   transition: 0.3s;
   box-sizing: content-box;
-  min-width: 130px;
-  width: 20%;
-  max-width: 400px;
-  height: 240px;
+  min-width: 180px;
+  /* max-width: 400px; */
+  height: 230px;
+  width: 80px;
   margin: 1% 1% 1% 1%;
   text-align: center;
   background-image: url("../Assets/Icons for cities/moscow.svg");
@@ -299,45 +321,85 @@ body , html {
   background-position: 99% 110%;
 }
 
+.scroll-container {
+  position: relative;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background-color : transparent;
+  width: 100%;
+  background: transparent;
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  /* overflow-x: hidden; */
+}
+
+.flex-scroll { 
+  background-color: transparent;
+  width: 100%;
+  padding: 30px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
 /* On mouse-over, add a deeper shadow */
 .flex-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  background-color: var(--dark-silver);
+  background-color: #424242;
 }
 
 .card-interior{
   display: grid;
   height: 30%;
   width: 100%;
-  grid-template-columns: 30% 15% 30%;
+  padding-top: 5px;
+  grid-template-columns: 60% 10% 29%;
   grid-template-rows: 100%;
+  background-color: transparent;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
-.card-interior .weather-symbol{
- 
+.card-interior .weather-symbol {
+  background-color: transparent;
   grid-column: 2;
   grid-row: 1;
-  width: 10px;
-  height: 20px;
+  width: 100%;
+  height: 100%;
   }
+
+.weather-select{
+  padding-top: 1px;
+  width: 20px;
+  height: 20px;
+
+}  
 
 .card-interior .cityname{
  
   margin: 0% 0% 0% 0%;
-  padding-left: 0% 0% 0% 0%;
+  padding-left: 2px;
   grid-column: 1;
   grid-row: 1;
   font-size: larger;
+  width: 100%;
+  background-color: transparent;
+  height: 100%;
+  text-align: left;
   
  }
 
  .card-interior .temperature{
-  
+  text-align: right;
+  padding-right: 2px;
   grid-column: 3;
   grid-row: 1;
   font-size: larger;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
   
  }
 
@@ -373,8 +435,8 @@ body , html {
   background-color: transparent;
   width: 96%;
   margin: 1% 1% 1% 1%; 
-  position: relative;
-  padding-top: 3%;
+  position: absolute;
+ 
   
 }
 

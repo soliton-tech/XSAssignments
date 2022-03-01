@@ -1,0 +1,6 @@
+print a = 0
+
+
+a = fetch data;  2 ( Promise)
+
+print a = 0
