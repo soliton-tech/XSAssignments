@@ -1,0 +1,111 @@
+.middle-section{
+  background-color: #1f1e1e;
+  height: 100%;
+  width: 100%;
+  padding: 10px 0 10px 0;
+}
+
+.middle-header-container {
+    height: 100%;
+    width: 100%;
+    position: sticky; 
+    padding: 10px 0px; 
+    display: inline-grid;
+    grid-template-columns: 60% 92px 12% 10%;
+    justify-content: space-evenly;
+    color: #a8a8a8;
+  }
+
+  .city-card-container {
+    flex-direction: column;
+    margin-left: 3%;
+    display: inline-flex;
+    width: 28%;
+    height: 100%;
+    color: #fff;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    background-image: url("../assets/HTML & CSS/Icons for cities/newyork.svg");
+    background-repeat: no-repeat;
+    background-size: 60% 60%;
+    background-position: 105% 98%;
+    padding-top: 1%;
+    padding-bottom: 4%;
+    padding-right: 1%;
+    background-color: rgba(131, 131, 131, 0.25);
+  }
+
+.city-card-toplevel {
+    display: inline-grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 60% 10% 20%;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .middle-header{
+    justify-self: center;
+    padding-left: 10%;
+  }
+
+  .spinner-label{
+    font-size: small;
+    justify-self: left;
+    padding-left: 2%;
+  }
+
+  .spinner{
+    font-size: small;
+    width: 32px;
+    height: 15px;
+    border: 0px;
+    padding: 2px;
+  }
+
+  .city-card-toplevel > div{
+    height: 100%;
+    width: 100%;
+  }
+  .city-card-detailed {
+    display: inline-grid;
+    height: 100%;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 5px;
+  }
+  .city-card-detailed > div{
+    padding: 3px 0;
+  }
+
+  .weather-preference-container input:checked + label {
+    border-bottom: 2px solid blue;
+  }
+
+  .weather-preference-container label{
+      cursor: pointer;
+      padding: 0 4px 0 4px;
+  }
+  .weather-preference-container input{
+      display: none;
+  }
+
+  .city-name{
+    text-align: left;
+  }
+
+  .weather-icon{
+    text-align: right; 
+    padding-top: 2px;
+  }
+
+  .temperature-in-celsius{
+    text-align: left;
+  }
+
+  .humidity-icon, .precipitation-icon{
+    font-size: small;
+  }
+
+  
