@@ -22,7 +22,8 @@ import {getlivedata,postCityData} from "./getapidata.js";
         //console.log(allCityNames);
         let currentcity = {};
         let cityssortedbycontinents = {};
-
+        
+        let defaultSection1City = "kolkata";
         
         //console.log(jsondata);
 
@@ -61,6 +62,33 @@ import {getlivedata,postCityData} from "./getapidata.js";
                     return this.cityName;
                 }
 
+                getTemperature(){
+                    return this.temperature;
+                }
+
+                getTemperatureInt(){
+                    return parseInt(this.temperature);
+                }
+                
+                getTemperatureF(){
+                    return ((parseInt(this.temperature) * 9 / 5) +  32).toLocaleString() + "F";
+                }
+
+                getHumidity(){
+                    return this.humidity;
+                }
+
+                getHumidityInt(){
+                    return parseInt(this.humidity);
+                }
+
+                getPrecipitation(){
+                    return this.precipitation;
+                }
+                
+                getPrecipitationInt(){
+                    return parseInt(this.precipitation);
+                }
 
                 getContinent(){
                     return this.timeZone.split("/")[0];
@@ -70,32 +98,49 @@ import {getlivedata,postCityData} from "./getapidata.js";
                     return (this.time.split(" ")[1].split(":")[0] + ": " + this.time.split(", ")[1].split(":")[1]);
                 }
 
+                getAMORPM(){
+                    let isPM = this.time.toLocaleLowerCase().includes("pm");
+                    return (isPM ? "pm" : "am");
+                }
+
+
                 getTimeInHHMMAMPM(){
                     return (this.time.split(" ")[1].split(":")[0] + ": " + this.time.split(", ")[1].split(":")[1] + " " + this.time.split(" ")[2]);
                 }
+
+                getDate(){
+                    let date = this.time.split(", ")[0];
+                    let day = parseInt(date.split("/")[1]);
+                    let year = parseInt(date.split("/")[2]);
+                    let monthno = month[parseInt(date)-1];
+                    return `${day}-${monthno}-${year}`;
+                }
             }
 
-            class CityAdvanced extends City {
-                constructor(name,time,timeZone,humidity,temperature,precipitation,nextNHrs,hourCount){
-                    super(name,time,timeZone,humidity,temperature,precipitation);
-                    this.nextNHrs = nextNHrs;
-                    this.hourCount = hourCount;
-                    }
-
-                    getnextNhours(){
-
-                    }               
+            class CitySection1 extends City {
+                    constructor(name,time,timeZone,humidity,temperature,precipitation,nextNHrs,hourCount){
+                        super(name,time,timeZone,humidity,temperature,precipitation);
+                        this.nextNHrs = nextNHrs;
+                        this.hourCount = hourCount;
+                        }
                     
-                    getNextNTemperature(){
 
+
+                    setBaseClassProperties(City){
+                        super.name = City.name;
+                        super.cityName =City.cityName;
+                        super.time = City.time;
+                        super.timeZone = City.timeZone;
+                        super.humidity = City.humidity;
+                        super.temperature = City.temperature;
+                        super.precipitation = City.precipitation;
                     }
             }
-
 
         // ---------------------------------------DataSource Request Initialization-------------------------------------------------//
         async function getDatafromSource(){
             let response = await getlivedata();
-            console.log(response);
+            //console.log(response);
             return response;    
         }
 
@@ -115,10 +160,16 @@ import {getlivedata,postCityData} from "./getapidata.js";
             cities.push(object);
             cityNames.push(cityname);
         }
-        cl(cityNames);
-        cl(cities);
+        //cl(cityNames);
+        //cl(cities);
+        
+        let activeCity = new CitySection1();
+        
 
-        let currentCity = new 
+
+        activeCity.setBaseClassProperties(cities.find(obj => { return obj.getName() === defaultSection1City; }));
+
+        console.log(activeCity);
 
    
         // ----------------------------------------------------Initialize-------------------------------------------------  //
@@ -128,19 +179,15 @@ import {getlivedata,postCityData} from "./getapidata.js";
         citySelect();
         sortSection3(true,true);
         setconfiguredCities();
-        // ----------------------------------------------------Event Listeners and Loops-------------------------------------------------  //
+        // ----------------------------------------------------------------Event Listeners and Loops----------------------------------------------------------------  //
 
+
+        //----------------Section - 1-----------------//
         document.getElementsByClassName('name')[0].addEventListener('change', function(){
             citySelect();
         });
 
-        document.getElementsByClassName('name-sort')[0].addEventListener('click',function(){
-            sortByNames();            
-        });
-
-        document.getElementsByClassName('temperature-sort')[0].addEventListener('click',function(){
-            sortByTemperature();  
-        });
+        //----------------Section - 2-----------------//
 
         document.getElementsByClassName('left-arrow')[0].addEventListener('click',function(){
             scrolllefted();
@@ -158,12 +205,24 @@ import {getlivedata,postCityData} from "./getapidata.js";
             setconfiguredCities();
         });
 
-        // ----------------------------------------------------Declarations-------------------------------------------------  //
 
-        //-------------------------Section - 1---------------------------//
-        
+        //----------------Section - 3-----------------//
+
+        document.getElementsByClassName('name-sort')[0].addEventListener('click',function(){
+            sortByNames();            
+        });
+
+        document.getElementsByClassName('temperature-sort')[0].addEventListener('click',function(){
+            sortByTemperature();  
+        });
+
+        // -----------------------------------------------------------------------Declarations----------------------------------------------------------------------  //
+
+        //----------------------------------Section 1--------------------------------------------//
+    
         //----Top Level----//
 
+        
         function citySelect() {
             var cityIdNode = document.getElementsByClassName('name')[0];
             var cityName = cityIdNode.options[cityIdNode.selectedIndex].text.toLocaleLowerCase();   
@@ -173,27 +232,24 @@ import {getlivedata,postCityData} from "./getapidata.js";
                 //Add all actions here
                 removeCityIcon();
                 clearweatherdata();
+                //To add Clear All Function #### Important Bug to be Fixe ####
             }
             else{
                 //Add all actions here
-                //console.log(cityName);
-                //console.log(jsondata[cityName]);
                 currentcity = jsondata[cityName];
-                //console.log(currentcity["timeZone"]);
-                setCityIcon(cityName);
-                setCityDate(currentcity);
-                setCityTime(currentcity);
-                setCurrentWeather(currentcity);
+                activeCity.setBaseClassProperties(cities.find(obj => { return obj.getName() === cityName; }));
+                //cl(activeCity);
+                setCityIcon(activeCity);
+                setCityDate(activeCity);
+                setCityTime(activeCity);
+                setCurrentWeather(activeCity);
                 setTemperatureArray(currentcity);
-
             }
         }
 
-        //----Top Level----//
-
-        function setCityIcon(cityName){
+        function setCityIcon(city){
             document.getElementById("icon-image").style.display = "block";
-            document.getElementById("icon-image").src = "../Assets/Icons for cities/"+cityName+".svg";
+            document.getElementById("icon-image").src = "../Assets/Icons for cities/"+city.getName()+".svg";
         }
 
         function removeCityIcon(){
@@ -203,46 +259,26 @@ import {getlivedata,postCityData} from "./getapidata.js";
         
         }
 
-        function setCityTime(currentcity){
-            let timeString = currentcity["dateAndTime"];
-            let hoursandminutes = timeString.split(", ")[1].split(":")[0] + ":" + timeString.split(", ")[1].split(":")[1] + " " ;
-            //console.log(hoursandminutes);
-            let isPM = timeString.toLocaleLowerCase().includes("pm");
-            let AMPM = (isPM ? "pm" : "am");
-
-            //var ampm = ((today.getHours()/12) < 1 ? "am" : "pm");
-            //console.log(ampm);
+        function setCityTime(city){
+            let hoursandminutes = city.getTimeInHHMM();
             var img = document.createElement('img'); 
-            img.src = "../Assets/General Images & Icons/"+AMPM+"State.png";
+            img.src = "../Assets/General Images & Icons/"+city.getAMORPM()+"State.png";
             img.id = "ampm"; 
             document.getElementsByClassName("time")[0].innerHTML =  hoursandminutes;
             document.getElementsByClassName("time")[0].appendChild(img);
             document.getElementById("ampm").style.display = "inline";   
         }
 
-        function setCityDate(currentcity){
-            let timeString = currentcity["dateAndTime"];
-            //console.log(timeString);
-            let date = timeString.split(", ")[0];
-            //console.log(date);
-            let day = parseInt(date.split("/")[1]);
-            let year = parseInt(date.split("/")[2]);
-            let monthno = month[parseInt(date)-1];
-            //console.log(monthno); 
-          document.getElementsByClassName("date")[0].innerHTML =  day+"-"+monthno+"-"+year;
+        function setCityDate(city){
+          document.getElementsByClassName("date")[0].innerHTML =  city.getDate();
             
         }
 
-        function setCurrentWeather(currentcity){
-            let currenttemperature = currentcity["temperature"];
-            let currenthumidity = currentcity["humidity"];
-            let currentprecipitation = currentcity["precipitation"];
-            let currenttemperatureF = ((parseInt(currenttemperature) * 9 / 5) +  32).toLocaleString() + "F";
-            //console.log(currenthumidity + " " + currenttemperature + " " + currenttemperatureF + " " + currentprecipitation);
-            document.getElementsByClassName("tempC")[0].innerHTML = currenttemperature;
-            document.getElementsByClassName("currenthumidity")[0].innerHTML = currenthumidity;
-            document.getElementsByClassName("currentprecipitation")[0].innerHTML = currentprecipitation;
-            document.getElementsByClassName("tempF")[0].innerHTML = currenttemperatureF;
+        function setCurrentWeather(city){
+            document.getElementsByClassName("tempC")[0].innerHTML = city.getTemperature();
+            document.getElementsByClassName("currenthumidity")[0].innerHTML = city.getHumidity();
+            document.getElementsByClassName("currentprecipitation")[0].innerHTML = city.getPrecipitation();
+            document.getElementsByClassName("tempF")[0].innerHTML = city.getTemperatureF();
         }
         
         function setTemperatureArray(currentcity){
@@ -405,26 +441,24 @@ import {getlivedata,postCityData} from "./getapidata.js";
         //-------- Weather Functions Function-------//
 
         function filterSunnyCities(){
-            //console.log(jsondata);
-            let sunnyCities = allCityNames.filter( function(city){
-                return ( (parseInt(jsondata[city]["temperature"]) >= 29) && (parseInt(jsondata[city]["humidity"]) < 50) && (parseInt(jsondata[city]["precipitation"]) >= 50)  );
+            let sunnyCities = cities.filter( function(city){
+                return ( (city.getTemperatureInt() >= 29) && (city.getHumidityInt() < 50) && (city.getPrecipitationInt() >= 50)  );
             }
             );
             let sortedSunnyCities = sunnyCities.sort(function (city1,city2) {
-                return  (parseInt(jsondata[city2]["temperature"]) - parseInt(jsondata[city1]["temperature"])); 
+                return  (city2.getTemperatureInt() - city1.getTemperatureInt()); 
             });
             //console.log(sortedSunnyCities);
             return sortedSunnyCities;
         } 
 
         function filterSnowyCities(){
-            //console.log(jsondata);
-            let snowyCities = allCityNames.filter( function(city){
-                return ( (parseInt(jsondata[city]["temperature"]) >= 20 && parseInt(jsondata[city]["temperature"]) <= 28 ) && (parseInt(jsondata[city]["humidity"]) > 50) && (parseInt(jsondata[city]["precipitation"]) < 50)  );
+            let snowyCities = cities.filter( function(city){
+                return ( (city.getTemperatureInt() >= 20 && city.getTemperatureInt() <= 28 ) && (city.getHumidityInt() > 50) && (city.getPrecipitationInt() < 50));
             }
             );
             let sortedSnowyCities = snowyCities.sort(function (city1,city2) {
-                return  (parseInt(jsondata[city2]["precipitation"]) - parseInt(jsondata[city1]["precipitation"])); 
+                return  (city2.getPrecipitationInt() - city1.getPrecipitationInt()); 
             });
             //console.log(sortedSunnyCities);
             return sortedSnowyCities;
@@ -432,12 +466,12 @@ import {getlivedata,postCityData} from "./getapidata.js";
 
         function filterRainyCities(){
             //console.log(jsondata);
-            let rainyCities = allCityNames.filter( function(city){
-                return ( (parseInt(jsondata[city]["temperature"]) < 20) && (parseInt(jsondata[city]["humidity"]) >= 50));
+            let rainyCities = cities.filter( function(city){
+                return ( (city.getTemperatureInt() < 20) && (city.getHumidityInt() >= 50));
             }
             );
             let sortedRainyCities = rainyCities.sort(function (city1,city2) {
-                return  (parseInt(jsondata[city2]["humidity"]) - parseInt(jsondata[city1]["humidity"])); 
+                return  (city2.getHumidityInt() - city1.getHumidityInt()); 
             });
             //console.log(sortedSunnyCities);
             return sortedRainyCities;
@@ -487,16 +521,16 @@ import {getlivedata,postCityData} from "./getapidata.js";
             }   
         }
 
-        function updateCards(cities,weathericonname){
+        function updateCards(filteredcities,weathericonname){
             let flexcards = document.getElementsByClassName("flex-card");
             for ( let i = 0; i < flexcards.length; i++)
-             {              flexcards[i].querySelector(".cityname").innerHTML = jsondata[cities[i]]["cityName"];
-                            flexcards[i].querySelector(".temperature").innerHTML = jsondata[cities[i]]["temperature"];
-                            flexcards[i].querySelector(".humiditycard").innerHTML = jsondata[cities[i]]["humidity"];
-                            flexcards[i].querySelector(".precipitationcard").innerHTML = jsondata[cities[i]]["precipitation"];
+             {              flexcards[i].querySelector(".cityname").innerHTML = filteredcities[i].getCityName();
+                            flexcards[i].querySelector(".temperature").innerHTML = filteredcities[i].getTemperature();
+                            flexcards[i].querySelector(".humiditycard").innerHTML = filteredcities[i].getHumidity();
+                            flexcards[i].querySelector(".precipitationcard").innerHTML = filteredcities[i].getPrecipitation();
                             flexcards[i].querySelector(".weather-select").src = `../Assets/Weather Icons/${weathericonname}.svg`;
                             //console.log(flexcards[i].querySelector(".precipitationcard").innerHTML);
-                            let cityname = cities[i];
+                            let cityname = filteredcities[i].getName();
                             //console.log(cityname);
                             flexcards[i].style.backgroundImage = `url("../Assets/Icons for cities/${cityname}.svg")`;
 
