@@ -1,25 +1,126 @@
+// ---------------------------------------Dependency Imports--------------------------------------------------------//
+import {getlivedata,postCityData} from "./getapidata.js";
+
+
 (async()=>{
     //--------------------------------------------ShortCut Functions---------------------------------------//
     function cl(object){
-        //console.log(object);
+        console.log(object);
     }
 
     //--------------------------------------------Global Variables Declaration---------------------------------------//
 
+        
         const full_month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
         const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-        
         const response = await fetch('../Assets/files/data.json');
         const jsondata = await response.json();
-
         let keysno = (Object.keys(jsondata)).length;
         let allCityNames = Object.keys(jsondata);
         let weathericonname;
+        let flexcard = document.getElementsByClassName("flex-card")[0];       
+        //console.log(allCityNames);
         let currentcity = {};
         let cityssortedbycontinents = {};
-        let flexcard = document.getElementsByClassName("flex-card")[0];
 
         
+        //console.log(jsondata);
+
+    //-----------------------------------Classes----------------------------------//
+            //Base Class
+            class City {
+                // Fields
+                name;
+                cityName;
+                time;
+                timeZone;
+                humidity;
+                temperature;
+                precipitation;
+
+                constructor(name,cityName,time,timeZone,humidity,temperature,precipitation){
+                    this.name = name;
+                    this.cityName =cityName;
+                    this.time = time;
+                    this.timeZone = timeZone;
+                    this.humidity = humidity;
+                    this.temperature = temperature;
+                    this.precipitation = precipitation;
+                }
+
+                getName(){
+                    return this.name;
+                }
+
+                setName(name){
+                    this.name = name;
+                }
+
+                //Methods
+                getCityName(){
+                    return this.cityName;
+                }
+
+
+                getContinent(){
+                    return this.timeZone.split("/")[0];
+                }
+
+                getTimeInHHMM(){
+                    return (this.time.split(" ")[1].split(":")[0] + ": " + this.time.split(", ")[1].split(":")[1]);
+                }
+
+                getTimeInHHMMAMPM(){
+                    return (this.time.split(" ")[1].split(":")[0] + ": " + this.time.split(", ")[1].split(":")[1] + " " + this.time.split(" ")[2]);
+                }
+            }
+
+            class CityAdvanced extends City {
+                constructor(name,time,timeZone,humidity,temperature,precipitation,nextNHrs,hourCount){
+                    super(name,time,timeZone,humidity,temperature,precipitation);
+                    this.nextNHrs = nextNHrs;
+                    this.hourCount = hourCount;
+                    }
+
+                    getnextNhours(){
+
+                    }               
+                    
+                    getNextNTemperature(){
+
+                    }
+            }
+
+
+        // ---------------------------------------DataSource Request Initialization-------------------------------------------------//
+        async function getDatafromSource(){
+            let response = await getlivedata();
+            console.log(response);
+            return response;    
+        }
+
+        async function getNextNHoursTemperature(City, no){
+            let response = await postCityData(City.getName(),no);
+        }
+
+
+        let jsondataLive = await getDatafromSource();
+        let dataSize = Object.keys(jsondataLive).length;
+        let cities = [];
+        let cityNames = [];
+        for (let i = 0 ; i < dataSize; i++){
+            let city = Object.keys(jsondataLive)[i];
+            let cityname = jsondataLive[city]["cityName"].toLocaleLowerCase();
+            let object = new City(cityname,jsondataLive[city]["cityName"], jsondataLive[city]["dateAndTime"] , jsondataLive[city]["timeZone"], jsondataLive[city]["humidity"], jsondataLive[city]["temperature"],jsondataLive[city]["precipitation"] );
+            cities.push(object);
+            cityNames.push(cityname);
+        }
+        cl(cityNames);
+        cl(cities);
+
+        let currentCity = new 
+
+   
         // ----------------------------------------------------Initialize-------------------------------------------------  //
         //console.log("JS Exec Started!");
       
@@ -57,11 +158,10 @@
             setconfiguredCities();
         });
 
-
         // ----------------------------------------------------Declarations-------------------------------------------------  //
 
         //-------------------------Section - 1---------------------------//
-
+        
         //----Top Level----//
 
         function citySelect() {
@@ -226,7 +326,10 @@
         }
 
         function clearweatherdata(){
-                    //To be Developed
+            //To be Developed
+
+
+
         }
 
         //----------------------------------Section 2--------------------------------------------//
@@ -245,7 +348,6 @@
                 displayno = 10;
                 document.querySelector('input[name="quantity"]').value = 10;
             }
-
             let filteredcities = [];
             if(weather === "Sunny"){
                     filteredcities = filterSunnyCities();
@@ -262,18 +364,13 @@
             else{
                     alert("Error");
                 }
-
             let filteredCityNo = filteredcities.length;
             let requiredCardSize = Math.min(filteredCityNo,displayno);
-            //console.log(requiredCardSize);
             let finalizedcities = filteredcities.slice(0,requiredCardSize);
-            //console.log(finalizedcities);        
-            
             removeAllCards();
             addCards(requiredCardSize);
             updateCards(finalizedcities,weathericonname);
             enableordisableScrollers();
-
         }
 
         //------- Scrolling Functions---------//
