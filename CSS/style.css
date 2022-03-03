@@ -5,6 +5,23 @@
     --light-black : #2c2b2b; 
     --silver : #6b6b6b;
     --dark-silver : #bebebe;
+
+    /* Provided Colors */
+
+    --primary-white: #FFFFFF;
+    --primary-black: #121212;
+
+    --bg-grey-tile: #2E2E2E;
+    --bg-dark-grey-tile: #181818;
+    --bg-input-box: rgba(131, 131, 131, 0.25);
+    --bg-input-box-error: #4C2D2D;
+    --bg-selection-blue: #1E90FF;
+
+    --bright-red-border: #C10B00;
+    --light-blue-border: #00C0F1;
+
+    --bright-yellow-text: #FFF461;
+    --pale-yellow-text: #FFE5B4;
 }
 
 /*Globals*/
@@ -319,6 +336,7 @@ body , html {
   background-size: 60% 60%;
   background-repeat: no-repeat;
   background-position: 99% 110%;
+  color: var(--primary-white);
 }
 
 .scroll-container {
