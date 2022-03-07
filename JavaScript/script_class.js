@@ -1,7 +1,6 @@
 // ---------------------------------------Dependency Imports--------------------------------------------------------//
 import {getlivedata,postCityData} from "./getapidata.js";
 
-
 (async()=>{
     //--------------------------------------------ShortCut Functions---------------------------------------//
     function cl(object){

@@ -26,16 +26,26 @@
 
 /*Globals*/
 
-body , html {
+body,html {
   background-color: var(--light-black);
   margin: 0% 0% 0% 0%;
   padding: 0% 0% 0% 0%;
-  min-width: 600px;
-  min-height: 800px;
+  /* min-width: 600px; */
+  background-image: url("../Assets/General Images & Icons/background.svg");
+  background-size: cover;
+  background-color: black;
+  border: none;
+  width: 100%;
+  min-height: max-content;
+  box-sizing: content-box;
+  max-width : 100%;
+  height: max-content;
+  /* overflow-y : hidden; */
+  
 }
 
 *{
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0% 0% 0% 0%;
 }
 
@@ -43,23 +53,28 @@ body , html {
 
 /*--------------Top Section Styles----------------*/
 .top-section{
-  height: 140px;
+  min-height: 140px;
+  height: fit-content;
   width: 100%;
-  background-image: url("../Assets/General Images & Icons/background.svg");
+  /* background-image: url("../Assets/General Images & Icons/background.svg"); */
   background-size: 100%;  
   padding-top: 10px ;
+  position: relative;
+  /* background-color: rebeccapurple; */
 }
 
 .flex-container{
-  
   display: flex;
   width: 100%;
   height: 100%;
   background-color: transparent;
-  justify-content : flex-start;
+  justify-content : space-evenly;
   flex-direction: row;
-  align-items: flex-start;
-  max-height: 140px;
+  align-items: center;
+  min-height: 140px;
+  flex-wrap: wrap;
+  background-color: transparent;
+  /* background-color: gray; */
 }
 
 .flex-1{
@@ -76,7 +91,7 @@ body , html {
 }
 
 #icon-image{
-  padding-top: 20%;
+  padding-top: 10%;
   height:100px;
   width:100px;
 }
@@ -94,6 +109,7 @@ body , html {
   margin-right: 1%;
   min-width: 100px;
   padding-top: 5px;
+  border: none;
 
 }
 
@@ -102,39 +118,44 @@ body , html {
   width: 100%;
   height: auto;
   text-align: left;
+  padding: auto;
   background-color: transparent;
 }
 
 .name{
  order: 1;
- height: 25px;
- width: 80%;
+ height: 35px;
+ width: 100%;
  margin-top: 0%;
  padding: 0% 0% 0% 0%;
  border: none;
  background-color: var(--light-black);
  color: whitesmoke;
- text-align: left;
+ text-align: justify;
+ text-indent: 5px;
  }
 
 .flex-2 .date{
+  font-size: larger;
   color: wheat;
   text-align: left;
   width: 100%;
   padding-left: 7%;
+  padding-top: 10%;
 }
 
 .flex-2 .time{
-  font-size: large;
-  color: yellow;
+  font-size: larger;
+  color: var(--bright-yellow-text);
   background-color: transparent;
   width: 100%;
   text-align: left;
   padding-left: 7%;
+
   }
 
 #ampm{
-  padding-top: 0%;
+  padding-top: 10px;
   padding-left: 3%;
   width: 25px;
   height:25px;
@@ -145,7 +166,7 @@ body , html {
   color: white;
   background-color: transparent;
   width: 15%;
-  height: 100%;
+  height: max-content;
   order: 3;
   position: relative;
   display: grid;
@@ -156,6 +177,11 @@ body , html {
   padding-left: 0%;
   margin-right:0px ;
   min-width: 160px;  
+  font-size: larger;
+  box-sizing: content-box;
+  min-width: max-content;
+  
+
   
 }
 
@@ -163,48 +189,57 @@ body , html {
   box-sizing: content-box;
   background-color: transparent;
   text-align: left;
-  font-size: medium;
+  font-size: larger;
   font-style: bold;
+  padding-top: 20%;
+  
+  
 }
 
 .flex-3 .humid{
   text-align: left;
-  font-size: medium;
+  font-size: larger;
   font-style: bold;
+  padding-top: 20%;
 }
 .flex-3 .tempf{
   text-align: left;
-  font-size: medium;
+  font-size: larger;
   font-style: bold;
+  padding-top: 20%;
 }
 
 .flex-3 .divide{
-  font-size: xx-large;
+  font-size: 70px;
   text-align: center;
   margin-right: 3px;
+  font-weight: lighter;
 }
 
 .flex-3 .precipitation{
   text-align: left;
-  font-size: medium;
+  font-size: larger;
   font-style: bold;
+  padding-top: 20%;
 }
 
 
 .flex-4{
   color: whitesmoke;
-  height: 100%;
+  height: 140px;
   width: 60%;
   background-color: transparent;
   position: relative;
   order: 4;
   min-width: 400px;
+  height: fit-content;
   display: grid;
   grid-template-columns: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
   justify-content: space-evenly;
   align-items: flex-start;
   grid-template-rows: 24% 24% 24% 24%;
   padding-top: 1px;
+  background-color: transparent;
 
 }
 
@@ -219,18 +254,21 @@ body , html {
 }
 
 .flex-4 .temparray{
-  padding-top: 6px;
+  padding-top: 30%;
 }
 
 
 
 /*--------------Middle Section Styles----------------*/
+
 .middle-section{
   background-color: var(--light-black);
   background-size: 100%;
   height: max-content;
   position: relative;
-  background-color: transparent;
+  background-color: black;
+  border-radius: 60px 60px 0px 0px;
+  margin-top: 0%;
 }
 
 .middle-header{
@@ -251,7 +289,9 @@ body , html {
 }
 
 .middle-header .custom-radio{
- text-align: right;
+ text-align: left;
+ background-color: transparent;
+ width: fit-content;
  
 }
 
@@ -285,6 +325,7 @@ body , html {
   border-width: 1px;
   color: white;
   text-align: center;
+  min-width: 30px;
 }
 
 .scroll-bar{
@@ -301,13 +342,14 @@ body , html {
   text-align: center;
   height: 30px;
   width: 30px;
-  color: transparent;
+  /* color: yellow; */
   justify-content: center;
   align-items: center;
   vertical-align: middle;
   background-color: transparent;
   top: 50%;
-  
+  background-color: grey;
+  border-radius: 55% 55% 55% 55%;  
 }
 
 .grid-element{
@@ -320,35 +362,40 @@ body , html {
 
 
 
+
 .flex-card {
   /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(231, 212, 212, 0.2);
-  background-color: var(--silver);
+  /* box-shadow: 0px 0px 0px 0px rgba(231, 212, 212, 0.2); */
+  background-color: var(--bg-dark-grey-tile);
   transition: 0.3s;
   box-sizing: content-box;
-  min-width: 180px;
+  /* min-width: 180px; */
   /* max-width: 400px; */
-  height: 230px;
-  width: 80px;
+  height: 270px;
+  width: 260px;
   margin: 1% 1% 1% 1%;
+  padding: 1% 1% 1% 1%;
   text-align: center;
   background-image: url("../Assets/Icons for cities/moscow.svg");
-  background-size: 60% 60%;
+  background-size: 70% 70%;
   background-repeat: no-repeat;
-  background-position: 99% 110%;
+  background-position: 130% 130%;
   color: var(--primary-white);
+  border-radius: 20px 20px 20px 20px;
+  flex-shrink: 0;
 }
 
 .scroll-container {
   position: relative;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  background-color : transparent;
+  /* background-color : red; */
   width: 100%;
   background: transparent;
   display: flex;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  flex-wrap: nowrap;
   /* overflow-x: hidden; */
 }
 
@@ -406,6 +453,7 @@ body , html {
   background-color: transparent;
   height: 100%;
   text-align: left;
+  color: var(--bright-yellow-text);
   
  }
 
@@ -448,14 +496,18 @@ body , html {
   display: inline;
 }
 
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button {  
+  opacity: 1;
+}
+
 /*--------------Bottom Section Styles----------------*/
 .bottom-section{
-  background-color: transparent;
-  width: 96%;
-  margin: 1% 1% 1% 1%; 
-  position: absolute;
- 
-  
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  margin-top: 0%;
+  margin: 0% 0% 0% 0%;
+  position: relative;
+  min-height: max-content;
 }
 
 .bottom-section h3{
@@ -464,22 +516,64 @@ body , html {
 }
 
 .bottom-section .header{
-  background-color: transparent;
-  display: grid;
-  flex-direction: column;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
   width: 100%;
-  margin-left: 3%;
-  height: fit-content;
+  margin-left: 0%;
+  height: max-content;
+  min-height: 30px;
   justify-content: space-around;
   margin-bottom: 3%;
-  align-items: flex-start;
-  grid-template-columns: 60% 15% 25%; 
+  align-items: center;
+  grid-template-columns: 50% 50%; 
 }
 
 .bottom-section .header :first-child{
   width: 100%;
   text-align: left;
   padding-left: 1%;
+}
+
+.first-flex{
+  /* background-color: yellow; */
+  height: 100%;
+  width: 100%;
+  font-size: large;
+  flex-direction: row;
+  display: flex;
+
+}
+
+.second-flex{
+  /* background-color: rgb(83, 83, 65); */
+  height: 100%;
+  width: 100%;
+  font-size: large;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: center;
+  background-color:transparent;
+  text-align: left;
+}
+
+#item1{
+  /* background-color: red; */
+  /* width: fit-content; */
+  width: max-content;
+  min-width: max-content;
+  background-color: transparent;
+  text-align: center;
+  padding-right: 10px;
+}
+
+#item2{
+  /* background-color: rgb(255, 238, 0); */
+  width: max-content;
+  min-width: max-content;
+  background-color:transparent;
+  padding-right: 10px;
 }
 
 /* .bottom-section .header h3{
@@ -490,17 +584,20 @@ body , html {
   text-align: right;
 } */
 
-.sort-item{
+/* .sort-item{
   width: 13%;
   vertical-align: middle;
-  
   display: flex;
   flex-direction: row; 
   padding: 0%;
   margin: 0% 0% 0% 0%;
-  margin-right: 2%;
-  margin-left: 2%;
+  margin-right: 0%;
+  margin-left: 0%;
   justify-content: left;
+} */
+
+.name-sort{
+  width: auto;
 }
 
 #small-icon-temp{
@@ -514,12 +611,12 @@ body , html {
 
 button{
   display: inline;
-  width: 100%;
+  width: max-content;
   text-align: center;
   background-color: transparent;
   border: none;
   color: white;
-  min-width: 100px
+  min-width: 0;
 }
 
 #small-icon-name{
@@ -539,20 +636,250 @@ button{
 
 /*Cards Display*/
 
-.cities-around-world{
-  box-sizing: content-box;
+.bottom-grid{
+  background-color: transparent(224, 0, 0);
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 400px;
+  min-height: max-content;
+}
+
+.cities-around-world{
+  /* text-align: center; */
+  box-sizing: content-box;
+  width: 80%;
+  height: max-content;
   display: grid;
   padding : 1% 1% 1% 1%;
-  grid-template-columns: 30% 30% 30%;
-  grid-template-rows: 20% 20% 20% 20%;
+  grid-template-columns: 30% 30% 30% ;
+  grid-template-rows: 25% 25% 25% 25%;
   align-items: flex-start;
   justify-content: space-around;
+  justify-items: center;
+  margin: 0% 0% 0% 0%;
+  padding: 0% 0% 0% 0%;
   background-color: transparent;
-  margin-top: 0%;
-  padding-top: 0%;
+  
 }
+
+.small-card {
+  width: 96%;
+  height: max-content;
+  max-width: 280px;
+  padding:  2% 2% 2% 2%;
+  background-color: rgb(55, 56, 55);
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 45% 45%;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: left;
+  min-width: 190px;
+  min-height: max-content;
+}
+
+.grid-card {
+  color: silver;
+  box-shadow: 0 4px 8px 0 rgba(36, 36, 36, 0.2);
+  background-color: var(--dark-black);
+  transition: 0.3s;
+  box-sizing: content-box;
+  width: 100%;
+  height: max-content;
+  margin: 1% 1% 1% 1%;
+  text-align: center;
+  max-width: 280px;
+  min-width: 190;
+}
+
+
+.small-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  background-color: var(--light-black);
+}
+
+.small-card .continent-name{
+  color: yellow;
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.small-card .temperature{
+  color: rgb(255, 255, 255);
+  font-weight: bolder;
+  grid-row: 1;
+  grid-column: 2;
+  text-align: right;
+}
+
+.small-card .country-name{
+  color: rgb(139, 139, 126);
+  grid-row: 2;
+  grid-column: 1;
+  font-size: small;
+  padding-top: 8%;
+}
+
+.small-card .factor{
+  text-align: right;
+  padding-top: 8%;
+  padding-left: 0%;
+}
+
+.small-card .factor #weather-icon{
+ padding-top: 5%; 
+ padding-right: 0%;
+ display: inline;
+}
+
+
+
+@media (max-width: 915px) {
+  .cities-around-world{
+    position: relative;
+    /* text-align: center; */
+    box-sizing: content-box;
+    width: 90%;
+    height: max-content;
+    display: grid;
+    padding : 1% 1% 1% 1%;
+    grid-template-columns: 45% 45% ;
+    /* grid-template-rows: 25% 25% 25% 25%; */
+    grid-template-rows: max-content;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(109, 67, 67, 0);
+    margin: 0% 0% 0% 0%;
+    padding: 0% 0% 0% 0%;
+  }
+}
+
+@media (max-width: 600px) {
+  .cities-around-world{
+    position: relative;
+    /* text-align: center; */
+    box-sizing: content-box;
+    width: 90%;
+    height: max-content;
+    display: grid;
+    padding : 1% 1% 1% 1%;
+    grid-template-columns: 60% ;
+    grid-template-rows: max-content;
+    /* grid-template-rows: 25% 25% 25% 25%; */
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(0, 0, 0);
+    margin: 0% 0% 0% 0%;
+    padding: 0% 0% 0% 0%;
+  }
+}
+
+/*Reusables*/
+.section-splitter{
+  display: block;
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  height: 100px;
+  background-color: transparent;
+}
+
+.section-splitter-end{
+  display: block;
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  height: 20px;
+  background-color: black;
+}
+
+.header{
+  display: block;
+  text-align: center;
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  height: auto;
+  background-color: var(--dark-black);
+  color: white;
+}
+
+
+/* .c1r1{
+  grid-row: 1;
+  grid-column: 1;
+  text-align: center;
+}
+
+.c1r2{
+  grid-row: 2;
+  grid-column: 1;
+  text-align: center;
+}
+
+.c1r3{
+  grid-row: 3;
+  grid-column: 1;
+  text-align: center;
+}
+
+.c2r1{
+
+  grid-row: 1;
+  grid-column: 2;
+  text-align: center;
+}
+
+.c2r2{
+  grid-row: 2;
+  grid-column: 2;
+  text-align: center;
+}
+
+.c2r3{
+  grid-row: 3;
+  grid-column: 2;
+  text-align: center;
+}
+
+.c3r1{
+  grid-row: 1;
+  grid-column: 3;
+  text-align: center;
+  }
+
+.c3r2{
+  grid-row: 2;
+  grid-column: 3;
+  text-align: center;
+}
+
+.c3r3{
+  grid-row: 3;
+  grid-column: 3;
+  text-align: center;
+}
+
+.c4r1{
+  grid-row: 1;
+  grid-column: 4;
+  text-align: center;
+  }
+
+.c4r2{
+  grid-row: 2;
+  grid-column: 4;
+  text-align: center;
+}
+
+.c4r3{
+  grid-row: 3;
+  grid-column: 4;
+  text-align: center;
+} */
+
 
 .c1r1{
   grid-row: 1;
@@ -817,166 +1144,6 @@ button{
 .c11r4{
   grid-row: 4;
   grid-column: 11;
-  text-align: center;
-}
-
-.grid-card {
-    color: silver;
-    box-shadow: 0 4px 8px 0 rgba(36, 36, 36, 0.2);
-    background-color: var(--dark-black);
-    transition: 0.3s;
-    box-sizing: content-box;
-    width: 100%;
-    height: 60%;
-    margin: 1% 1% 1% 1%;
-    text-align: center;
-    
-}
-
-.small-card {
-  width: 96%;
-  height: 96%;
-  padding:  2% 2% 2% 2%;
-  background-color: rgb(55, 56, 55);
-  display: grid;
-  grid-template-columns: 60% 40%;
-  grid-template-rows: 45% 45%;
-  justify-content: space-evenly;
-  align-items: center;
-  text-align: left;
-}
-
-.small-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  background-color: var(--light-black);
-}
-
-.small-card .continent-name{
-  color: yellow;
-  grid-row: 1;
-  grid-column: 1;
-}
-
-.small-card .temperature{
-  color: rgb(255, 255, 255);
-  font-weight: bolder;
-  grid-row: 1;
-  grid-column: 2;
-  text-align: right;
-}
-
-.small-card .country-name{
-  color: rgb(139, 139, 126);
-  grid-row: 2;
-  grid-column: 1;
-  font-size: small;
-  padding-top: 8%;
-}
-
-.small-card .factor{
-  text-align: right;
-  padding-top: 8%;
-  padding-left: 0%;
-}
-
-.small-card .factor #weather-icon{
- padding-top: 5%; 
- padding-right: 0%;
- display: inline;
-}
-
-/*Reusables*/
-.section-splitter{
-  display: block;
-  margin: 0%;
-  padding: 0%;
-  width: 100%;
-  height: 100px;
-  background-color: transparent;
-}
-
-.header{
-  display: block;
-  text-align: center;
-  margin: 0%;
-  padding: 0%;
-  width: 100%;
-  height: auto;
-  background-color: var(--dark-black);
-  color: white;
-}
-
-
-.c1r1{
-  grid-row: 1;
-  grid-column: 1;
-  text-align: center;
-}
-
-.c1r2{
-  grid-row: 2;
-  grid-column: 1;
-  text-align: center;
-}
-
-.c1r3{
-  grid-row: 3;
-  grid-column: 1;
-  text-align: center;
-}
-
-.c2r1{
-
-  grid-row: 1;
-  grid-column: 2;
-  text-align: center;
-}
-
-.c2r2{
-  grid-row: 2;
-  grid-column: 2;
-  text-align: center;
-}
-
-.c2r3{
-  grid-row: 3;
-  grid-column: 2;
-  text-align: center;
-}
-
-.c3r1{
-  grid-row: 1;
-  grid-column: 3;
-  text-align: center;
-  }
-
-.c3r2{
-  grid-row: 2;
-  grid-column: 3;
-  text-align: center;
-}
-
-.c3r3{
-  grid-row: 3;
-  grid-column: 3;
-  text-align: center;
-}
-
-.c4r1{
-  grid-row: 1;
-  grid-column: 4;
-  text-align: center;
-  }
-
-.c4r2{
-  grid-row: 2;
-  grid-column: 4;
-  text-align: center;
-}
-
-.c4r3{
-  grid-row: 3;
-  grid-column: 4;
   text-align: center;
 }
 
