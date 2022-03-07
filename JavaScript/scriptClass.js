@@ -398,7 +398,7 @@ function button() {
   let a;
   let b;
   b = mid.offsetWidth;
-  a = mid.childNodes.length * 268;
+  a = (mid.childElementCount + 1) * 260;
   if (a > b) {
     document.querySelector(".button").style.display = "flex";
   } else {
@@ -426,7 +426,7 @@ dine2.addEventListener("click", () => {
 });
 let rightinit = 0;
 function right() {
-  if (rightinit < mid.childElementCount * 205) {
+  if (rightinit < mid.childElementCount * 265) {
     rightinit += 250;
   }
   mid.scroll({
