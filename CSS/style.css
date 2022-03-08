@@ -107,7 +107,7 @@ body,html {
   width: 9%;
   height: 100%;
   margin-right: 1%;
-  min-width: 100px;
+  min-width: 130px;
   padding-top: 5px;
   border: none;
 
@@ -120,6 +120,7 @@ body,html {
   text-align: left;
   padding: auto;
   background-color: transparent;
+  
 }
 
 .name{
@@ -133,6 +134,7 @@ body,html {
  color: whitesmoke;
  text-align: justify;
  text-indent: 5px;
+ font-weight: bolder;
  }
 
 .flex-2 .date{
@@ -274,7 +276,7 @@ body,html {
 .middle-header{
   width: 100%;
   display: grid;
-  grid-template-columns: 70% 10% 15%;
+  grid-template-columns: 60% 10% 10% 0%;
   margin-top: 1%;
   padding-top: 20px;
   grid-row: 100%;
@@ -289,12 +291,17 @@ body,html {
 }
 
 .middle-header .custom-radio{
- text-align: left;
+ text-align: right;
  background-color: transparent;
- width: fit-content;
- 
+ width: max-content;
+ justify-self: end;
+ min-width: max-content; 
 }
 
+.radio-button-images{
+  width: 22px;
+  height: 22px;
+}
 
 .custom-radio input[type="radio"] {
   /* Add if not using autoprefixer */
@@ -308,7 +315,7 @@ body,html {
 }
 
 .custom-radio input:checked +label {
-  border-bottom: 2px solid rgb(73, 76, 248);
+  border-bottom: 2px solid rgb(27, 30, 209);
 }
 
 
@@ -385,6 +392,35 @@ body,html {
   flex-shrink: 0;
 }
 
+.flex-card-empty {
+  /* Add shadows to create the "card" effect */
+  /* box-shadow: 0px 0px 0px 0px rgba(231, 212, 212, 0.2); */
+  background-color: var(--bg-dark-grey-tile);
+  transition: 0.3s;
+  box-sizing: content-box;
+  /* min-width: 180px; */
+  /* max-width: 400px; */
+  height: 270px;
+  width: 70%;
+  margin: 1% 1% 1% 1%;
+  padding: 1% 1% 1% 1%;
+  text-align: center;
+  color: var(--bright-yellow-text);
+  font-size: larger;
+  font-weight: bolder;
+  border-radius: 20px 20px 20px 20px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-card-empty:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  background-color: #424242;
+}
+
 .scroll-container {
   position: relative;
   top: 50%; left: 50%;
@@ -417,14 +453,14 @@ body,html {
 
 .card-interior{
   display: grid;
-  height: 30%;
+  height: 15%;
   width: 100%;
   padding-top: 5px;
-  grid-template-columns: 60% 10% 29%;
+  grid-template-columns: 60% 15% 15%;
   grid-template-rows: 100%;
   background-color: transparent;
   align-items: center;
-  justify-content: flex-start;
+  justify-items: flex-start;
 }
 
 .card-interior .weather-symbol {
@@ -433,6 +469,8 @@ body,html {
   grid-row: 1;
   width: 100%;
   height: 100%;
+  padding-top: 30%;
+
   }
 
 .weather-select{
@@ -448,12 +486,13 @@ body,html {
   padding-left: 2px;
   grid-column: 1;
   grid-row: 1;
-  font-size: larger;
+  font-size: x-large;
   width: 100%;
   background-color: transparent;
   height: 100%;
   text-align: left;
   color: var(--bright-yellow-text);
+  font-weight: bold;
   
  }
 
@@ -462,12 +501,29 @@ body,html {
   padding-right: 2px;
   grid-column: 3;
   grid-row: 1;
-  font-size: larger;
+  font-size: x-large;
   background-color: transparent;
   width: 100%;
   height: 100%;
   
  }
+
+.date-and-time{
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  width: 100%;
+  background-color: transparent;
+  justify-items: center;
+  justify-content: center;
+  color: white;
+  align-items: flex-start;
+  font-weight: bold;
+  padding-left: 8px;
+
+}
+
+
 
 .weather-factors{
   display: flex;
@@ -484,6 +540,7 @@ body,html {
   height : 20px;
   width: 60%;
   text-align: left;
+  font-weight: bold;
   
 }
 
@@ -649,14 +706,14 @@ button{
 .cities-around-world{
   /* text-align: center; */
   box-sizing: content-box;
-  width: 80%;
+  width: 90%;
   height: max-content;
   display: grid;
   padding : 1% 1% 1% 1%;
   grid-template-columns: 30% 30% 30% ;
   grid-template-rows: 25% 25% 25% 25%;
-  align-items: flex-start;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
   justify-items: center;
   margin: 0% 0% 0% 0%;
   padding: 0% 0% 0% 0%;
@@ -665,6 +722,7 @@ button{
 }
 
 .small-card {
+  border-radius: 4px 4px 4px 4px;
   width: 96%;
   height: max-content;
   max-width: 280px;
@@ -673,11 +731,12 @@ button{
   display: grid;
   grid-template-columns: 60% 40%;
   grid-template-rows: 45% 45%;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   text-align: left;
   min-width: 190px;
   min-height: max-content;
+  /* margin-bottom: 20px; */
 }
 
 .grid-card {
@@ -692,6 +751,7 @@ button{
   text-align: center;
   max-width: 280px;
   min-width: 190;
+  margin-bottom: 20px;
 }
 
 
@@ -712,6 +772,7 @@ button{
   grid-row: 1;
   grid-column: 2;
   text-align: right;
+  font-size: large;
 }
 
 .small-card .country-name{
@@ -724,14 +785,37 @@ button{
 
 .small-card .factor{
   text-align: right;
-  padding-top: 8%;
+  padding-top:10px;
   padding-left: 0%;
+  display: flex;
+  background-color: transparent;
+  width: 100%;
+  justify-items: flex-end;
+  justify-content: flex-end;
+  align-content: flex-end;
+
+  
 }
 
-.small-card .factor #weather-icon{
- padding-top: 5%; 
- padding-right: 0%;
+.small-card .factor .weather-icon-cards{
+ grid-column: 1; 
+ padding-top: 0px;
+ margin-top: 0px;
+ padding-left: 0px;
+ background-color: transparent; 
+ height: 20px;
+ background-color: transparent;
+ width: 20px;
+ padding-right: 0;
  display: inline;
+ text-align: right;
+
+}
+
+.factor-humid{
+  padding-top : 0px;
+  margin: 0px;
+  background-color: transparent ;
 }
 
 

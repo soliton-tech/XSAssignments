@@ -22,7 +22,7 @@
                 <div class = "custom-dropdown">
                     <select name="country" class="name">
                       <option value="Select">Select</option>
-                      <option value="NewYork">Newyork</option>
+                      <!-- <option value="NewYork">Newyork</option>
                       <option value="Nome">Nome</option>
                       <option value="Jamaica">Jamaica</option>
                       <option value="Seoul">Seoul</option>
@@ -43,7 +43,7 @@
                       <option value="Maseru">Maseru</option>
                       <option value="Juba">Juba</option>
                       <option value="Winnipeg">Winnipeg</option>
-                      <option value="LosAngeles">LosAngeles</option>
+                      <option value="LosAngeles">LosAngeles</option> -->
                     </select>
                 </div>
                 <div class="time">
@@ -56,7 +56,7 @@
             </div>
             <div class = "flex-3">
                 <div class = "c1r1 tempc">
-                    Temp *C<br>
+                    Temp °C<br>
                     <div class = "tempC">25*c </div>
                 </div> 
                 <div class = "c2r1 divide">|</div>
@@ -127,11 +127,11 @@
                 <h3> Top Cities Around the World</h3>
                 <div class="custom-radio" style = " display: inline;">
                     <input type="radio" class = "radio-button" id="Sunny" name="weather-category" value="Sunny" checked>
-                    <label for="Sunny"><img src="..\Assets\Weather Icons\sunnyIcon.svg" alt="sunny" style ="height: 20px;width: 20px;"></label>
+                    <label for="Sunny"><img src="..\Assets\Weather Icons\sunnyIcon.svg" alt="sunny" class = "radio-button-images" ></label>
                     <input type="radio" class = "radio-button" id="Snowy" name="weather-category" value="Snowy">
-                    <label for="Snowy"><img src="..\Assets\Weather Icons\snowflakeIcon.svg" alt="snowy" style ="height: 20px;width: 20px;"></label>
+                    <label for="Snowy"><img src="..\Assets\Weather Icons\snowflakeIcon.svg" alt="snowy" class = "radio-button-images"></label>
                     <input type="radio" class = "radio-button" id="Rainy" name="weather-category" value="Rainy">
-                    <label for="Rainy"><img src="..\Assets\Weather Icons\rainyIcon.svg" alt="rainy" style ="height: 20px;width: 20px;"></label>  
+                    <label for="Rainy"><img src="..\Assets\Weather Icons\rainyIcon.svg" alt="rainy" class = "radio-button-images"></label>  
                 </div>
                 <div class = "display-top">
                     <label for="quantity">Display-top:</label>
@@ -224,6 +224,10 @@
                                 <div class="weather-symbol"><img class = "weather-select" src="..\Assets\Weather Icons\cloudyIcon.svg"></div>
                                 <div class = "temperature"> 25*C</div>
                             </div>
+                            <div class = "date-and-time">
+                                <div class = "card-time"> HH : MM AM</div>
+                                <div class = "card-date"> DD-MM-YYYY </div>  
+                            </div>
                             <div class = "weather-factors"> 
                                 <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg"><span class = "humiditycard">53% </span> </div>
                                 <div class = "factor">  <img class = "weather-icon" src ="..\Assets\Weather Icons\cloudyIcon.svg"> <span class = "windspeedcard">5km/hr </span></div>
@@ -256,23 +260,23 @@
                         <div class = "continent-name"> Asia </div>
                         <div class = "temperature"> 35 * C</div>
                         <div class = "country-name"> India 10:10AM</div>
-                        <div class = "factor"> 53% <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg">  </div>
+                        <div class = "factor"> <img class = "weather-icon-cards" src ="..\Assets\Weather Icons\humidityIcon.svg"> <span class="factor-humid"> 53% </span>   </div>
                     </div>
                 </div>
-                <div class = "grid-card  index-1"> 
+                <div class = "grid-card  index-1">  
                     <div class = "small-card">
                         <div class = "continent-name"> Asia </div>
                         <div class = "temperature"> 35 * C</div>
                         <div class = "country-name"> India 10:10AM</div>
-                        <div class = "factor"> 53% <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg">  </div>
-                    </div>           
+                        <div class = "factor"> <img class = "weather-icon-cards" src ="..\Assets\Weather Icons\humidityIcon.svg"> <span class="factor-humid"> 53% </span>   </div>
+                    </div>
                 </div>
-                <div class = "grid-card  index-2"> 
+                <div class = "grid-card  index-2">  
                     <div class = "small-card">
                         <div class = "continent-name"> Asia </div>
                         <div class = "temperature"> 35 * C</div>
                         <div class = "country-name"> India 10:10AM</div>
-                        <div class = "factor"> 53% <img id = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg">  </div>
+                        <div class = "factor"> <img class = "weather-icon-cards" src ="..\Assets\Weather Icons\humidityIcon.svg"> <span class="factor-humid"> 53% </span>   </div>
                     </div>
                 </div>
                 <div class = "grid-card  index-3">  
@@ -280,32 +284,31 @@
                         <div class = "continent-name"> Asia </div>
                         <div class = "temperature"> 35 * C</div>
                         <div class = "country-name"> India 10:10AM</div>
-                        <div class = "factor"> 53% <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg">  </div>
-                    </div>
-
-                </div> 
-                <div class = "grid-card  index-4"> 
-                    <div class = "small-card">
-                        <div class = "continent-name"> Asia </div>
-                        <div class = "temperature"> 35 * C</div>
-                        <div class = "country-name"> India 10:10AM</div>
-                        <div class = "factor"> 53% <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg">  </div>
+                        <div class = "factor"> <img class = "weather-icon-cards" src ="..\Assets\Weather Icons\humidityIcon.svg"> <span class="factor-humid"> 53% </span>   </div>
                     </div>
                 </div>
-                <div class = "grid-card  index-5"> 
+                <div class = "grid-card  index-4">  
                     <div class = "small-card">
                         <div class = "continent-name"> Asia </div>
                         <div class = "temperature"> 35 * C</div>
                         <div class = "country-name"> India 10:10AM</div>
-                        <div class = "factor"> 53% <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg">  </div>
+                        <div class = "factor"> <img class = "weather-icon-cards" src ="..\Assets\Weather Icons\humidityIcon.svg"> <span class="factor-humid"> 53% </span>   </div>
                     </div>
                 </div>
-                <div class = "grid-card  index-6">
+                <div class = "grid-card  index-5">  
                     <div class = "small-card">
                         <div class = "continent-name"> Asia </div>
                         <div class = "temperature"> 35 * C</div>
                         <div class = "country-name"> India 10:10AM</div>
-                        <div class = "factor"> 53% <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg">  </div>
+                        <div class = "factor"> <img class = "weather-icon-cards" src ="..\Assets\Weather Icons\humidityIcon.svg"> <span class="factor-humid"> 53% </span>   </div>
+                    </div>
+                </div>
+                <div class = "grid-card  index-6">  
+                    <div class = "small-card">
+                        <div class = "continent-name"> Asia </div>
+                        <div class = "temperature"> 35 * C</div>
+                        <div class = "country-name"> India 10:10AM</div>
+                        <div class = "factor"> <img class = "weather-icon-cards" src ="..\Assets\Weather Icons\humidityIcon.svg"> <span class="factor-humid"> 53% </span>   </div>
                     </div>
                 </div>
                 <div class = "grid-card  index-7">  
@@ -313,45 +316,43 @@
                         <div class = "continent-name"> Asia </div>
                         <div class = "temperature"> 35 * C</div>
                         <div class = "country-name"> India 10:10AM</div>
-                        <div class = "factor"> 53% <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg">  </div>
+                        <div class = "factor"> <img class = "weather-icon-cards" src ="..\Assets\Weather Icons\humidityIcon.svg"> <span class="factor-humid"> 53% </span>   </div>
                     </div>
-
                 </div>
-                <div class = "grid-card  index-8"> 
+                <div class = "grid-card  index-8">  
                     <div class = "small-card">
                         <div class = "continent-name"> Asia </div>
                         <div class = "temperature"> 35 * C</div>
                         <div class = "country-name"> India 10:10AM</div>
-                        <div class = "factor"> 53% <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg">  </div>
+                        <div class = "factor"> <img class = "weather-icon-cards" src ="..\Assets\Weather Icons\humidityIcon.svg"> <span class="factor-humid"> 53% </span>   </div>
                     </div>
                 </div>
-                <div class = "grid-card  index-9"> 
+                <div class = "grid-card  index-9">  
                     <div class = "small-card">
                         <div class = "continent-name"> Asia </div>
                         <div class = "temperature"> 35 * C</div>
                         <div class = "country-name"> India 10:10AM</div>
-                        <div class = "factor"> 53% <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg">  </div>
+                        <div class = "factor"> <img class = "weather-icon-cards" src ="..\Assets\Weather Icons\humidityIcon.svg"> <span class="factor-humid"> 53% </span>   </div>
                     </div>
-
                 </div>
                 <div class = "grid-card  index-10">  
                     <div class = "small-card">
                         <div class = "continent-name"> Asia </div>
                         <div class = "temperature"> 35 * C</div>
                         <div class = "country-name"> India 10:10AM</div>
-                        <div class = "factor"> 53% <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg">  </div>
+                        <div class = "factor"> <img class = "weather-icon-cards" src ="..\Assets\Weather Icons\humidityIcon.svg"> <span class="factor-humid"> 53% </span>   </div>
                     </div>
-
                 </div>
                 <div class = "grid-card  index-11">  
                     <div class = "small-card">
                         <div class = "continent-name"> Asia </div>
                         <div class = "temperature"> 35 * C</div>
                         <div class = "country-name"> India 10:10AM</div>
-                        <div class = "factor"> 53% <img class = "weather-icon" src ="..\Assets\Weather Icons\humidityIcon.svg">  </div>
+                        <div class = "factor"> <img class = "weather-icon-cards" src ="..\Assets\Weather Icons\humidityIcon.svg"> <span class="factor-humid"> 53% </span>   </div>
                     </div>
-
                 </div>
+
+
             </div>
     </div>
 
@@ -469,6 +470,8 @@
 
 <!-- Enable Below for Proto and Real Time Data JS File -->
 <!-- <script src="..\JavaScript\script_proto.js" type="module"></script> -->
+
+
 
 <!-- Enable Below for Class and Real Time Data JS File -->
     <script src="..\JavaScript\script_class.js" type="module"></script>
