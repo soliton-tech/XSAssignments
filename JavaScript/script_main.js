@@ -1,6 +1,7 @@
 // ---------------------------------------Dependency Imports--------------------------------------------------------//
 import {getlivedata,postCityData} from "./getapidata.js";
 
+
 (async()=>{
     //--------------------------------------------ShortCut Functions---------------------------------------//
     function cl(object){
@@ -17,6 +18,27 @@ import {getlivedata,postCityData} from "./getapidata.js";
         let currentcity = {};
         let cityssortedbycontinents = {};
         let defaultSection1City = "kolkata";
+
+        // -------------> Timer Related Variables 
+        // Counter Variables
+        let actualSecondSinceRestart = 0;
+        let secondsCounter = 0;
+        let minutesCounter = 0;
+        let hoursCounter  = 0;
+        const totalResetHours = 4;
+        let secondsfirst = 60;
+        let minutesFirst = 60;
+        
+        //Counter Flags
+        let secondsFlag = false;
+        let minutesFlag = false;
+        let hoursFlag = false;
+        let totalResetFlag = false;
+        let firstCountafterReset = false;
+
+
+
+
 
     //-----------------------------------Classes----------------------------------//
             //Base Class
@@ -87,6 +109,10 @@ import {getlivedata,postCityData} from "./getapidata.js";
 
                 getTimeInHHMM(){
                     return (this.time.split(" ")[1].split(":")[0] + ": " + this.time.split(", ")[1].split(":")[1]);
+                }
+
+                getTimeAsTimeStamp(){
+                    return new Date(this.time);
                 }
 
                 getTimeInHH(){
@@ -177,17 +203,13 @@ import {getlivedata,postCityData} from "./getapidata.js";
                         return hoursArray;    
                     }
             }
-
- 
-
-
+        
         // ---------------------------------------DataSource Request Initialization-------------------------------------------------//
         async function getDatafromSource(){
             let response = await getlivedata();
             //console.log(response);
             return response;    
         }
-
         async function getNextNHoursTemperature(City, no){
             let response = await postCityData(City.getName(),no);
         }
@@ -198,28 +220,26 @@ import {getlivedata,postCityData} from "./getapidata.js";
         let dataSize = 0;
         let cities = [];
         let cityNames = [];
-        let cityNameswithfirstletterUpperCase = [];
-        
+        let cityNameswithfirstletterUpperCase = [];        
         let noOfHours = 5;
         let activeCity = new CitySection1();
-        await refreshdatabase();
-
-
-
-
+        await refreshdatabase(); // Refresh Database at Start
 
         let dropDown = document.getElementsByClassName('name')[0];
         dropDown.innerHTML = "";
-        dropDown.innerHTML = '<option value="Select">Select</option>';
+        //dropDown.innerHTML = '<option value="Select">Select</option>';
         for (let i = 0; i <= cityNames.length ; i++){
             let newOption = new Option(cityNameswithfirstletterUpperCase[i],cityNames[i]);
             dropDown.add(newOption,undefined);
         }
+        defaultSection1City = (cityNames.length !=0 ? cityNames[0] : "Select");
+
+        dropDown.value = defaultSection1City;
         
 
         async function refreshdatabase(){
             jsondataLive = await getDatafromSource();
-            console.table(jsondataLive);
+            //console.table(jsondataLive);
             dataSize = Object.keys(jsondataLive).length;
             cities = [];
             cityNames = [];
@@ -234,21 +254,19 @@ import {getlivedata,postCityData} from "./getapidata.js";
             }
             console.log("Data Refreshed");
         }
-
-
         activeCity = new CitySection1();
         activeCity.setBaseClassProperties(cities.find(obj => { return obj.getName() === defaultSection1City; })); 
         activeCity.setnextNHrs(await postCityData(activeCity.getCityName(),noOfHours));
 
-        setInterval(refreshdatabase,1000);
-   
-        // ----------------------------------------------------Initialize-------------------------------------------------  //
-        
+
+
+        // ----------------------------------------------------Initialize-------------------------------------------------  //        
         //------Startup-Functions-----------//
         await citySelect();
         let sortedCities = sortforSection3(cities, true , true, noOFCitiesforSection3);
         updateSection3Cards(sortedCities);
         setconfiguredCities();
+
         // ----------------------------------------------------------------Event Listeners and Loops----------------------------------------------------------------  //
 
         //---------------------Event Listeners---------------------//
@@ -276,7 +294,6 @@ import {getlivedata,postCityData} from "./getapidata.js";
             setconfiguredCities();
         });
 
-
         window.addEventListener("resize", function() {
             enableordisableScrollers();
         } );
@@ -290,6 +307,13 @@ import {getlivedata,postCityData} from "./getapidata.js";
         document.getElementsByClassName('temperature-sort')[0].addEventListener('click',function(){
             sortByTemperature();  
         });
+
+
+        //--------------------------------------Loops---------------------------------------//
+
+            setInterval(mainLoop,10);
+
+ 
 
         // -----------------------------------------------------------------------Declarations----------------------------------------------------------------------  //
 
@@ -314,8 +338,8 @@ import {getlivedata,postCityData} from "./getapidata.js";
                 activeCity.setBaseClassProperties(cities.find(obj => { return obj.getName() === cityName; }));
                 activeCity.setnextNHrs(await postCityData(activeCity.getCityName(),noOfHours));
                 setCityIcon(activeCity);
-                setCityDate(activeCity);
-                setCityTime(activeCity);
+                // setCityDate(activeCity);
+                // setCityTime(activeCity);
                 setCurrentWeather(activeCity);
                 setTemperatureArray(activeCity);
             }
@@ -741,6 +765,139 @@ import {getlivedata,postCityData} from "./getapidata.js";
 
 
 
+        }
+
+
+        //-------------------------------------------------------Timer Related Functions---------------------------------------------------//
+        function mainLoop(){
+            counterInSeconds();
+            // Call all Functions that repeat every Second Below
+            // console.log(secondsCounter);
+            updateSection1TimeAndDatePerSecond();
+
+
+
+
+            if(hoursFlag == true){
+                //Call all Functions that repeat every Hour Below
+
+            }
+
+
+            if(minutesFlag == true){
+                //Call all Functions that repeat every Minute Below
+                
+                updateAllDatesAndTimes(); // To be moved for Every Minute
+                minutesFlag = false;
+            }    
+            
+            if(totalResetFlag == true){
+            //Call all functions that repeat every 4 hour below
+                location.reload();
+
+            }
+        }
+
+        function counterInSeconds(){    
+            actualSecondSinceRestart = actualSecondSinceRestart + 1;
+             secondsCounter = secondsCounter + 1;
+             secondsfirst = 60 - cities[0].getTimeAsTimeStamp().getSeconds() ;
+            //  console.log(secondsfirst);
+             let minuteCounter  = (firstCountafterReset ? (60- secondsfirst) : 60);
+             if(secondsCounter >= minuteCounter){
+                minutesCounter = minutesCounter + 1;
+                secondsCounter = 0;
+                firstCountafterReset = false;
+                minutesFlag = true;
+                minutesFirst = 60 - activeCity.getTimeAsTimeStamp().getMinutes();
+                HoursFirst = 60 - activeCity.getTimeAsTimeStamp().getHours();
+                if (minutesCounter >= 60){
+                    hoursCounter = hoursCounter + 1;
+                    minutesCounter = 0 ;
+                    secondsCounter = 0;
+                    minutesFlag = true;
+                    hoursFlag = true;
+                    if(actualSecondSinceRestart >= (1*3600) ){
+                        totalReset();
+                    }
+                }
+            }
+         }
+
+        function totalReset(){
+            console.log("Total Reset");
+            //location.reload();
+        }
+        
+        function updateSection1TimeAndDatePerSecond(){
+
+        // Do it only when Select is not selected ########################################################
+                let section1TimeStampRef = activeCity.getTimeAsTimeStamp();
+                let section1TimeStampCurrent = activeCity.getTimeAsTimeStamp();
+                section1TimeStampCurrent.setSeconds(section1TimeStampRef.getSeconds()+getTotalTimeLapsednSeconds() );
+                let hourIn12Notation = section1TimeStampCurrent.getHours();
+                let suffix = hourIn12Notation >= 12 ? "pm":"am";
+                let hoursinAMPM = ((hourIn12Notation + 11) % 12 + 1);
+                let modTime = `${hoursinAMPM}:${section1TimeStampCurrent.getMinutes()}:${section1TimeStampCurrent.getSeconds()}`;    
+                //console.log(`${hoursinAMPM} : ${section1TimeStampCurrent.getMinutes()}: ${section1TimeStampCurrent.getSeconds()} ${suffix}`);
+                let img = document.createElement('img'); 
+                img.src = "../Assets/General Images & Icons/"+suffix+"State.png";
+                img.id = "ampm"; 
+                document.getElementsByClassName("time")[0].innerHTML =  modTime;
+                document.getElementsByClassName("time")[0].appendChild(img);
+                document.getElementById("ampm").style.display = "inline";   
+                document.getElementsByClassName("time")[0].style.visibility = 'visible';
+                let modDate = `${section1TimeStampCurrent.getDate()}-${month[section1TimeStampCurrent.getMonth()]}-${section1TimeStampCurrent.getFullYear()} `;
+                document.getElementsByClassName("date")[0].innerHTML = modDate;
+        }
+
+        //Reusable for Time in Seconds
+        function getTotalTimeLapsednSeconds(){
+            //console.log(`${seconds} Seconds ; ${minutes} Minutes ; ${hours} Hours`);
+            //console.log(seconds + (minutes * 60) + (hours * 3600));        
+            return secondsCounter + (minutesCounter * 60) + (hoursCounter * 3600);
+        }
+
+        function updateAllDatesAndTimes(){
+            let section2Cities = document.getElementsByClassName("cityname");
+            let cityiter = [];
+            for(let i = 0; i < section2Cities.length ; i++){
+                let citytemp = cities.filter(function (cityobj){
+                    return (cityobj.getCityName().localeCompare(section2Cities[i].innerHTML) == 0);
+                })[0];
+                cityiter.push(citytemp);
+              
+            }
+                //console.log(cityiter);
+            
+            for(let i = 0; i < cityiter.length ; i++) {
+                let timeStamp = cityiter[i].getTimeAsTimeStamp();
+                timeStamp.setSeconds(timeStamp.getSeconds() + getTotalTimeLapsednSeconds());
+                //console.log(i);
+                let hourIn12Notation = timeStamp.getHours();
+                let suffix = hourIn12Notation >= 12 ? "pm":"am";
+                let hoursinAMPM = ((hourIn12Notation + 11) % 12 + 1);
+                let modTime = `${hoursinAMPM}:${timeStamp.getMinutes()}:${timeStamp.getSeconds()} ${suffix.toLocaleUpperCase()}`; 
+                let modDate = `${timeStamp.getDate()}-${month[timeStamp.getMonth()]}-${timeStamp.getFullYear()} `;
+                document.getElementsByClassName("card-time")[i].innerHTML = modTime;
+                document.getElementsByClassName("card-date")[i].innerHTML = modDate;
+            }
+
+            let section3Cities = document.getElementsByClassName("country-name");
+            for(let i = 0; i < section3Cities.length ; i++){
+                let section3CityObj = section3Cities[i];
+                let nameOfCity = section3CityObj.innerHTML.split(" ")[0];
+                let timeStamp = cities.filter(function (cityobj){
+                    return (cityobj.getCityName().localeCompare(nameOfCity) == 0);
+                })[0].getTimeAsTimeStamp();
+                timeStamp.setSeconds(timeStamp.getSeconds() + getTotalTimeLapsednSeconds());
+                let hourIn12Notation = timeStamp.getHours();
+                let suffix = hourIn12Notation >= 12 ? "pm":"am";
+                let hoursinAMPM = ((hourIn12Notation + 11) % 12 + 1);
+                let modifiedTime = `${hoursinAMPM}:${timeStamp.getMinutes()}:${timeStamp.getSeconds()} ${suffix.toLocaleUpperCase()}`; 
+                let fullData = `${nameOfCity} ${modifiedTime}`;
+                section3CityObj.innerHTML =   fullData;
+            }
         }
 
 }) ();  
