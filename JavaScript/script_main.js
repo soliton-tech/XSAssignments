@@ -28,16 +28,13 @@ import {getlivedata,postCityData} from "./getapidata.js";
         const totalResetHours = 4;
         let secondsfirst = 60;
         let minutesFirst = 60;
-        
+        let hoursFirst = 0;
         //Counter Flags
         let secondsFlag = false;
         let minutesFlag = false;
         let hoursFlag = false;
         let totalResetFlag = false;
         let firstCountafterReset = false;
-
-
-
 
 
     //-----------------------------------Classes----------------------------------//
@@ -77,6 +74,10 @@ import {getlivedata,postCityData} from "./getapidata.js";
 
                 getTemperature(){
                     return this.temperature;
+                }
+
+                setTemperature(temperature){
+                    this.temperature = temperature;
                 }
 
                 getTemperatureInt(){
@@ -148,8 +149,6 @@ import {getlivedata,postCityData} from "./getapidata.js";
                         this.hourCount = hourCount;
                         }
                     
-
-
                     setBaseClassProperties(City){
                         super.name = City.name;
                         super.cityName =City.cityName;
@@ -223,6 +222,7 @@ import {getlivedata,postCityData} from "./getapidata.js";
         let cityNameswithfirstletterUpperCase = [];        
         let noOfHours = 5;
         let activeCity = new CitySection1();
+        await refreshdatabase(); 
         await refreshdatabase(); // Refresh Database at Start
 
         let dropDown = document.getElementsByClassName('name')[0];
@@ -311,7 +311,7 @@ import {getlivedata,postCityData} from "./getapidata.js";
 
         //--------------------------------------Loops---------------------------------------//
 
-            setInterval(mainLoop,10);
+            setInterval(mainLoop,1000);
 
  
 
@@ -769,15 +769,12 @@ import {getlivedata,postCityData} from "./getapidata.js";
 
 
         //-------------------------------------------------------Timer Related Functions---------------------------------------------------//
-        function mainLoop(){
+        async function mainLoop(){
             counterInSeconds();
             // Call all Functions that repeat every Second Below
             // console.log(secondsCounter);
-            updateSection1TimeAndDatePerSecond();
-
-
-
-
+            await updateSection1TimeAndDatePerSecond();
+            updateAllDatesAndTimes();
             if(hoursFlag == true){
                 //Call all Functions that repeat every Hour Below
 
@@ -787,7 +784,7 @@ import {getlivedata,postCityData} from "./getapidata.js";
             if(minutesFlag == true){
                 //Call all Functions that repeat every Minute Below
                 
-                updateAllDatesAndTimes(); // To be moved for Every Minute
+                //updateAllDatesAndTimes(); // To be moved for Every Minute
                 minutesFlag = false;
             }    
             
@@ -809,15 +806,13 @@ import {getlivedata,postCityData} from "./getapidata.js";
                 secondsCounter = 0;
                 firstCountafterReset = false;
                 minutesFlag = true;
-                minutesFirst = 60 - activeCity.getTimeAsTimeStamp().getMinutes();
-                HoursFirst = 60 - activeCity.getTimeAsTimeStamp().getHours();
                 if (minutesCounter >= 60){
                     hoursCounter = hoursCounter + 1;
                     minutesCounter = 0 ;
                     secondsCounter = 0;
                     minutesFlag = true;
                     hoursFlag = true;
-                    if(actualSecondSinceRestart >= (1*3600) ){
+                    if(actualSecondSinceRestart >= (4*3600) ){
                         totalReset();
                     }
                 }
@@ -829,7 +824,7 @@ import {getlivedata,postCityData} from "./getapidata.js";
             //location.reload();
         }
         
-        function updateSection1TimeAndDatePerSecond(){
+        async function updateSection1TimeAndDatePerSecond(){
 
         // Do it only when Select is not selected ########################################################
                 let section1TimeStampRef = activeCity.getTimeAsTimeStamp();
@@ -838,6 +833,7 @@ import {getlivedata,postCityData} from "./getapidata.js";
                 let hourIn12Notation = section1TimeStampCurrent.getHours();
                 let suffix = hourIn12Notation >= 12 ? "pm":"am";
                 let hoursinAMPM = ((hourIn12Notation + 11) % 12 + 1);
+                hoursFirst = document.getElementsByClassName("time")[0].innerHTML.split(":")[0];
                 let modTime = `${hoursinAMPM}:${section1TimeStampCurrent.getMinutes()}:${section1TimeStampCurrent.getSeconds()}`;    
                 //console.log(`${hoursinAMPM} : ${section1TimeStampCurrent.getMinutes()}: ${section1TimeStampCurrent.getSeconds()} ${suffix}`);
                 let img = document.createElement('img'); 
@@ -849,12 +845,57 @@ import {getlivedata,postCityData} from "./getapidata.js";
                 document.getElementsByClassName("time")[0].style.visibility = 'visible';
                 let modDate = `${section1TimeStampCurrent.getDate()}-${month[section1TimeStampCurrent.getMonth()]}-${section1TimeStampCurrent.getFullYear()} `;
                 document.getElementsByClassName("date")[0].innerHTML = modDate;
+                if (hoursinAMPM > hoursFirst){
+                    console.log("Hours Changed!");
+                    let currentTime = `${hoursinAMPM}: ${suffix}`;
+                    await refreshNextFiveHoursTemperature(currentTime);
+                    
+
+                } 
+        }
+
+        async function refreshNextFiveHoursTemperature(currentTime){
+            activeCity.setnextNHrs(await postCityData(activeCity.getCityName(),noOfHours));
+            activeCity.setTemperature(activeCity.getnextNHrs()["temperature"][0]);
+            console.log(activeCity.getTemperature());
+            setCurrentWeather(activeCity);
+            setTemperatureArray(activeCity);
+            setNextFiveHoursFromCurrentHour(currentTime);
+        }
+
+        function setNextFiveHoursFromCurrentHour(timeString){
+            let isPM = timeString.includes("PM");
+            let AMPM = (isPM ? "PM" : "AM");
+            //console.log(AMPM);
+            //console.log(isPM);
+            let hours = parseInt(parseInt(timeString.split(":")[0]));
+            //console.log(hours);
+            let hoursArray = [];
+            for ( let i = 0; i < 5 ; i++)
+                {   let hourString = "";
+                    hours = (hours+1) % 12 ;
+                    if(hours === 0)
+                        { isPM = !isPM;
+                            AMPM = (isPM ? "PM" : "AM");  
+                            //console.log("12 "+ AMPM);
+                            hourString = "12 "+ AMPM;
+                        }
+                    else{
+                            AMPM = (isPM ? "PM" : "AM");
+                            //console.log(hours + " " + AMPM);
+                            hourString = hours + " " + AMPM;
+                    }
+                    hoursArray.push(hourString);
+                }
+             console.log(hoursArray);  
+             for ( let i = 0; i < hoursArray.length; i++){
+                document.getElementsByClassName("timearray")[i].innerHTML = hoursArray[i];   
+                }  
+
         }
 
         //Reusable for Time in Seconds
-        function getTotalTimeLapsednSeconds(){
-            //console.log(`${seconds} Seconds ; ${minutes} Minutes ; ${hours} Hours`);
-            //console.log(seconds + (minutes * 60) + (hours * 3600));        
+        function getTotalTimeLapsednSeconds(){   
             return secondsCounter + (minutesCounter * 60) + (hoursCounter * 3600);
         }
 
@@ -877,7 +918,7 @@ import {getlivedata,postCityData} from "./getapidata.js";
                 let hourIn12Notation = timeStamp.getHours();
                 let suffix = hourIn12Notation >= 12 ? "pm":"am";
                 let hoursinAMPM = ((hourIn12Notation + 11) % 12 + 1);
-                let modTime = `${hoursinAMPM}:${timeStamp.getMinutes()}:${timeStamp.getSeconds()} ${suffix.toLocaleUpperCase()}`; 
+                let modTime = `${hoursinAMPM}:${timeStamp.getMinutes()} ${suffix.toLocaleUpperCase()}`; 
                 let modDate = `${timeStamp.getDate()}-${month[timeStamp.getMonth()]}-${timeStamp.getFullYear()} `;
                 document.getElementsByClassName("card-time")[i].innerHTML = modTime;
                 document.getElementsByClassName("card-date")[i].innerHTML = modDate;
@@ -894,7 +935,7 @@ import {getlivedata,postCityData} from "./getapidata.js";
                 let hourIn12Notation = timeStamp.getHours();
                 let suffix = hourIn12Notation >= 12 ? "pm":"am";
                 let hoursinAMPM = ((hourIn12Notation + 11) % 12 + 1);
-                let modifiedTime = `${hoursinAMPM}:${timeStamp.getMinutes()}:${timeStamp.getSeconds()} ${suffix.toLocaleUpperCase()}`; 
+                let modifiedTime = `${hoursinAMPM}:${timeStamp.getMinutes()} ${suffix.toLocaleUpperCase()}`; 
                 let fullData = `${nameOfCity} ${modifiedTime}`;
                 section3CityObj.innerHTML =   fullData;
             }

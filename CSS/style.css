@@ -107,7 +107,7 @@ body,html {
   width: 9%;
   height: 100%;
   margin-right: 1%;
-  min-width: 130px;
+  min-width: 100px;
   padding-top: 5px;
   border: none;
 
@@ -178,7 +178,7 @@ body,html {
   justify-content: space-around;
   padding-left: 0%;
   margin-right:0px ;
-  min-width: 160px;  
+  min-width: 140px;  
   font-size: larger;
   box-sizing: content-box;
   min-width: max-content;
@@ -792,6 +792,7 @@ button{
   grid-row: 2;
   grid-column: 1;
   font-size: small;
+  font-weight: bold;
   padding-top: 8%;
 }
 
@@ -871,6 +872,8 @@ button{
     padding: 0% 0% 0% 0%;
   }
 }
+
+
 
 /*Reusables*/
 .section-splitter{
