@@ -20,13 +20,7 @@ body {
   background-image: url(../assets/background.svg);
   background-repeat: no-repeat;
   background-size: cover;
-  /* animation: dynamic 30s linear 0s infinite normal; */
 }
-/* @keyframes dynamic {
-  0% {
-    background-position: right;
-  }
-} */
 .select #name {
   width: 130px;
   color: rgb(255, 255, 255);
@@ -331,9 +325,6 @@ body {
   background-color: rgb(25, 25, 26);
   margin: 10px;
 }
-/* .rec :hover {
-  border: 10px solid white;
-} */
 .bottom .end .grid-end .rec .upper {
   display: flex;
   justify-content: space-between;

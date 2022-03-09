@@ -351,8 +351,6 @@ class IndCity extends City {
       `&nbsp;${hour.pad(2)}` +
       `:` +
       dt.getMinutes().pad(2) +
-      // `:` +
-      // dt.getSeconds().pad(2) +
       `&nbsp;
           ${ampm}`;
     let set = () => {
@@ -374,8 +372,6 @@ class IndCity extends City {
         `&nbsp;${hour.pad(2)}` +
         `:` +
         dt.getMinutes().pad(2) +
-        // `:` +
-        // dt.getSeconds().pad(2) +
         `&nbsp;
           ${ampm}`;
     };
@@ -667,7 +663,8 @@ function temperaturesort() {
   if (g % 2 !== 0) {
     if (h % 2 === 0) {
       let f = [];
-      document.getElementById("temperaturesort").src = "../assets/arrowUp.svg";
+      document.getElementById("temperaturesort").src =
+        "../assets/arrowDown.svg";
       while (gridend.hasChildNodes()) {
         gridend.removeChild(gridend.lastChild);
       }
@@ -702,8 +699,7 @@ function temperaturesort() {
       g++;
     } else {
       let f = [];
-      document.getElementById("temperaturesort").src =
-        "../assets/arrowDown.svg";
+      document.getElementById("temperaturesort").src = "../assets/arrowUp.svg";
       while (gridend.hasChildNodes()) {
         gridend.removeChild(gridend.lastChild);
       }
@@ -740,8 +736,7 @@ function temperaturesort() {
   } else {
     if (h % 2 === 0) {
       let f = [];
-      document.getElementById("temperaturesort").src =
-        "../assets/arrowDown.svg";
+      document.getElementById("temperaturesort").src = "../assets/arrowUp.svg";
       while (gridend.hasChildNodes()) {
         gridend.removeChild(gridend.lastChild);
       }
@@ -776,7 +771,8 @@ function temperaturesort() {
       g++;
     } else {
       let f = [];
-      document.getElementById("temperaturesort").src = "../assets/arrowUp.svg";
+      document.getElementById("temperaturesort").src =
+        "../assets/arrowDown.svg";
       while (gridend.hasChildNodes()) {
         gridend.removeChild(gridend.lastChild);
       }
@@ -790,17 +786,17 @@ function temperaturesort() {
       let d = [];
       for (let h = 0; h < sort.length; h++) {
         d = c
-          .filter(
-            (i) =>
+          .filter((i) => {
+            return (
               text[i].timeZone.slice(0, text[i].timeZone.indexOf("/")) ===
               sort[h]
-          )
+            );
+          })
           .sort(
             (a, b) =>
               text[a]["temperature"].slice(0, -2) -
               text[b]["temperature"].slice(0, -2)
           );
-        // d = d.reverse();
         for (let k = 0; k < d.length; k++) {
           gridend.appendChild(city1.glance(d[k]));
         }
