@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="Assets/Weather Icons/snowflakeIcon.svg"
+    />
+    <link rel="stylesheet" href="CSS\main.css" />
+    <script type="module" src="JS/main.js"></script>
+    <script type="module" src="JS/section1.js"></script>
+    <script type="module" src="JS/common.js"></script>
+  </head>
+  <body>
+    <section style="margin-top: 1em;margin-bottom: 1em;">
+      <div class="flex flex-row mobile-flex-col">
+          <div class="flex mobile-flex-justify">
+              <img
+              src="../Assets/Icons for cities/nome.svg"
+              alt="chennai"
+              class="display-city-image"
+            />
+            <div>
+                <select
+                name="city"
+                class="city-selector" 
+                onchange="changeDisplayCity()"
+              ></select>
+              <div class="flex">
+                <p class="selected-city-time">12:00:00</p>
+                <img src="Assets\General Images & Icons\amState.svg" alt="AM" class="selected-city-time-12hr"/>
+              </div>
+              <p class="selected-city-date">04-Apr-2022</p>
+            </div>
+          </div>
+          
+          <div class="grid grid-three-col mobile-weather-grid-margin">
+            <div>
+              <p class="margin-top-bottom width-max-content">Temp °C</p>
+              <p class="tempC margin-top-bottom left-text-align bold">25 C</p>
+            </div>
+            <div>
+              <div class="vertical-line"></div>
+            </div>
+            <div>
+              <p class="margin-top-bottom ">Humidity</p>
+              <p class="humidity margin-top-bottom bold">26%</p>
+            </div>
+            <div>
+              <p class="width-max-content margin-top-bottom ">Temp °F</p>
+              <p class="tempF margin-top-bottom bold">25 C</p>
+            </div>
+            <div>
+              <div class="vertical-line"></div>
+            </div>
+            <div>
+              <p class="width-max-content margin-top-bottom width-max-content">Precipitation</p>
+              <p class="precipitation margin-top-bottom bold">26%</p>
+            </div>
+          </div>
+        
+        <div class="next-hours grid grid-eleven-col width-100">
+        </div>
+      </div>
+    </section>
+    <section class="background-container">
+      <section>
+        <div class="flex mobile-flex-col">
+          <div class="flex width-100">
+            <p class="top-city-title mobile-top-city-title">
+              Top cities around the world
+            </p>
+          </div>
+          
+          <div class="flex weather-selector mobile-center-weather-selecter">
+            <div class ="sunny">
+              <img src="Assets\Weather Icons\sunnyIcon.svg" alt="" class="weather-selector-img" />
+              <hr class="weather-highlighter">  
+            </div>
+            <div class = "cold">
+              <img src="Assets\Weather Icons\snowflakeIcon.svg" alt="" class="weather-selector-img"/>
+            </div>
+            <div class = "rainy">
+              <img src="Assets\Weather Icons\rainyIcon.svg" alt="" class="weather-selector-img"/>
+            </div>
+            
+            <p class="display-top">
+              Display Top
+            </p>
+            <input
+              type="number"
+              name="Number of cities to display"
+              class="number-of-city"
+              min="3"
+              max="10"
+              value = "4"
+              
+            />
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <div class="left-scroller flex align-center">
+            <img src="Assets\General Images & Icons\backwardArrow.svg" alt="&#60;" class="prev">
+          </div>
+          <div class = "top-city-scroller">
+          </div>
+          <div class="right-scroller flex align-center">
+            <img src="Assets\General Images & Icons\forwardArrow.svg" alt="&#60;" class="next">
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="flex city-header-container mobile-flex-col" >
+          <div class="city-header-div">
+            <p class="city-header">
+              Cities across continents at a glance
+            </p>
+          </div>
+          <div class="flex justify-flex-end mobile-justify-center">
+            <p class="continent-header">Continent Name</p>
+            <img
+              src="Assets\General Images & Icons\arrowUp.svg"
+              alt=""
+              class="continent-arrow arrow-img"
+            />
+            <p class="temperature-header">Temperature</p>
+            <img
+              src="Assets\General Images & Icons\arrowUp.svg"
+              alt=""
+              class="temperature-arrow arrow-img"
+              onclick="callSortByTemperture()"
+            />
+          </div>
+        </div>
+        <div class="grid grid-three-col city-card-container mobile-grid-col">
+        </div>
+      </section>
+    </section>
+  </body>
+</html>
