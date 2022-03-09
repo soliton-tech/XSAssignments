@@ -503,7 +503,6 @@ function sunny() {
       text[a]["temperature"].slice(0, -2) - text[b]["temperature"].slice(0, -2)
   );
   d.reverse();
-  console.log(d);
   if (d.length < 10 && d.length > 3) {
     for (let i = 0; i < d.length; i++) {
       document.querySelector(".mid").append(city1.input(d[i]));
@@ -543,7 +542,6 @@ function snow() {
       text[b]["precipitation"].slice(0, -1)
   );
   d.reverse();
-  console.log(d);
   if (d.length < 10 && d.length > 3) {
     for (let i = 0; i < d.length; i++) {
       document.querySelector(".mid").append(city1.input(d[i]));
@@ -576,7 +574,6 @@ function rain() {
       text[a]["humidity"].slice(0, -1) - text[b]["humidity"].slice(0, -1)
   );
   d.reverse();
-  console.log(d);
   if (d.length < 10 && d.length > 3) {
     for (let i = 0; i < d.length; i++) {
       document.querySelector(".mid").append(city1.input(d[i]));
@@ -609,7 +606,6 @@ function continentsort() {
     }
     arr.sort();
     arr.reverse();
-    console.log(arr);
     for (let i = 0; i < text.length; i++) {
       for (let j = 0; j < text.length; j++) {
         if (
@@ -624,7 +620,6 @@ function continentsort() {
     }
     while (gridend.childElementCount >= 13) {
       gridend.removeChild(gridend.lastChild);
-      console.log("hii");
     }
     h++;
   } else {
@@ -637,8 +632,6 @@ function continentsort() {
       arr.push(text[i].timeZone.slice(0, text[i].timeZone.indexOf("/")));
     }
     arr.sort();
-    // arr.reverse();
-    console.log(arr);
     for (let i = 0; i < text.length; i++) {
       for (let j = 0; j < text.length; j++) {
         if (
@@ -663,8 +656,7 @@ function temperaturesort() {
   if (g % 2 !== 0) {
     if (h % 2 === 0) {
       let f = [];
-      document.getElementById("temperaturesort").src =
-        "../assets/arrowDown.svg";
+      document.getElementById("temperaturesort").src = "../assets/arrowUp.svg";
       while (gridend.hasChildNodes()) {
         gridend.removeChild(gridend.lastChild);
       }
@@ -709,7 +701,6 @@ function temperaturesort() {
       }
       let duplicate = [...new Set(f)];
       let sort = [...duplicate.sort()];
-      // sort.reverse();
       let d = [];
       for (let h = 0; h < sort.length; h++) {
         d = c
@@ -736,7 +727,8 @@ function temperaturesort() {
   } else {
     if (h % 2 === 0) {
       let f = [];
-      document.getElementById("temperaturesort").src = "../assets/arrowUp.svg";
+      document.getElementById("temperaturesort").src =
+        "../assets/arrowDown.svg";
       while (gridend.hasChildNodes()) {
         gridend.removeChild(gridend.lastChild);
       }
@@ -760,7 +752,6 @@ function temperaturesort() {
               text[a]["temperature"].slice(0, -2) -
               text[b]["temperature"].slice(0, -2)
           );
-        // d = d.reverse();
         for (let k = 0; k < d.length; k++) {
           gridend.appendChild(city1.glance(d[k]));
         }
@@ -782,7 +773,6 @@ function temperaturesort() {
       }
       let duplicate = [...new Set(f)];
       let sort = [...duplicate.sort()];
-      // sort.reverse();
       let d = [];
       for (let h = 0; h < sort.length; h++) {
         d = c
