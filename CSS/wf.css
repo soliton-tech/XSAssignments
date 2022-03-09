@@ -1,19 +1,19 @@
-
 [contenteditable]{
     outline: 0px solid transparent;
 }
-body{margin: 0%;scroll-behavior: smooth;
+body{
+    margin: 0%;scroll-behavior: smooth;
     animation: loading 2s;
 }
 @keyframes loading {
-from{
-    opacity: 0;
-    transform: translate(-10deg);
-}  
-to{
-    opacity: 1;
-    transform: translate(0);
-}  
+    from{
+        opacity: 0;
+        transform: translate(-10deg);
+    }  
+    to{
+        opacity: 1;
+        transform: translate(0);
+    }  
 }
 .one{
     height:auto;
@@ -22,13 +22,12 @@ to{
     display: grid;
     background-position: left;
     animation: anime 75s linear 0s infinite normal ;
-   color: white;padding-bottom: 20px;
-   grid-template-columns: 0.5fr 0.35fr 0.3fr 0.01fr 0.4fr 0.27fr  0.27fr  0.27fr  0.27fr  0.27fr  0.27fr 0.27fr  0.27fr  0.27fr  0.27fr  0.27fr;
-   justify-content: space-evenly;
-   
+    color: white;padding-bottom: 20px;
+    grid-template-columns: 0.5fr 0.35fr 0.3fr 0.01fr 0.4fr 0.27fr  0.27fr  0.27fr  0.27fr  0.27fr  0.27fr 0.27fr  0.27fr  0.27fr  0.27fr  0.27fr;
+    justify-content: space-evenly;  
 }
 @keyframes anime{
-    50% {
+    0% {
         background-position: right;
     }
 }
@@ -36,26 +35,27 @@ to{
     text-align: center;
     padding-top: 35px;
 }
-
 .c2{
    
    padding-top: 20%;
     font-size:20px;
     color: white;
-}.sb{width: 102px;
-height:30px;}
+}
+.sb{
+    width: 102px;
+    height:30px;
+}
 .sb:hover{
     background-color: lightblue;
 }
 #time{
     color: rgb(255, 230, 0);
 }
-.c3{padding-top: 29px;
+.c3{
+    padding-top: 29px;
     text-align: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
 }
-
 .line{ 
     border-left: 2px solid white;
     height: 75px; 
@@ -77,15 +77,16 @@ height:30px;}
     text-align: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
 @media screen and (max-width:1100px){
     .one{
         display: flex;
-       flex-wrap: wrap;
-       background-size: cover;
-       justify-content:space-around;padding-left: 10px;
+        flex-wrap: wrap;
+        background-size: cover;
+        justify-content:space-around;padding-left: 10px;
        
-    }.c4{padding-left: 20px;
+    }
+    .c4{
+        padding-left: 20px;
         width:10px
     }
     .c2{
@@ -93,21 +94,22 @@ height:30px;}
     }
 }
 @media screen and (max-width:600px){
-    .one{ background-size: cover;
+    .one{ 
+        background-size: cover;
         display: flex;
-       flex-wrap: wrap;
-       justify-content:space-around;padding-left: 10px;
-       
-    }.c4{padding-left: 20px;
+        flex-wrap: wrap;
+        justify-content:space-around;padding-left: 10px;       
+    }
+    .c4{
+        padding-left: 20px;
         width:10px
     }
     .c2{
         width:120px;padding-top: 20px;
     }
-
 }
 .two{
-  border-radius:15px ;
+    border-radius:15px ;
     height: auto;
     padding-bottom:35px ;
     background: linear-gradient(rgb(0, 255, 149),rgba(40, 40, 109, 0),rgba(250, 249, 249, 0.959));
@@ -126,45 +128,48 @@ height:30px;}
     text-align: end;
 }
 .b2{
-  
     text-align: end;
-  padding-top: 10px;
+    padding-top: 10px;
 }
-#sun,#snow,#rain{position: relative;
-   transform: translate(0,30%);
-    
-}#sb:hover{background-color:lightblue}
+#sun,#snow,#rain{
+    position: relative;
+    transform: translate(0,30%);  
+}
+#sb:hover{
+    background-color:lightblue
+}
 #sb{
     width: 30px;
 }
-
 @media screen and (max-width:700px){
-    .a1{display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 2;
-    text-align: center;
+    .a1{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 2;
+        text-align: center;
     }
     .b1,.b2{
         text-align: center;
     }
 }
-.a22{display: flex;
+.a22{
+    display: flex;
     justify-content: space-around;
     position: relative;
 }
 .a2{
     display: flex;position: relative;
     column-gap: 1.5px;max-width: 1380px;
-    overflow-x: scroll;overflow-y: hidden;scroll-behavior: smooth;
-    
+    overflow-x: scroll;overflow-y: hidden;scroll-behavior: smooth;  
 }
-
-#arrow-left,#arrow-right{min-width: 45px;
+#arrow-left,#arrow-right{
+    min-width: 60px;
     position: inherit;
     top:75px;
-    height:25px;width:30px;   
+    height:25px;  
     border-radius: 50px;
-    cursor: pointer;transform: rotate(90deg);
+    cursor: pointer;
+    transform: rotate(90deg);
 }
 #arrow-left::before,#arrow-left::after{
     content: "";
@@ -178,15 +183,16 @@ height:30px;}
     border-top:transparent;
     border-left: transparent;
     animation: arrow 1s ease-in-out forwards infinite ;
-}#arrow-left::after{animation-delay:0.2s ;
+}
+#arrow-left::after{
+    animation-delay:0.2s ;
     top:5%
 }
-
 #arrow-right::before,#arrow-right::after{ 
     content: "";
     position: absolute;
     top:5%;
-   left:50%;
+    left:50%;
     border: 6px solid lightseagreen;
     height: 20px;
     width:20px;
@@ -194,7 +200,9 @@ height:30px;}
     border-bottom:transparent;
     border-right: transparent;
     animation: arrow1 1s ease-in-out reverse infinite ;
-}#arrow-right::after{animation-delay:0.2s ;
+}
+#arrow-right::after{
+    animation-delay:0.2s ;
     top:25%
 }
 @keyframes arrow{
@@ -202,30 +210,30 @@ height:30px;}
     30%{opacity: 1;}
     60%{opacity: 1;}
     100%{opacity: 0;top:90%}
-}@keyframes arrow1{
+}
+@keyframes arrow1{
     0%{opacity:0}
     30%{opacity: 1;}
     60%{opacity: 1;}
     100%{opacity: 0;top:90%}
 }
-
-
-.a2b{min-width: 245px;
+.a2b{
+    min-width: 245px;
     height: 150px;
     background-image: url('../assets/cities/newyork.svg');
     background-color: black;
     background-size:cover;
     display: grid;
     grid-gap: 2rem;
-  grid-template-columns:1fr 1fr;
-  justify-content: flex-start;
-  font-family: fantasy;
-  color: whitesmoke;
-  padding: 15px;
-  line-height: 200%;
-  border-radius: 15px;
-  transition: 1.5s;
-  animation: block 2s;
+    grid-template-columns:1fr 1fr;
+    justify-content: flex-start;
+    font-family: fantasy;
+    color: whitesmoke;
+    padding: 15px;
+    line-height: 200%;
+    border-radius: 15px;
+    transition: 1.5s;
+    animation: block 2s;
 }
 div.a2b:hover{
     transform: scale(0.9);
@@ -247,7 +255,8 @@ div.a2b:hover{
     grid-gap: 1rem;
     grid-template-columns: 1fr 1fr;   
 }
-#a32,#a31{height:auto; 
+#a32,#a31{
+    height:auto; 
 }
 #a31{
     font-size: 25px;
@@ -273,10 +282,10 @@ div.a2b:hover{
     justify-content: center;
     font-style: normal;
     font-family: sans-serif;
-    font-size: 100%;
-  
+    font-size: 100%;  
 }
-.a4b{border-radius: 15px;
+.a4b{
+    border-radius: 15px;
     width: 250px;
     height: 50px;
     background-color: rgb(230, 230, 219);
@@ -290,12 +299,12 @@ div.a2b:hover{
     padding-bottom: 25px;
     transition: 1.5s;
     animation: block 1s;
-}@keyframes block {
+}
+@keyframes block {
     from{opacity: 0;
     transform:rotate(10deg);}
     to{opacity: 1;
-    transform: rotate(0deg);}
-    
+    transform: rotate(0deg);}    
 }
 div.a4b:hover{
     transform: scale(1.2);
