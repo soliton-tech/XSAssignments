@@ -77,7 +77,7 @@ class complete{
     }
     td3(city){
         const offset1={
-            'Yangon':6.30,'Vienna':6.30,'Anadyr':3,'Moscow':3,'Juba':2,'BangKok':7,'Perth':8,'BrokenHill':3,'Karachi':5,'NewYork':-5,'Seoul':9,'Winnipeg':-6,'Dublin':-8,'LosAngeles':-8,'Nome':1,'Troll':1,'Auckland':13,'Jamaica':-5,'Maseru':2,'London':0,'Kolkata':0
+            'Yangon':6.30,'Vostok':6,'Vienna':6.30,'Anadyr':3,'Moscow':3,'Juba':2,'BangKok':7,'Perth':8,'BrokenHill':3,'Karachi':5,'NewYork':-5,'Seoul':9,'Winnipeg':-6,'Dublin':-8,'LosAngeles':-8,'Nome':1,'Troll':1,'Auckland':13,'Jamaica':-5,'Maseru':2,'London':0,'Kolkata':0
         }
         let offset=offset1[city];
         let d=new Date();

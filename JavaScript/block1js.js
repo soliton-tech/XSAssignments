@@ -136,6 +136,7 @@ function displayWeather(){
             case "Vostok":
                 img.src="../assets/cities/vostok.svg"
                 change(data,20);
+                td('6');
                 break;
             case "Brokenhill":
                 img.src="../assets/cities/brokenhill.svg"
