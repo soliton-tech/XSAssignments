@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>WEATHER CHANNEL</title>
+<head>
+    <meta charset="UTF-8"> <!--define character set used-->
+    <link rel="stylesheet" href="/XSAssignments/CSS/styles.css"/>
+</head>
+<body>
+    <div class="T1001"> <!-- main grid(flex) of 3 columns :T1001-->
+    <div><!--column 1:includes top and bottom part-->
+    <div class="grid-container">
+        <div class="bridge"> <!--image corresponding to option-->
+            <img src="/XSAssignments/assets/kolkata.svg" alt="image" id="img1">
+        </div>
+        <div class="cities"  > <!-- option of cities-->
+            <select id="drop-menu">
+                <option value="none" selected disabled hidden>Select a City</option>
+                <option id="Nome" value="Nome" style="color: rgba(36, 32, 32, 0.61);">Nome</option>
+                <option id="NewYork" value="NewYork" style="color: rgba(36, 32, 32, 0.61);">New York</option>
+                <option id="Jamaica" value="Jamaica" style="color: rgba(36, 32, 32, 0.61);">Jamaica</option>
+                <option id="LosAngeles" value="LosAngeles" style="color: rgba(36, 32, 32, 0.61);">Los Angeles</option>
+                <option id="Winnipeg" value="Winnipeg" style="color: rgba(36, 32, 32, 0.61);">Winnipeg</option>
+                <option id="Juba" value="Juba" style="color: rgba(36, 32, 32, 0.61);">Juba</option>
+                <option id="Maseru" value="Maseru" style="color: rgba(36, 32, 32, 0.61);">Maseru</option>
+                <option id="London" value="London" style="color: rgba(36, 32, 32, 0.61);">London</option>
+                <option id="Vienna" value="Vienna" style="color: rgba(36, 32, 32, 0.61);">Vienna</option>
+                <option id="Moscow" value="Moscow" style="color: rgba(36, 32, 32, 0.61);">Moscow</option>
+                <option id="Dublin" value="Dublin" style="color: rgba(36, 32, 32, 0.61);">Dublin</option>
+                <option id="Karachi" value="Karachi" style="color: rgba(36, 32, 32, 0.61);">Karachi</option>
+                <option id="Kolkata" value="Kolkata" style="color: rgba(36, 32, 32, 0.61);">Kolkata</option>
+                <option id="Yangon" value="Yangon" style="color: rgba(36, 32, 32, 0.61);">Yangon</option>
+                <option id="BangKok" value="BangKok" style="color: rgba(36, 32, 32, 0.61);">BangKok</option>
+                <option id="Seoul" value="Seoul" style="color: rgba(36, 32, 32, 0.61);">Seoul</option>
+                <option id="Anadyr" value="Anadyr" style="color: rgba(36, 32, 32, 0.61);">Anadyr</option>
+                <option id="BrokenHill" value="BrokenHill" style="color: rgba(36, 32, 32, 0.61);">BrokenHill</option>
+                <option id="Perth" value="Perth" style="color: rgba(36, 32, 32, 0.61);">Perth</option>
+                <option id="Auckland" value="Auckland" style="color: rgba(36, 32, 32, 0.61);">Auckland</option>
+                <option id="Vostok" value="Vostok" style="color: rgba(36, 32, 32, 0.61);">Vostok</option>
+                <option id="Troll" value="Troll" style="color: rgba(36, 32, 32, 0.61);">Troll</option>
+            </select>
+        </div>
+    </div>
+    <div id="current-time">
+        <span style="color:burlywood;
+                     font-size: x-large;" id="ct-1"> 10:10 </span>
+        <span style="font-size: medium;
+                     color:burlywood;" id="ct-2"> :44 </span>
+        <span> 
+            <img src="/XSAssignments/assets/amState.svg" alt="AM" style="width: 50px;" id="am-pm">
+        </span>
+        <p style="margin:5px;
+                  font-size: larger;
+                  color: antiquewhite;" 
+                  id="current-date">
+            01-May-2022
+        </p>
+    </div>
+    </div> <!--end of column 1-->
+    <div class="column2"> <!--column 2-->
+        <div id="s1-forecast">
+            <div id="vertical-line">
+                <p> Temp<sup>o</sup>C</p>
+                <p class="s1-val" id="temp-c"> 25<sup>o</sup>C</p>
+            </div>
+            <div>
+                <p>Humidity</p>
+                <p class="s1-val" id="humid"> 26%</p>
+            </div>
+            <div id="vertical-line">
+                <p> Temp F</p>
+                <p class="s1-val" id="temp-f"> 78 F</p>
+            </div>
+            <div>
+                <p> Precipitation</p>
+                <p class="s1-val" id="precip"> 0%</p>
+            </div>
+        </div>
+    </div> <!-- end of column2-->
+    <div class="column3">  <!--column 3: hourly forecast-->
+        <table id="hourly-info">
+            <tr style="text-align: -webkit-center;">
+                <td style="padding: 0 15px 0 15px">NOW</td>
+                <td style="padding: 0 15px 0 15px"> </td>
+                <td style="padding: 0 15px 0 15px" id="t1">11 AM</td>
+                <td style="padding: 0 15px 0 15px"> </td>
+                <td style="padding: 0 15px 0 15px" id="t2">12 PM</td>
+                <td style="padding: 0 15px 0 15px"> </td>
+                <td style="padding: 0 15px 0 15px" id="t3">1 PM</td>
+                <td style="padding: 0 15px 0 15px"> </td>
+                <td style="padding: 0 15px 0 15px" id="t4">2 PM</td>
+                <td style="padding: 0 15px 0 15px"> </td>
+                <td style="padding: 0 15px 0 15px" id="t5">3 PM</td>
+            </tr>
+            <tr style="height: 15px;"></tr>
+            <tr style="text-align: -webkit-center;">
+                <td>|</td>
+                <td>|</td>
+                <td>|</td>
+                <td>|</td>
+                <td>|</td>
+                <td>|</td>
+                <td>|</td>
+                <td>|</td>
+                <td>|</td>
+                <td>|</td>
+                <td>|</td>
+            </tr>
+            <tr style="height: 15px;"></tr>
+            <tr style="text-align: -webkit-center;">
+                <td><img src="/XSAssignments/assets/cloudyIcon.svg" id="im1" style="background-color: rgba(14, 14, 20, 0.308);"></td>
+                <td> </td>
+                <td><img src="/XSAssignments/assets/rainyIconBlack.svg" id="im2" style="background-color: rgba(14, 14, 20, 0.308);"></td>
+                <td> </td>
+                <td><img src="/XSAssignments/assets/windyIcon.svg" id="im3" style="background-color: rgba(14, 14, 20, 0.308);"></td>
+                <td> </td>
+                <td><img src="/XSAssignments/assets/rainyIconBlack.svg" id="im4" style="background-color: rgba(14, 14, 20, 0.308);"></td>
+                <td> </td>
+                <td><img src="/XSAssignments/assets/windyIcon.svg" id="im5" style="background-color: rgba(14, 14, 20, 0.308);"></td>
+                <td> </td>
+                <td><img src="/XSAssignments/assets/cloudyIcon.svg" id="im6" style="background-color: rgba(14, 14, 20, 0.308);"></td>
+            </tr>
+            <tr style="color: rgba(20, 15, 15, 0.815);text-align: -webkit-center;">
+                <td id="no1">6</td>
+                <td> </td>
+                <td id="no2">7</td>
+                <td> </td>
+                <td id="no3">7</td>
+                <td> </td>
+                <td id="no4">8</td>
+                <td> </td>
+                <td id="no5">8</td>
+                <td> </td>
+                <td id="no6">6</td>
+            </tr>
+        </table>
+    </div> <!--end of column 3-->
+    </div> <!-- end of main grid: T1001 -->
+    
+    <div class="T1002"> <!--T1002 part 1: title ad icons-->
+        <div class="T1002-1" >
+            <div class="top-cities"> 
+                Top cities around the world
+            </div>
+            <div class="spinner">
+                <input type="image" src="/XSAssignments/assets/sunnyIcon.svg" style="margin-inline: 10px" id="sunnycity"> 
+                <input type="image" src="/XSAssignments/assets/snowflakeIcon.svg"  style="margin-inline: 10px" id="snowcity">
+                <input type="image" src="/XSAssignments/assets/rainyIconBlack.svg" style="margin-inline: 10px" id="raincity">
+                <div style="color: rgba(252, 250, 250, 0.527);margin-inline: 10px"> Display Top </div>
+                <input type="number" id="no-city" min="1" max="15" required>   
+            </div>
+        </div>
+        <section id="card-carousel">
+            <span id="slider-btn-left">&#139</span>
+            <span id="slider-btn-right">&#155</span>
+        </section> <!-- grid for displaying card-s-->
+        <div class="T1002-2"> <!-- contains horizontal cards-->
+            <div class="card-1">
+                <div>New Delhi</div>
+                <div style="padding-left: 60px">
+                    <img src="/XSAssignments/assets/sunnyIcon.svg" style="width: 20px;"> 25<sup>o</sup>C
+                </div>
+                <div>
+                    <img src="/XSAssignments/assets/humidityIcon.svg"> 53% <br>
+                    <img src="/XSAssignments/assets/windyIcon.svg"> 5km/hr <br>
+                    <img src="/XSAssignments/assets/precipitationIcon.svg"> 10% <br>
+                </div>
+                <div>
+                    <img src="/XSAssignments/assets/london.svg" style="width: 130px;">
+                </div>
+            </div>
+            <div class="card-1">
+                <div>New Delhi</div>
+                <div style="padding-left: 60px">
+                    <img src="/XSAssignments/assets/sunnyIcon.svg" style="width: 20px;"> 25<sup>o</sup>C
+                </div>
+                <div>
+                    <img src="/XSAssignments/assets/humidityIcon.svg"> 53% <br>
+                    <img src="/XSAssignments/assets/windyIcon.svg"> 5km/hr <br>
+                    <img src="/XSAssignments/assets/precipitationIcon.svg"> 10% <br>
+                </div>
+                <div>
+                    <img src="/XSAssignments/assets/london.svg" style="width: 130px;">
+                </div>
+            </div>
+            <div class="card-1">
+                <div>New Delhi</div>
+                <div style="padding-left: 60px">
+                    <img src="/XSAssignments/assets/sunnyIcon.svg" style="width: 20px;"> 25<sup>o</sup>C
+                </div>
+                <div>
+                    <img src="/XSAssignments/assets/humidityIcon.svg"> 53% <br>
+                    <img src="/XSAssignments/assets/windyIcon.svg"> 5km/hr <br>
+                    <img src="/XSAssignments/assets/precipitationIcon.svg"> 10% <br>
+                </div>
+                <div>
+                    <img src="/XSAssignments/assets/london.svg" style="width: 130px;">
+                </div>
+            </div>
+            <div class="card-1">
+                <div>New Delhi</div>
+                <div style="padding-left: 60px">
+                    <img src="/XSAssignments/assets/sunnyIcon.svg" style="width: 20px;"> 25<sup>o</sup>C
+                </div>
+                <div>
+                    <img src="/XSAssignments/assets/humidityIcon.svg"> 53% <br>
+                    <img src="/XSAssignments/assets/windyIcon.svg"> 5km/hr <br>
+                    <img src="/XSAssignments/assets/precipitationIcon.svg"> 10% <br>
+                </div>
+                <div>
+                    <img src="/XSAssignments/assets/london.svg" style="width: 130px;">
+                </div>
+            </div>
+            <div class="card-1">
+                <div>New Delhi</div>
+                <div style="padding-left: 60px">
+                    <img src="/XSAssignments/assets/sunnyIcon.svg" style="width: 20px;"> 25<sup>o</sup>C
+                </div>
+                <div>
+                    <img src="/XSAssignments/assets/humidityIcon.svg"> 53% <br>
+                    <img src="/XSAssignments/assets/windyIcon.svg"> 5km/hr <br>
+                    <img src="/XSAssignments/assets/precipitationIcon.svg"> 10% <br>
+                </div>
+                <div>
+                    <img src="/XSAssignments/assets/london.svg" style="width: 130px;">
+                </div>
+            </div>
+        </div> <!--end of cards-->
+    </div><!-- end of T1002-->
+    <div class="T1003"> <!-- table of cities-->
+        <div class="T1003-1"> <!--top section-->
+            <div style="padding-left: 30px;"> Cities across continents at a glance</div>
+            <div> 
+                Continents <input type="image" id="sort-cont" src="/XSAssignments/assets/arrowDown.svg" 
+                            style="width: 20px;vertical-align: bottom;">
+                Temperature <input type="image" id="sort-temp" src="/XSAssignments/assets/arrowUp.svg"
+                             style="width: 20px;vertical-align: bottom;">
+            </div>
+        </div>
+        
+        <div id="continent-cards"></div> <!-- creates sorted cards-->
+        
+        <div class="T1003-2"> <!-- 4x3 grid of cards -->
+            <div class="card2">
+                <table style="width:100%;padding:5px;">
+                    <tbody>
+                    <tr>
+                        <td style="color: rgba(228, 225, 91, 0.884);"> Asia</td>
+                        <td style="float:right;font-size: x-large;"> 38<sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <td style="color: rgba(255, 255, 255, 0.651);"> Delhi, 10:10 AM</td>
+                        <td style="float:right"><img src="/XSAssignments/assets/humidityIcon.svg">63%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card2">
+                <table style="width:100%;padding:5px;">
+                    <tbody>
+                    <tr>
+                        <td style="color: rgba(228, 225, 91, 0.884);"> Africa</td>
+                        <td style="float:right;font-size: x-large;"> 38<sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <td style="color: rgba(255, 255, 255, 0.651);"> Egypt, 10:10 AM</td>
+                        <td style="float:right"><img src="/XSAssignments/assets/humidityIcon.svg">53%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card2">
+                <table style="width:100%;padding:5px;">
+                    <tbody>
+                    <tr>
+                        <td style="color: rgba(228, 225, 91, 0.884);"> Europe</td>
+                        <td style="float:right;font-size: x-large;"> 35<sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <td style="color: rgba(255, 255, 255, 0.651);"> London, 10:10 AM</td>
+                        <td style="float:right"><img src="/XSAssignments/assets/humidityIcon.svg">13%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card2">
+                <table style="width:100%;padding:5px;">
+                    <tbody>
+                    <tr>
+                        <td style="color: rgba(228, 225, 91, 0.884);"> Asia</td>
+                        <td style="float:right;font-size: x-large;"> 38<sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <td style="color: rgba(255, 255, 255, 0.651);"> Chennai, 10:10 AM</td>
+                        <td style="float:right"><img src="/XSAssignments/assets/humidityIcon.svg">63%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card2">
+                <table style="width:100%;padding:5px;">
+                    <tbody>
+                    <tr>
+                        <td style="color: rgba(228, 225, 91, 0.884);"> Africa</td>
+                        <td style="float:right;font-size: x-large;"> 38<sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <td style="color: rgba(255, 255, 255, 0.651);"> London, 10:10 AM</td>
+                        <td style="float:right"><img src="/XSAssignments/assets/humidityIcon.svg">9%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card2">
+                <table style="width:100%;padding:5px;">
+                    <tbody>
+                    <tr>
+                        <td style="color: rgba(228, 225, 91, 0.884);"> Europe</td>
+                        <td style="float:right;font-size: x-large;"> 26<sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <td style="color: rgba(255, 255, 255, 0.651);"> London, 10:10 AM</td>
+                        <td style="float:right"><img src="/XSAssignments/assets/humidityIcon.svg">63%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card2">
+                <table style="width:100%;padding:5px;">
+                    <tbody>
+                    <tr>
+                        <td style="color: rgba(228, 225, 91, 0.884);"> Asia</td>
+                        <td style="float:right;font-size: x-large;"> 38<sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <td style="color: rgba(255, 255, 255, 0.651);"> Delhi, 10:10 AM</td>
+                        <td style="float:right"><img src="/XSAssignments/assets/humidityIcon.svg">63%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card2">
+                <table style="width:100%;padding:5px;">
+                    <tbody>
+                    <tr>
+                        <td style="color: rgba(228, 225, 91, 0.884);"> Europe</td>
+                        <td style="float:right;font-size: x-large;"> 38<sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <td style="color: rgba(255, 255, 255, 0.651);"> London, 10:10 AM</td>
+                        <td style="float:right"><img src="/XSAssignments/assets/humidityIcon.svg">63%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card2">
+                <table style="width:100%;padding:5px;">
+                    <tbody>
+                    <tr>
+                        <td style="color: rgba(228, 225, 91, 0.884);"> South America</td>
+                        <td style="float:right;font-size: x-large;"> 38<sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <td style="color: rgba(255, 255, 255, 0.651);"> Brazil, 10:10 AM</td>
+                        <td style="float:right"><img src="/XSAssignments/assets/humidityIcon.svg">63%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card2">
+                <table style="width:100%;padding:5px;">
+                    <tbody>
+                    <tr>
+                        <td style="color: rgba(228, 225, 91, 0.884);"> Asia</td>
+                        <td style="float:right;font-size: x-large;"> 38<sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <td style="color: rgba(255, 255, 255, 0.651);"> Delhi, 10:10 AM</td>
+                        <td style="float:right"><img src="/XSAssignments/assets/humidityIcon.svg">63%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card2">
+                <table style="width:100%;padding:5px;">
+                    <tbody>
+                    <tr>
+                        <td style="color: rgba(228, 225, 91, 0.884);"> Europe</td>
+                        <td style="float:right;font-size: x-large;"> 38<sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <td style="color: rgba(255, 255, 255, 0.651);"> London, 10:10 AM</td>
+                        <td style="float:right"><img src="/XSAssignments/assets/humidityIcon.svg">63%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card2">
+                <table style="width:100%;padding:5px;">
+                    <tbody>
+                    <tr>
+                        <td style="color: rgba(228, 225, 91, 0.884);"> South America</td>
+                        <td style="float:right;font-size: x-large;"> 38<sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <td style="color: rgba(255, 255, 255, 0.651);"> Brazil, 10:10 AM</td>
+                        <td style="float:right"><img src="/XSAssignments/assets/humidityIcon.svg">63%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div> <!-- end of cards-->
+    </div> <!-- end of T1003-->
+    <script src="/XSAssignments/JavaScript/index.js"></script>
+</body>
+</html>
