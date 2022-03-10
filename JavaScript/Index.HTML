@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Monitor</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <script type="text/javascript" src="../Assets/Javascript/data.js" defer></script>
+    <script type="module" src="Scrpits/main.js" defer></script>
+</head>
+<body>
+    <header id="cityMonitorGrid">
+        <div id="cityDetailsGrid">
+            <img id="cityIcon" src="../Assets/HTML & CSS/Icons for cities/bangkok.svg">
+            <div class="empty"></div>
+            <div id="citySelectionContainer">
+                <select name="citySelection" class="selection">
+                    <option value="anadyr">Anadyr</option>
+                    <option value="auckland">Auckland</option>
+                    <option value="bangkok" selected>Bangkok</option>
+                </select>
+            </div>
+            <div class="dateTime">
+                <div>
+                    <div class="time">10:10:<small>44</small></div>
+                    <img class="AMPM" src="../Assets/HTML & CSS/General Images & Icons/amState.svg">
+                    <div class="date">01-Mar-2020</div>
+                </div>
+            </div>
+            <div id="tempC">
+                <div>Temp°C</div>
+                <div class="values">25 C</div>
+            </div>
+            <div id="tempF">
+                <div>Temp F</div>
+                <div class="values">78 F</div>
+            </div>
+            <div id="humidity">
+                <div>Humidity</div>
+                <div class="values">26 %</div>
+            </div>
+            <div id="precipitation">
+                <div>Precipitation</div>
+                <div class="values">0 %</div>
+            </div>
+        </div>
+        <div id="forecast">
+            <div class="hrForecast">
+                <div class="forecastTime">Now</div>
+                <div class="forecastTimeSymbol">|</div>
+                <div class="forecastWeatherIcon"><img src="../Assets/HTML & CSS/Weather Icons/cloudyIcon.svg"></div>
+                <div class="forecastTemperature">32°C</div>
+            </div>
+            <div class="centerHrForecast">
+                <div class="forecastTime"></div>
+                <div class="forecastTimeSymbol">|</div>
+            </div>
+            <div class="hrForecast">
+                <div class="forecastTime">11</div>
+                <div class="forecastTimeSymbol">|</div>
+                <div class="forecastWeatherIcon"><img src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg"></div>
+                <div class="forecastTemperature">32°C</div>
+            </div>
+            <div class="centerHrForecast">
+                <div class="forecastTime"></div>
+                <div class="forecastTimeSymbol">|</div>
+            </div>
+            <div class="hrForecast">
+                <div class="forecastTime">12</div>
+                <div class="forecastTimeSymbol">|</div>
+                <div class="forecastWeatherIcon"><img src="../Assets/HTML & CSS/Weather Icons/precipitationIcon.svg"></div>
+                <div class="forecastTemperature">32°C</div>
+            </div>
+            <div class="centerHrForecast">
+                <div class="forecastTime"></div>
+                <div class="forecastTimeSymbol">|</div>
+            </div>
+            <div class="hrForecast">
+                <div class="forecastTime">1</div>
+                <div class="forecastTimeSymbol">|</div>
+                <div class="forecastWeatherIcon"><img src="../Assets/HTML & CSS/Weather Icons/rainyIcon.svg"></div>
+                <div class="forecastTemperature">32°C</div>
+            </div>
+            <div class="centerHrForecast">
+                <div class="forecastTime"></div>
+                <div class="forecastTimeSymbol">|</div>
+            </div>
+            <div class="hrForecast">
+                <div class="forecastTime">2</div>
+                <div class="forecastTimeSymbol">|</div>
+                <div class="forecastWeatherIcon"><img src="../Assets/HTML & CSS/Weather Icons/sunnyIcon.svg"></div>
+                <div class="forecastTemperature">32°C</div>
+            </div>
+            <div class="centerHrForecast">
+                <div class="forecastTime"></div>
+                <div class="forecastTimeSymbol">|</div>
+            </div>
+            <div class="hrForecast">
+                <div class="forecastTime">3</div>
+                <div class="forecastTimeSymbol">|</div>
+                <div class="forecastWeatherIcon"><img src="../Assets/HTML & CSS/Weather Icons/windyIcon.svg"></div>
+                <div class="forecastTemperature">32°C</div>
+            </div>
+            <div class="centerHrForecast">
+                <div class="forecastTime"></div>
+                <div class="forecastTimeSymbol">|</div>
+            </div>
+        </div>
+    </header>
+    <section id="secondarySec">
+        <section id="topCityWeather">
+            <div id="weatherSelection">
+                <p>Top cities around world</p>
+                <ul>
+                    <button class="btn selectedbtn" id="sunny"><img class="btnIcon" src="../Assets/HTML & CSS/Weather Icons/sunnyIcon.svg"></button>
+                    <button class="btn" id="cold"><img class="btnIcon" src="../Assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></button>
+                    <button class="btn" id="rainy"><img class="btnIcon" src="../Assets/HTML & CSS/Weather Icons/rainyIcon.svg"></button>
+                </ul>
+                <label for="numOfCities">Display Top:</label>
+                <input type="number" id="numOfCities" name="numOfCities" min="3" max="10" value="3">
+            </div>
+            <div id="cityCards"> 
+                <div class="cityCard">
+                    <div class="primary">
+                        <div class="cityName">Bangkok</div>
+                        <div class="temperature">
+                            <img class="icon" src="../Assets/HTML & CSS/Weather Icons/sunnyIcon.svg">
+                            <span class="text">25 C</span>
+                        </div>
+                    </div>
+                    <div class="secondary">
+                        <div class="time">
+                            <div class = "text">10:00:00 AM</div>
+                        </div>
+                        <div class="date">
+                            <div class = "text">2-Mar-2020</div>
+                        </div>
+                        <div class="humidity">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                            <div class = "text">53%</div>
+                        </div>
+                        <div class="precipitation">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/precipitationIcon.svg">
+                            <div class = "text">10%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="primary">
+                        <div class="cityName">Bangkok</div>
+                        <div class="temperature">
+                            <img class="icon" src="../Assets/HTML & CSS/Weather Icons/sunnyIcon.svg">
+                            <span class="text">25 C</span>
+                        </div>
+                    </div>
+                    <div class="secondary">
+                        <div class="humidity">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                            <div class = "text">53%</div>
+                        </div>
+                        <div class="windy">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/windyIcon.svg">
+                            <div class = "text">5 km/hr</div>
+                        </div>
+                        <div class="precipitation">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/precipitationIcon.svg">
+                            <div class = "text">10%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="primary">
+                        <div class="cityName">Bangkok</div>
+                        <div class="temperature">
+                            <img class="icon" src="../Assets/HTML & CSS/Weather Icons/sunnyIcon.svg">
+                            <span class="text">25 C</span>
+                        </div>
+                    </div>
+                    <div class="secondary">
+                        <div class="humidity">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                            <div class = "text">53%</div>
+                        </div>
+                        <div class="windy">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/windyIcon.svg">
+                            <div class = "text">5 km/hr</div>
+                        </div>
+                        <div class="precipitation">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/precipitationIcon.svg">
+                            <div class = "text">10%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="primary">
+                        <div class="cityName">Bangkok</div>
+                        <div class="temperature">
+                            <img class="icon" src="../Assets/HTML & CSS/Weather Icons/sunnyIcon.svg">
+                            <span class="text">25 C</span>
+                        </div>
+                    </div>
+                    <div class="secondary">
+                        <div class="humidity">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                            <div class = "text">53%</div>
+                        </div>
+                        <div class="windy">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/windyIcon.svg">
+                            <div class = "text">5 km/hr</div>
+                        </div>
+                        <div class="precipitation">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/precipitationIcon.svg">
+                            <div class = "text">10%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="primary">
+                        <div class="cityName">Bangkok</div>
+                        <div class="temperature">
+                            <img class="icon" src="../Assets/HTML & CSS/Weather Icons/sunnyIcon.svg">
+                            <span class="text">25 C</span>
+                        </div>
+                    </div>
+                    <div class="secondary">
+                        <div class="humidity">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                            <div class = "text">53%</div>
+                        </div>
+                        <div class="windy">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/windyIcon.svg">
+                            <div class = "text">5 km/hr</div>
+                        </div>
+                        <div class="precipitation">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/precipitationIcon.svg">
+                            <div class = "text">10%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="primary">
+                        <div class="cityName">Bangkok</div>
+                        <div class="temperature">
+                            <img class="icon" src="../Assets/HTML & CSS/Weather Icons/sunnyIcon.svg">
+                            <span class="text">25 C</span>
+                        </div>
+                    </div>
+                    <div class="secondary">
+                        <div class="humidity">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                            <div class = "text">53%</div>
+                        </div>
+                        <div class="windy">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/windyIcon.svg">
+                            <div class = "text">5 km/hr</div>
+                        </div>
+                        <div class="precipitation">
+                            <img class = "icon" src="../Assets/HTML & CSS/Weather Icons/precipitationIcon.svg">
+                            <div class = "text">10%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="continentWeather">
+            <div class="title">
+                <div class="heading">Cities across continent at a Glance</div>
+                <div class="sorter continent">
+                    <!-- <button class="btn"><span class="text">Continent Name</span><img class="icon" src="../Assets/HTML & CSS/General Images & Icons/arrowDown.svg"></button> -->
+                    <button class="btn"><span class="text">Continent Name</span><span class="icon down"></span></button>
+                </div>
+                <div class="sorter temp">
+                    <button class="btn"><span class="text">Temperature</span><span class="icon down"></span></button>
+                </div>
+            </div>
+            <div class="cityCards">
+                <div class="cityCard">
+                    <div class="continentName">Asia</div>
+                    <div class="temperature">36 C</div>
+                    <div class="cityDetail">
+                        <span class="city">Coimbatore</span>
+                        <span class="time">10:10&nbsp;AM</span>
+                    </div>
+                    <div class="humidity">
+                        <img class="icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                        <span class="text">53%</span>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="continentName">Asia</div>
+                    <div class="temperature">36 C</div>
+                    <div class="cityDetail">
+                        <span class="city">Coimbatore</span>
+                        <span class="time">10:10&nbsp;AM</span>
+                    </div>
+                    <div class="humidity">
+                        <img class="icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                        <span class="text">53%</span>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="continentName">Asia</div>
+                    <div class="temperature">36 C</div>
+                    <div class="cityDetail">
+                        <span class="city">Coimbatore</span>
+                        <span class="time">10:10&nbsp;AM</span>
+                    </div>
+                    <div class="humidity">
+                        <img class="icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                        <span class="text">53%</span>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="continentName">Asia</div>
+                    <div class="temperature">36 C</div>
+                    <div class="cityDetail">
+                        <span class="city">Coimbatore</span>
+                        <span class="time">10:10&nbsp;AM</span>
+                    </div>
+                    <div class="humidity">
+                        <img class="icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                        <span class="text">53%</span>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="continentName">Asia</div>
+                    <div class="temperature">36 C</div>
+                    <div class="cityDetail">
+                        <span class="city">Coimbatore,</span>
+                        <span class="time">10:10&nbsp;AM</span>
+                    </div>
+                    <div class="humidity">
+                        <img class="icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                        <span class="text">53%</span>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="continentName">Asia</div>
+                    <div class="temperature">36 C</div>
+                    <div class="cityDetail">
+                        <span class="city">Coimbatore</span>
+                        <span class="time">10:10&nbsp;AM</span>
+                    </div>
+                    <div class="humidity">
+                        <img class="icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                        <span class="text">53%</span>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="continentName">Asia</div>
+                    <div class="temperature">36 C</div>
+                    <div class="cityDetail">
+                        <span class="city">Coimbatore</span>
+                        <span class="time">10:10&nbsp;AM</span>
+                    </div>
+                    <div class="humidity">
+                        <img class="icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                        <span class="text">53%</span>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="continentName">Asia</div>
+                    <div class="temperature">36 C</div>
+                    <div class="cityDetail">
+                        <span class="city">Coimbatore</span>
+                        <span class="time">10:10&nbsp;AM</span>
+                    </div>
+                    <div class="humidity">
+                        <img class="icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                        <span class="text">53%</span>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="continentName">Asia</div>
+                    <div class="temperature">36 C</div>
+                    <div class="cityDetail">
+                        <span class="city">Coimbatore</span>
+                        <span class="time">10:10&nbsp;AM</span>
+                    </div>
+                    <div class="humidity">
+                        <img class="icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                        <span class="text">53%</span>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="continentName">Asia</div>
+                    <div class="temperature">36 C</div>
+                    <div class="cityDetail">
+                        <span class="city">Coimbatore</span>
+                        <span class="time">10:10&nbsp;AM</span>
+                    </div>
+                    <div class="humidity">
+                        <img class="icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                        <span class="text">53%</span>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="continentName">Asia</div>
+                    <div class="temperature">36 C</div>
+                    <div class="cityDetail">
+                        <span class="city">Coimbatore</span>
+                        <span class="time">10:10&nbsp;AM</span>
+                    </div>
+                    <div class="humidity">
+                        <img class="icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                        <span class="text">53%</span>
+                    </div>
+                </div>
+                <div class="cityCard">
+                    <div class="continentName">Asia</div>
+                    <div class="temperature">36 C</div>
+                    <div class="cityDetail">
+                        <span class="city">Coimbatore</span>
+                        <span class="time">10:10&nbsp;AM</span>
+                    </div>
+                    <div class="humidity">
+                        <img class="icon" src="../Assets/HTML & CSS/Weather Icons/humidityIcon.svg">
+                        <span class="text">53%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- <script type="text/javascript" src="../Assets/Javascript/data.js"></script>
+    <script type="module" src="Scrpits/main.js"></script> -->
+</body>
+</html>

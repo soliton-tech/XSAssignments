@@ -1,0 +1,437 @@
+
+
+/*-----------------------------General----------------------------------*/
+:root{
+    --sandal: rgba(255,241,185,1);
+    --grey:rgba(94,94,95,1);
+    --black-light:rgba(63,64,64,1);
+    --black-dark:rgba(39,38,37,1); 
+}
+
+*{
+    color: whitesmoke;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    font-weight: 100;
+    margin:0;
+}
+
+.empty{
+   
+}
+
+.selection{
+    background-color: var(--grey);
+    border: 0;
+    width: 100%;
+    height: 100%;
+    /* margin: 10px 10px 15px 10px; */
+    font-size: 20px;
+    outline:none;
+}
+
+html,body{
+    background-image:url("../../Assets/HTML & CSS/General Images & Icons/background.svg") ;
+    /* background-color: red; */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*-----------------------------Header----------------------------------*/
+#cityMonitorGrid{
+    /* background-color: red; */
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: max-content auto;
+    padding-bottom: 1em;
+    align-items: center;
+    column-gap: 1em;
+ }
+
+ /*---------------------------City Temperature Details-----------------*/
+ 
+ #cityDetailsGrid{
+     display: grid;
+     grid-auto-flow: column; /*Defines which way the elements should get filled*/
+     grid-template-columns: repeat(3,auto);
+     grid-template-rows: auto auto;
+     align-items:center;
+     column-gap: 1em;
+     row-gap: 0.25em
+ }
+
+#citySelectionContainer{
+    display:flex;
+}
+
+#cityIcon{
+    width:75px;
+    height:75px;
+}
+
+#cityDetailsGrid .dateTime{
+   
+}
+
+#cityDetailsGrid .time{
+    display: inline-block;
+    padding-bottom:10px;
+}
+
+#cityDetailsGrid .AMPM{
+    display:inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+#cityDetailsGrid #tempC{
+    padding-right:1rem;
+    border-right-style: solid;
+    border-width: 1px;
+    border-color: whitesmoke;
+}
+
+#cityDetailsGrid .values{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#cityDetailsGrid #tempF{
+    padding-right:1rem;
+    border-right-style: solid;
+    border-width: 1px;
+    border-color: whitesmoke;
+}
+
+#cityDetailsGrid #humidity{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#cityDetailsGrid #precipitation{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+ /*---------------------------City Forecast-----------------*/
+ #forecast{
+     height: 75%;
+     display:flex;
+     justify-content: space-evenly;
+     align-items: stretch;
+ }
+
+ .hrForecast{
+     display: grid;
+     grid-template-rows: repeat(auto-fill,25%);
+     align-items: center;
+     place-items: center;
+ }
+
+ .centerHrForecast{
+    flex-shrink: 1;
+    display: grid;
+    grid-template-rows: repeat(auto-fill,25%);
+    align-items: center;
+    place-items: center;
+ }
+
+ .centerHrForecast>div{
+     /* font-weight: 100; */
+     color: rgb(185, 184, 184);
+ }
+
+ .forecastWeatherIcon>img{
+     height: 20px;
+     width: 20px;
+ }
+
+  /*========================Secondary Section================*/
+  #secondarySec{
+    box-sizing: border-box;
+    width: 100%;
+    background-color: var(--black-dark);
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: max-content 45vh;
+    padding: 1vh 3vw 2vh 3vw;
+  }
+
+
+ /*------------------------topCityWeather--------------------------*/
+ #topCityWeather{
+     height: 30vh;
+     display:grid;
+     grid-template-rows: max-content auto;
+ }
+
+ #topCityWeather #weatherSelection {
+     display: grid;
+     grid-template-columns: auto max-content max-content max-content;
+     padding:0.5em 0.5em 0 0.5em;
+     align-items: center;
+ }
+
+ #topCityWeather #weatherSelection p{
+     text-align: center;
+ }
+
+ #topCityWeather #weatherSelection .btn{
+    background-color: var(--black-dark);
+    border:0;
+    display:inline-block;
+    padding: 0.25em 0.25em 0 0.25em;
+}
+
+#topCityWeather #weatherSelection .btn:hover{
+    background-color: var(--grey);
+}
+
+#topCityWeather #weatherSelection .btnIcon{
+    height:1.5em;
+    width: 1.5em;
+}
+
+#topCityWeather #weatherSelection .selectedbtn{
+    background-color: var(--black-dark);
+    box-shadow: inset 0em -0.1em rgb(0, 204, 255);
+}
+
+#topCityWeather #weatherSelection label{
+    padding:0 .25em
+}
+ 
+ #topCityWeather #weatherSelection #numOfCities{
+     background-color: var(--black-light);
+     text-align: center;
+     width:2em;
+     border-style:hidden;
+     outline:none;
+     margin-left: 0.25em;   
+ }
+
+ #topCityWeather #cityCards{
+     display:flex;
+     overflow-x: scroll;
+     /* justify-content: space-evenly; */
+     column-gap: 0.25em;
+     padding: 0.5em;
+ }
+
+ #topCityWeather .cityCard{
+     min-width:200px;
+     width: 17%;
+     background-color: var(--black-light);
+     /* opacity: 0.8; */
+     padding: 0.5em;
+     /* box-shadow:-2px 2px 5px rgb(233, 231, 230) ; */
+     transition-duration: 200ms;
+     display:grid;
+     /* row-gap: 0.25em;  */
+ }
+
+ #topCityWeather .cityCard:hover{
+     transform: translateY(-5px);
+ }
+
+ #topCityWeather .primary{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#topCityWeather .secondary{
+    background-image: url("../../Assets/HTML & CSS/Icons for cities/juba.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+    margin: 0.25em 0 0 0;
+}
+ #topCityWeather .cityName{
+    font-size: 20px;
+ }
+
+ #topCityWeather .temperature,#topCityWeather .time,#topCityWeather .date,#topCityWeather .humidity,#topCityWeather .precipitation{
+     display: flex;
+     align-items: center;
+ }
+
+ #topCityWeather .icon{
+     display:inline-block;
+     height:1em;
+     width: 1em;
+ }
+
+ #topCityWeather .text{
+     display: inline-block;
+     font-size: 14px;
+     font-weight: 200; 
+ }
+
+ #topCityWeather .temperature>.icon{
+    height:1.5em;
+    width: 1.5em;
+ }
+
+ #topCityWeather .temperature>.text{
+   font-size: 16px;
+ }
+
+ /*------------------------Continient Weather---------------------*/
+#continentWeather{
+    display:grid;
+    color:var(--black-dark);
+    padding: 0.25vh 0 0.25vh 0;
+}
+
+#continentWeather .icon{
+    height:0.75em;
+    width: 0.75em;
+}
+
+#continentWeather .text{
+    font-size: 14px;
+    font-weight: 200; 
+}
+
+#continentWeather .sorter.continent .down{
+    background:url("/Weather Monitor/Assets/HTML & CSS/General Images & Icons/arrowDown.svg") no-repeat;
+    display:inline-block;
+}
+
+#continentWeather .sorter.continent .up{
+    background:url("/Weather Monitor/Assets/HTML & CSS/General Images & Icons/arrowUp.svg") no-repeat;
+    display:inline-block;
+}
+
+#continentWeather .sorter.temp .down{
+    background:url("/Weather Monitor/Assets/HTML & CSS/General Images & Icons/arrowDown.svg") no-repeat;
+    display:inline-block;
+}
+#continentWeather .sorter.temp .up{
+    background:url("/Weather Monitor/Assets/HTML & CSS/General Images & Icons/arrowUp.svg") no-repeat;
+    display:inline-block;
+}
+
+#continentWeather .title{
+    display: grid;
+    grid-template-columns: auto max-content max-content;
+}
+
+#continentWeather .heading{
+    display: flex;
+    font-size: 20px;
+    padding-bottom: 0.5em;
+    align-items: center;
+}
+
+#continentWeather .sorter{
+    display: flex;
+    flex-direction: row;;
+    align-items: center;
+    column-gap: 0.5em;
+    padding: 0 0 0 0.5em;
+}
+
+#continentWeather .btn{
+    background-color: var(--black-dark);
+    border:0;
+    display:inline-block;
+    opacity: 0.5;
+}
+
+#continentWeather .btn .text{
+    font-size: 16px;
+    text-align: center;
+    padding: 0.25em;
+}
+
+#continentWeather .btn:hover{
+    background-color: var(--grey);
+}
+
+#continentWeather .btnIcon{
+    height:0.75em;
+    width:0.75em;
+}
+
+#continentWeather .cityCards{
+    display:grid;
+    grid-template-columns: repeat(5,20%);
+    grid-template-rows: repeat(3,27%);
+    grid-auto-columns: 20%;
+    row-gap: 1.5vh;
+    column-gap: 1.5vw;
+    grid-auto-flow: column;
+    overflow-x:scroll;
+}
+
+#continentWeather .cityCard{
+    background-color: var(--black-light);
+    transition-duration: 200ms;
+    display:grid;
+    grid-template-columns: 2fr  max-content;
+    row-gap:0.5em;
+    padding:0.5em;
+    transform: translateY(-2px);
+}
+
+/* #continentWeather .cityCard .continentName{
+    font-size:1vw;
+}
+
+#continentWeather .cityCard .temperature,#continentWeather .cityCard .city,#continentWeather .cityCard .time{
+    font-size:0.8vw;
+} */
+
+/* #continentWeather .cityCards{
+    column-count: 4;
+}
+
+#continentWeather .cityCard{
+    display:inline-block;
+    margin: 2vh 0;
+    background-color: var(--black-light);
+    transition-duration: 200ms;
+    display:grid;
+    grid-template-columns: 2fr auto;
+    row-gap:0.5em;
+    padding:0.5em;
+    transform: translateY(-2px);
+} */
+
+#continentWeather .cityCard:hover{
+    transform: translateY(-5px);
+}
+
+/*-------------------------Media-Query-----------------------*/
+@media only screen and (max-width:700px){
+    #topCityWeather{
+        height: 25vh;
+        display:grid;
+        grid-template-rows: max-content auto;
+    } 
+    
+    /* #continentWeather .cityCard{
+        display:grid;
+        grid-template-columns: 2fr auto;
+        row-gap:0.25em;
+        padding:0.25em;
+    }
+    
+    #continentWeather .cityCard .cityDetail .city{
+        font-size: 14px;
+        color: red;
+    }
+
+    #continentWeather .cityCard .cityDetail .time{
+        font-size: 14px;
+        color: red;
+    } */
+}
+
