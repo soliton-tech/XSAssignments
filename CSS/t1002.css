@@ -10,18 +10,37 @@
     width: 100%;
     position: sticky; 
     padding: 10px 0px; 
-    display: inline-grid;
+    display: grid;
     grid-template-columns: 60% 92px 12% 10%;
     justify-content: space-evenly;
     color: #a8a8a8;
   }
 
-  .city-card-container {
-    flex-direction: column;
-    margin-left: 3%;
-    display: inline-flex;
-    width: 28%;
-    height: 100%;
+.city-card-section{
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 8% 84% 8%;
+  padding: 10px 0;
+}
+
+.city-card-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  column-gap: 2%;
+  justify-content: space-between;
+}
+
+/* ::-webkit-scrollbar {
+  display: none;
+} */
+
+.city-card {
+    /* margin-left: 3%; */
+    width: 155px;
+    /* height: 100%; */
     color: #fff;
     align-items: flex-start;
     justify-content: space-evenly;
@@ -32,80 +51,117 @@
     padding-top: 1%;
     padding-bottom: 4%;
     padding-right: 1%;
-    background-color: rgba(131, 131, 131, 0.25);
+    background-color: rgb(62 62 62 / 25%);
+    flex-shrink: 0;
   }
+
+/* .first-city{
+  margin: 0;
+} */
 
 .city-card-toplevel {
     display: inline-grid;
-    height: 100%;
+    /* height: 100%; */
     width: 100%;
-    grid-template-columns: 60% 10% 20%;
+    grid-template-columns: 55% 10% 25%;
     align-items: center;
     justify-content: space-evenly;
   }
 
-  .middle-header{
+.middle-header{
     justify-self: center;
     padding-left: 10%;
   }
 
-  .spinner-label{
+.city-display-count-label{
     font-size: small;
     justify-self: left;
     padding-left: 2%;
   }
 
-  .spinner{
+.city-display-count{
     font-size: small;
     width: 32px;
     height: 15px;
     border: 0px;
     padding: 2px;
+    background-color: rgba(131, 131, 131, 0.25);
+    color : #ccc;
+    /* opacity: 1; */
   }
 
-  .city-card-toplevel > div{
+/* .city-card-toplevel > div{
     height: 100%;
     width: 100%;
-  }
+  } */
+
   .city-card-detailed {
-    display: inline-grid;
-    height: 100%;
+    display: grid;
+    /* height: 100%; */
     width: 100%;
     align-items: flex-start;
     justify-content: space-between;
-    padding-left: 5px;
-  }
-  .city-card-detailed > div{
-    padding: 3px 0;
+    padding-left: 3px;
   }
 
-  .weather-preference-container input:checked + label {
+/* .city-card-detailed > div{
+    padding: 3px 0;
+  } */
+
+.weather-preference-container input:checked + label {
     border-bottom: 2px solid blue;
   }
 
-  .weather-preference-container label{
+.weather-preference-container label{
       cursor: pointer;
       padding: 0 4px 0 4px;
   }
-  .weather-preference-container input{
+.weather-preference-container input{
       display: none;
   }
 
-  .city-name{
+.city-name{
     text-align: left;
+    font-size: medium;
   }
 
-  .weather-icon{
+.weather-icon{
     text-align: right; 
     padding-top: 2px;
   }
 
-  .temperature-in-celsius{
+.temperature-in-celsius{
     text-align: left;
+    font-size: medium;
   }
 
-  .humidity-icon, .precipitation-icon{
-    font-size: small;
+.city-date, .city-time{
+  font-size: small;
+  padding: 3px 0;
+}
+
+.city-humidity, .city-precipitation{
+    font-size: x-small;
+    padding-left: 2px;
+    color: rgb(219, 216, 216);
   }
+
+.scroll{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  place-content: center;
+}
+
+.left-scroll-button, .right-scroll-button{
+  border: 0;
+  background: transparent;
+}
+
+.left-scroll-img, .right-scroll-img{
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px;
+}
 
   

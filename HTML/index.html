@@ -12,14 +12,16 @@
 </head>
 
 <body>
+    <!-- ------------------------------------        top-section        --------------------------------------------------- -->
     <div class="top-section">
         <div class="city-icon-section">
-            <img class="city-icon" src="../assets/HTML & CSS/Icons for cities/newyork.svg" alt="icon" height="60"
-                width="60">
+            <img class="city-icon" src="../assets/HTML & CSS/Icons for cities/newyork.svg" alt="icon" height="55"
+                width="55">
         </div>
         <div class="city-details">
             <select name="City" id="City" class="city-selection">
-                <option value="Newyork">Newyork</option>
+                <option value="Select">Select</option>
+                <!-- <option value="Newyork">Newyork</option>
                 <option value="Nome">Nome</option>
                 <option value="Jamaica">Jamaica</option>
                 <option value="LosAngeles">LosAngeles</option>
@@ -28,39 +30,43 @@
                 <option value="Maseru">Maseru</option>
                 <option value="London">London</option>
                 <option value="Vienna">Vienna</option>
-                <option value="Moscow">Moscow</option>
+                <option value="Moscow">Moscow</option> -->
             </select>
-            <div class="time"><time>10:25</time><sub>:30</sub><img src="
+            <div class="time"><time>10:25</time><sub class="seconds">:30</sub><img class="ampmstate" src="
                     ../assets/HTML & CSS/General Images & Icons/amState.svg" alt="AM" height="30" width="30"></div>
             <div class="date">24-FEB-2020</div>
         </div>
         <div class="city-temperature">
-            <div class="temperature">Temp °C</div>
-            <div class="temperature-value">25 C</div>
+            <div class="temperature-heading">Temp °C</div>
+            <div class="temperature-in-celsius">25 C</div>
             <div></div>
-            <div class="temperature">Temp F</div>
-            <div class="temperature-value">78 F</div>
+            <div class="temperature-heading">Temp F</div>
+            <div class="temperature-in-farenheit">78 F</div>
         </div>
         <div class="separator">
             <div class="vertical-line"></div>
             <div class="line-gap"></div>
             <div class="vertical-line"></div>
         </div>
-        <div class="city-humidity">
-            <div class="humidity">Humidity</div>
+        <div class="city-humidity_precipitation">
+            <div class="humidity-heading">Humidity</div>
             <div class="humidity-value">26<span class="percentage">%</span></div>
             <div></div>
-            <div class="precipitation">Precipitation</div>
+            <div class="precipitation-heading">Precipitation</div>
             <div class="precipitation-value">0<span class="percentage">%</span></div>
         </div>
         <div class="weather-prediction">
-            <div>Now</div>
+            <div class="hourly-time">Now</div>
             <div></div>
-            <div>11AM</div>
+            <div class="hourly-time">11AM</div>
             <div></div>
-            <div>12PM</div>
+            <div class="hourly-time">12PM</div>
             <div></div>
-            <div>1PM</div>
+            <div class="hourly-time">1PM</div>
+            <div></div>
+            <div class="hourly-time">2PM</div>
+            <div></div>
+            <div class="hourly-time">3PM</div>
             <div class="small-vertical-line">|</div>
             <div class="small-vertical-line">|</div>
             <div class="small-vertical-line">|</div>
@@ -68,24 +74,38 @@
             <div class="small-vertical-line">|</div>
             <div class="small-vertical-line">|</div>
             <div class="small-vertical-line">|</div>
-            <div><img class="cloudy" src="../assets/HTML & CSS/Weather Icons/cloudyIcon.svg" alt="cloudy" height="16"
-                    width="16"></div>
+            <div class="small-vertical-line">|</div>
+            <div class="small-vertical-line">|</div>
+            <div class="small-vertical-line">|</div>
+            <div class="small-vertical-line">|</div>
+            <div><img class="hourly-weather-icon" src="../assets/HTML & CSS/Weather Icons/cloudyIcon.svg" alt="cloudy"
+                    height="16" width="16"></div>
             <div></div>
-            <div><img class="rainy" src="../assets/HTML & CSS/Weather Icons/rainyIcon.svg" alt="rainy" height="16"
-                    width="16"></div>
+            <div><img class="hourly-weather-icon" src="../assets/HTML & CSS/Weather Icons/rainyIcon.svg" alt="rainy"
+                    height="16" width="16"></div>
             <div></div>
-            <div><img class="windy" src="../assets/HTML & CSS/Weather Icons/windyIcon.svg" alt="windy" height="16"
-                    width="16"></div>
+            <div><img class="hourly-weather-icon" src="../assets/HTML & CSS/Weather Icons/windyIcon.svg" alt="windy"
+                    height="16" width="16"></div>
             <div></div>
-            <div><img class="rainy" src="../assets/HTML & CSS/Weather Icons/rainyIcon.svg" alt="rainy" height="16"
-                    width="16"></div>
-            <div>6</div>
+            <div><img class="hourly-weather-icon" src="../assets/HTML & CSS/Weather Icons/rainyIcon.svg" alt="rainy"
+                    height="16" width="16"></div>
             <div></div>
-            <div>7</div>
+            <div><img class="hourly-weather-icon" src="../assets/HTML & CSS/Weather Icons/windyIcon.svg" alt="windy"
+                    height="16" width="16"></div>
             <div></div>
-            <div>7</div>
+            <div><img class="hourly-weather-icon" src="../assets/HTML & CSS/Weather Icons/rainyIcon.svg" alt="rainy"
+                    height="16" width="16"></div>
+            <div class="hourly-temperature">6</div>
             <div></div>
-            <div>8</div>
+            <div class="hourly-temperature">7</div>
+            <div></div>
+            <div class="hourly-temperature">7</div>
+            <div></div>
+            <div class="hourly-temperature">8</div>
+            <div></div>
+            <div class="hourly-temperature">8</div>
+            <div></div>
+            <div class="hourly-temperature">6</div>
         </div>
     </div>
     <!-- ------------------------------------        middle-section        --------------------------------------------------- -->
@@ -93,70 +113,86 @@
         <div class="middle-header-container">
             <div class="middle-header">Top cities around world</div>
             <div class="weather-preference-container">
-                <input type="radio" id="sunny" name="weather-preferences" checked>
+                <input type="radio" id="sunny" name="weather-preferences" value="sunny" checked>
                 <label for="sunny"><img class="sunny" src="../assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="sunny"
                         height="20" width="20"></label>
-                <input type="radio" id="cloudy" name="weather-preferences">
+                <input type="radio" id="cloudy" name="weather-preferences" value="cloudy">
                 <label for="cloudy"><img src="../assets/HTML & CSS/Weather Icons/snowflakeIcon.svg" alt="cloudy"
                         height="20" width="20"></label>
-                <input type="radio" id="rainy" name="weather-preferences"></label>
+                <input type="radio" id="rainy" name="weather-preferences" value="rainy"></label>
                 <label for="rainy"><img src="../assets/HTML & CSS/Weather Icons/rainyIcon.svg" alt="rainy" height="20"
                         width="20">
             </div>
-            <div class="spinner-label">Display Top</div>
-            <div><input type="number" min="3" max="10" class="spinner"></div>
+            <div class="city-display-count-label">Display Top</div>
+            <div><input type="number" min="3" max="10" value="3" class="city-display-count"></div>
         </div>
-        </br>
-        <div class="city-card-container">
-            <div class="city-card-toplevel">
-                <div class="city-name">Newyork</div>
-                <div class="weather-icon">
-                    <img src="../assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="err" height="16" width="16">
+        <div class="city-card-section">
+            <div class="scroll"><button type="button" class="left-scroll-button">
+                    <img class="left-scroll-img" src="../assets/HTML & CSS/General Images & Icons/backwardArrow.svg"
+                        alt="DOWN" height="15" width="15"></button>
+            </div>
+            <div class="city-card-container">
+                <div class="city-card first-city">
+                    <div class="city-card-toplevel">
+                        <div class="city-name">Newyork</div>
+                        <div>
+                            <img class="weather-icon" src="../assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="err"
+                                height="16" width="16">
+                        </div>
+                        <div class="temperature-in-celsius">25°C</div>
+                    </div>
+                    <div class="city-card-detailed">
+                        <div class="city-time">10:00 AM</div>
+                        <div class="city-date">24-FEB-2020</div>
+                        <div class="humidity-icon"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg"
+                                alt="err" height="10" width="10"><span class="city-humidity">53%</span></div>
+                        <div class="precipitation-icon"><img
+                                src="../assets/HTML & CSS/Weather Icons/precipitationIcon.svg" alt="err" height="10"
+                                width="10"><span class="city-precipitation">10%</span></div>
+                    </div>
                 </div>
-                <div class="temperature-in-celsius">25°C</div>
-            </div>
-            <div class="city-card-detailed">
-                <div>10:00 AM</div>
-                <div>24-FEB-2020</div>
-                <div class="humidity-icon"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
-                        height="10" width="10">53%</div>
-                <div class="precipitation-icon"><img src="../assets/HTML & CSS/Weather Icons/precipitationIcon.svg"
-                        alt="err" height="10" width="10">10%</div>
-            </div>
-        </div>
-
-        <div class="city-card-container">
-            <div class="city-card-toplevel">
-                <div class="city-name">Newyork</div>
-                <div class="weather-icon">
-                    <img src="../assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="err" height="16" width="16">
+                <div class="city-card">
+                    <div class="city-card-toplevel">
+                        <div class="city-name">Newyork</div>
+                        <div>
+                            <img class="weather-icon" src="../assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="err"
+                                height="16" width="16">
+                        </div>
+                        <div class="temperature-in-celsius">25°C</div>
+                    </div>
+                    <div class="city-card-detailed">
+                        <div class="city-time">10:00 AM</div>
+                        <div class="city-date">24-FEB-2020</div>
+                        <div class="humidity-icon"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg"
+                                alt="err" height="10" width="10"><span class="city-humidity">53%</span></div>
+                        <div class="precipitation-icon"><img
+                                src="../assets/HTML & CSS/Weather Icons/precipitationIcon.svg" alt="err" height="10"
+                                width="10"><span class="city-precipitation">10%</span></div>
+                    </div>
                 </div>
-                <div class="temperature-in-celsius">25°C</div>
-            </div>
-            <div class="city-card-detailed">
-                <div>10:00 AM</div>
-                <div>24-FEB-2020</div>
-                <div class="humidity-icon"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
-                        height="10" width="10">53%</div>
-                <div class="precipitation-icon"><img src="../assets/HTML & CSS/Weather Icons/precipitationIcon.svg"
-                        alt="err" height="10" width="10">10%</div>
-            </div>
-        </div>
-        <div class="city-card-container">
-            <div class="city-card-toplevel">
-                <div class="city-name">Newyork</div>
-                <div class="weather-icon">
-                    <img src="../assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="err" height="16" width="16">
+                <div class="city-card">
+                    <div class="city-card-toplevel">
+                        <div class="city-name">Newyork</div>
+                        <div>
+                            <img class="weather-icon" src="../assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="err"
+                                height="16" width="16">
+                        </div>
+                        <div class="temperature-in-celsius">25°C</div>
+                    </div>
+                    <div class="city-card-detailed">
+                        <div class="city-time">10:00 AM</div>
+                        <div class="city-date">24-FEB-2020</div>
+                        <div class="humidity-icon"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg"
+                                alt="err" height="10" width="10"><span class="city-humidity">53%</span></div>
+                        <div class="precipitation-icon"><img
+                                src="../assets/HTML & CSS/Weather Icons/precipitationIcon.svg" alt="err" height="10"
+                                width="10"><span class="city-precipitation">10%</span></div>
+                    </div>
                 </div>
-                <div class="temperature-in-celsius">25°C</div>
             </div>
-            <div class="city-card-detailed">
-                <div>10:00 AM</div>
-                <div>24-FEB-2020</div>
-                <div class="humidity-icon"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
-                        height="10" width="10">53%</div>
-                <div class="precipitation-icon"><img src="../assets/HTML & CSS/Weather Icons/precipitationIcon.svg"
-                        alt="err" height="10" width="10">10%</div>
+            <div class="scroll"><button type="button" class="right-scroll-button">
+                    <img class="right-scroll-img" src="../assets/HTML & CSS/General Images & Icons/forwardArrow.svg"
+                        alt="DOWN" height="15" width="15"></button>
             </div>
         </div>
     </div>
@@ -165,12 +201,14 @@
         <div class="bottom-header">
             <div class="bottom-header-title">Cities across
                 continents at a Glance</div>
-            <div class="continent-name">Continent Name</div>
-            <img src="
-                    ../assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt="DOWN" height="15" width="10">
-            <div class="temperature">Temperature </div>
-            <img src="
-                    ../assets/HTML & CSS/General Images & Icons/arrowUP.svg" alt="UP" height="15" width="10">
+            <div><button type="button" class="continent-sort-button">Continent Name
+                    <img class="continent-sort" src="
+                    ../assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt="DOWN" height="15"
+                        width="10"></button></div>
+            <div><button type="button" class="temperature-sort-button">Temperature
+                    <img class="temperature-sort" src="
+                    ../assets/HTML & CSS/General Images & Icons/arrowUp.svg" alt="UP" height="15" width="10"></button>
+            </div>
         </div>
         </br>
         <div class="continent-card-container">
@@ -178,59 +216,29 @@
                 <div class="continent">Asia</div>
                 <div class="temperature">38°C</div>
                 <div class="city_time">Delhi, 10:10 AM</div>
-                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err" height="10"
-                        width="10">53%</div>
+                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
+                        height="10" width="10"><span class="humidity-percentage">53%</span></div>
             </div>
             <div class="continent-card">
                 <div class="continent">Asia</div>
                 <div class="temperature">38°C</div>
                 <div class="city_time">Delhi, 10:10 AM</div>
-                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err" height="10"
-                        width="10">53%</div>
+                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
+                        height="10" width="10"><span class="humidity-percentage">53%</span></div>
             </div>
             <div class="continent-card">
                 <div class="continent">Asia</div>
                 <div class="temperature">38°C</div>
                 <div class="city_time">Delhi, 10:10 AM</div>
-                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err" height="10"
-                        width="10">53%</div>
+                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
+                        height="10" width="10"><span class="humidity-percentage">53%</span></div>
             </div>
             <div class="continent-card">
                 <div class="continent">Asia</div>
                 <div class="temperature">38°C</div>
                 <div class="city_time">Delhi, 10:10 AM</div>
-                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err" height="10"
-                        width="10">53%</div>
-            </div>
-        </div>
-        <div class="continent-card-container">
-            <div class="continent-card">
-                <div class="continent">Asia</div>
-                <div class="temperature">38°C</div>
-                <div class="city_time">Delhi, 10:10 AM</div>
-                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err" height="10"
-                        width="10">53%</div>
-            </div>
-            <div class="continent-card">
-                <div class="continent">Asia</div>
-                <div class="temperature">38°C</div>
-                <div class="city_time">Delhi, 10:10 AM</div>
-                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err" height="10"
-                        width="10">53%</div>
-            </div>
-            <div class="continent-card">
-                <div class="continent">Asia</div>
-                <div class="temperature">38°C</div>
-                <div class="city_time">Delhi, 10:10 AM</div>
-                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err" height="10"
-                        width="10">53%</div>
-            </div>
-            <div class="continent-card">
-                <div class="continent">Asia</div>
-                <div class="temperature">38°C</div>
-                <div class="city_time">Delhi, 10:10 AM</div>
-                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err" height="10"
-                        width="10">53%</div>
+                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
+                        height="10" width="10"><span class="humidity-percentage">53%</span></div>
             </div>
         </div>
         <div class="continent-card-container">
@@ -238,32 +246,63 @@
                 <div class="continent">Asia</div>
                 <div class="temperature">38°C</div>
                 <div class="city_time">Delhi, 10:10 AM</div>
-                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err" height="10"
-                        width="10">53%</div>
+                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
+                        height="10" width="10"><span class="humidity-percentage">53%</span></div>
             </div>
             <div class="continent-card">
                 <div class="continent">Asia</div>
                 <div class="temperature">38°C</div>
                 <div class="city_time">Delhi, 10:10 AM</div>
-                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err" height="10"
-                        width="10">53%</div>
+                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
+                        height="10" width="10"><span class="humidity-percentage">53%</span></div>
             </div>
             <div class="continent-card">
                 <div class="continent">Asia</div>
                 <div class="temperature">38°C</div>
                 <div class="city_time">Delhi, 10:10 AM</div>
-                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err" height="10"
-                        width="10">53%</div>
+                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
+                        height="10" width="10"><span class="humidity-percentage">53%</span></div>
             </div>
             <div class="continent-card">
                 <div class="continent">Asia</div>
                 <div class="temperature">38°C</div>
                 <div class="city_time">Delhi, 10:10 AM</div>
-                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err" height="10"
-                        width="10">53%</div>
+                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
+                        height="10" width="10"><span class="humidity-percentage">53%</span></div>
+            </div>
+        </div>
+        <div class="continent-card-container">
+            <div class="continent-card">
+                <div class="continent">Asia</div>
+                <div class="temperature">38°C</div>
+                <div class="city_time">Delhi, 10:10 AM</div>
+                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
+                        height="10" width="10"><span class="humidity-percentage">53%</span></div>
+            </div>
+            <div class="continent-card">
+                <div class="continent">Asia</div>
+                <div class="temperature">38°C</div>
+                <div class="city_time">Delhi, 10:10 AM</div>
+                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
+                        height="10" width="10"><span class="humidity-percentage">53%</span></div>
+            </div>
+            <div class="continent-card">
+                <div class="continent">Asia</div>
+                <div class="temperature">38°C</div>
+                <div class="city_time">Delhi, 10:10 AM</div>
+                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
+                        height="10" width="10"><span class="humidity-percentage">53%</span></div>
+            </div>
+            <div class="continent-card">
+                <div class="continent">Asia</div>
+                <div class="temperature">38°C</div>
+                <div class="city_time">Delhi, 10:10 AM</div>
+                <div class="humidity"><img src="../assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="err"
+                        height="10" width="10"><span class="humidity-percentage">53%</span></div>
             </div>
         </div>
     </div>
+    <script src="../JavaScript/t2001.js"></script>
 </body>
 
 </html>
