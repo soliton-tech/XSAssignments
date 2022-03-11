@@ -1,0 +1,73 @@
+.bottom-section{
+    background-color: #1f1e1e;
+    height: 100%;
+    width: 100%;
+    padding: 10px 0 20px 0;
+}
+
+.bottom-header {
+    display: inline-grid;
+    height: 100%;
+    width: 100%;
+    padding: 10px 0px; 
+    margin-left: 3%;
+    grid-template-columns: 55% 20% 17%;
+  }
+ 
+ .continent-card {
+     height: 100%;
+     width: 100%;
+    display: inline-grid;
+    grid-template-columns: 75% 20%;
+    background-color: rgba(131, 131, 131, 0.25);
+    padding: 3%;
+    justify-content: space-between;
+  }
+  
+.bottom-header{
+    color: #cccccc;
+    font-size: small;
+}
+
+.bottom-header-title{
+    color: #e3e3e3; 
+    font-size: large;
+}
+
+.continent-card-container {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 3%;
+    height: 100%;
+    width: 28%;
+  }
+
+.continent-card .continent, .continent-card .city_time, .continent-card .humidity{
+    font-size: x-small;
+}
+
+.continent-card .continent {
+    color: #FFE5B4;
+}
+
+.continent-card .city_time{
+    color: #c0c0c0C0;
+}
+
+.humidity{
+    color: rgb(219, 216, 216);
+}
+
+.continent-sort-button, .temperature-sort-button{
+    background: transparent;
+    border: none;
+    color: #cccccc;
+    font-size: small;
+    cursor: pointer;
+}
+
+.temperature{
+    font-size: small;
+    color: #fff;
+}
