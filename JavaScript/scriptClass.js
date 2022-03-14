@@ -402,6 +402,7 @@ function button() {
   }
 }
 var dine = document.getElementById("dine");
+dine.style.borderBottom = "#00b9fb solid 2px";
 dine.addEventListener("click", () => {
   dine.style.borderBottom = "#00b9fb solid 2px";
   dine1.style.borderBottom = "#00b9fb solid 0px";
@@ -459,9 +460,7 @@ function create() {
 let city1 = new IndCity();
 async function first() {
   text = await api();
-  for (let i = 0; i < text.length; i++) {
-    document.querySelector(".mid").append(city1.input(i));
-  }
+  sunny();
   temperaturesort();
 }
 function selectdata() {
@@ -492,9 +491,9 @@ function sunny() {
   }
 
   let d = [];
-  for (let i = 0; i < text.length; i++) {
-    c[i] = i;
-  }
+  text.forEach((value, index) => {
+    c[index] = index;
+  });
   d = c.filter((j) => text[j]["temperature"].slice(0, -2) > 29);
   d = d.filter((j) => text[j]["humidity"].slice(0, -1) < 50);
   d = d.filter((j) => text[j]["precipitation"].slice(0, -1) >= 50);
@@ -504,17 +503,17 @@ function sunny() {
   );
   d.reverse();
   if (d.length < 10 && d.length > 3) {
-    for (let i = 0; i < d.length; i++) {
-      document.querySelector(".mid").append(city1.input(d[i]));
-    }
+    d.forEach((value) => {
+      document.querySelector(".mid").append(city1.input(value));
+    });
   } else if (d.length > 10) {
-    for (let i = 0; i < 10; i++) {
-      document.querySelector(".mid").append(city1.input(d[i]));
-    }
+    d.slice(0, 10).forEach((value) => {
+      document.querySelector(".mid").append(city1.input(value));
+    });
   } else {
-    for (let i = 0; i < d.length; i++) {
-      document.querySelector(".mid").append(city1.input(d[i]));
-    }
+    d.forEach((value) => {
+      document.querySelector(".mid").append(city1.input(value));
+    });
   }
   remove = [];
   gx = 0;
@@ -543,17 +542,17 @@ function snow() {
   );
   d.reverse();
   if (d.length < 10 && d.length > 3) {
-    for (let i = 0; i < d.length; i++) {
-      document.querySelector(".mid").append(city1.input(d[i]));
-    }
+    d.forEach((value) => {
+      document.querySelector(".mid").append(city1.input(value));
+    });
   } else if (d.length > 10) {
-    for (let i = 0; i < 10; i++) {
-      document.querySelector(".mid").append(city1.input(d[i]));
-    }
+    d.slice(0, 10).forEach((value) => {
+      document.querySelector(".mid").append(city1.input(value));
+    });
   } else {
-    for (let i = 0; i < d.length; i++) {
-      document.querySelector(".mid").append(city1.input(d[i]));
-    }
+    d.forEach((value) => {
+      document.querySelector(".mid").append(city1.input(value));
+    });
   }
   remove = [];
   gx = 0;
@@ -575,17 +574,17 @@ function rain() {
   );
   d.reverse();
   if (d.length < 10 && d.length > 3) {
-    for (let i = 0; i < d.length; i++) {
-      document.querySelector(".mid").append(city1.input(d[i]));
-    }
+    d.forEach((value) => {
+      document.querySelector(".mid").append(city1.input(value));
+    });
   } else if (d.length > 10) {
-    for (let i = 0; i < 10; i++) {
-      document.querySelector(".mid").append(city1.input(d[i]));
-    }
+    d.slice(0, 10).forEach((value) => {
+      document.querySelector(".mid").append(city1.input(value));
+    });
   } else {
-    for (let i = 0; i < d.length; i++) {
-      document.querySelector(".mid").append(city1.input(d[i]));
-    }
+    d.forEach((value) => {
+      document.querySelector(".mid").append(city1.input(value));
+    });
   }
   rightinit = 0;
   remove = [];
@@ -601,23 +600,23 @@ function continentsort() {
       gridend.removeChild(gridend.lastChild);
     }
     let arr = [];
-    for (let i = 0; i < text.length; i++) {
-      arr.push(text[i].timeZone.slice(0, text[i].timeZone.indexOf("/")));
-    }
+    text.forEach((element) => {
+      arr.push(element.timeZone.slice(0, element.timeZone.indexOf("/")));
+    });
     arr.sort();
     arr.reverse();
-    for (let i = 0; i < text.length; i++) {
-      for (let j = 0; j < text.length; j++) {
+    text.forEach((element, i) => {
+      text.forEach((element1, j) => {
         if (
-          text[j].timeZone.slice(0, text[j].timeZone.indexOf("/")) === arr[i]
+          element1.timeZone.slice(0, element1.timeZone.indexOf("/")) === arr[i]
         ) {
           if (arr[i] === arr[i - 1]) {
           } else {
             gridend.appendChild(city1.glance(j));
           }
         }
-      }
-    }
+      });
+    });
     while (gridend.childElementCount >= 13) {
       gridend.removeChild(gridend.lastChild);
     }
@@ -628,22 +627,22 @@ function continentsort() {
       gridend.removeChild(gridend.lastChild);
     }
     let arr = [];
-    for (let i = 0; i < text.length; i++) {
-      arr.push(text[i].timeZone.slice(0, text[i].timeZone.indexOf("/")));
-    }
+    text.forEach((element) => {
+      arr.push(element.timeZone.slice(0, element.timeZone.indexOf("/")));
+    });
     arr.sort();
-    for (let i = 0; i < text.length; i++) {
-      for (let j = 0; j < text.length; j++) {
+    text.forEach((element, i) => {
+      text.forEach((element1, j) => {
         if (
-          text[j].timeZone.slice(0, text[j].timeZone.indexOf("/")) === arr[i]
+          element1.timeZone.slice(0, element1.timeZone.indexOf("/")) === arr[i]
         ) {
           if (arr[i] === arr[i - 1]) {
           } else {
             gridend.appendChild(city1.glance(j));
           }
         }
-      }
-    }
+      });
+    });
     while (gridend.childElementCount >= 13) {
       gridend.removeChild(gridend.lastChild);
     }
@@ -660,20 +659,20 @@ function temperaturesort() {
       while (gridend.hasChildNodes()) {
         gridend.removeChild(gridend.lastChild);
       }
-      for (let i = 0; i < text.length; i++) {
+      text.forEach((element, i) => {
         c[i] = i;
-        f[i] = text[i].timeZone.slice(0, text[i].timeZone.indexOf("/"));
-      }
+        f[i] = element.timeZone.slice(0, element.timeZone.indexOf("/"));
+      });
       let duplicate = [...new Set(f)];
       let sort = [...duplicate.sort()];
       sort.reverse();
       let d = [];
-      for (let h = 0; h < sort.length; h++) {
+      sort.forEach((element) => {
         d = c
           .filter(
             (i) =>
               text[i].timeZone.slice(0, text[i].timeZone.indexOf("/")) ===
-              sort[h]
+              element
           )
           .sort(
             (a, b) =>
@@ -681,10 +680,10 @@ function temperaturesort() {
               text[b]["temperature"].slice(0, -2)
           );
         d = d.reverse();
-        for (let k = 0; k < d.length; k++) {
-          document.querySelector(".grid-end").append(city1.glance(d[k]));
-        }
-      }
+        d.forEach((element) => {
+          document.querySelector(".grid-end").append(city1.glance(element));
+        });
+      });
       while (gridend.childElementCount >= 13) {
         gridend.removeChild(gridend.lastChild);
       }
