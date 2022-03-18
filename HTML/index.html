@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link rel="icon" href="../assets/sunnyIcon.svg" />
+    <link rel="stylesheet" href="../CSS/style.CSS" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body onload="first();">
+    <div class="head">
+      <div class="image">
+        <img id="dynamic" alt="country icon" />
+      </div>
+      <div class="select">
+        <p id="error"></p>
+        <input
+          placeholder="select"
+          type="text"
+          list="na"
+          id="name"
+          onchange="selectdata();"
+          onclick="selectdata();"
+        />
+        <datalist id="na">
+          <option value="NewYork"></option>
+          <option value="Moscow"></option>
+          <option value="Jamaica"></option>
+          <option value="Seoul"></option>
+          <option value="Anadyr"></option>
+          <option value="BrokenHill"></option>
+          <option value="Perth"></option>
+          <option value="Auckland"></option>
+          <option value="Vostok"></option>
+          <option value="Troll"></option>
+          <option value="BangKok"></option>
+          <option value="Yangon"></option>
+          <option value="Kolkata"></option>
+          <option value="Karachi"></option>
+          <option value="Dublin"></option>
+          <option value="Vienna"></option>
+          <option value="London"></option>
+          <option value="Maseru"></option>
+          <option value="Juba"></option>
+          <option value="Winnipeg"></option>
+          <option value="LosAngeles"></option>
+        </datalist>
+      </div>
+      <div class="date-time">
+        <div class="date">
+          <div id="time">00:00:00</div>
+          <div id="ampm"></div>
+        </div>
+        <div class="time">
+          <div id="date">Date-Mon-Year</div>
+        </div>
+      </div>
+      <div class="th">
+        <div class="t">
+          <div class="light">Temp&#176;C</div>
+          <div id="cel"><b>0 C</b></div>
+        </div>
+        <div class="h">
+          <div class="light">Humidity</div>
+          <div id="hum"><b>0 %</b></div>
+        </div>
+      </div>
+      <div class="tp">
+        <div class="t">
+          <div class="light">Temp F</div>
+          <div id="far"><b>0 F</b></div>
+        </div>
+        <div class="p">
+          <div class="light">Precipitation</div>
+          <div id="per"><b>0 %</b></div>
+        </div>
+      </div>
+      <div class="time-basis">
+        <div class="now">
+          <div>NOW</div>
+          <div>|</div>
+          <div>
+            <img class="nowimg" src="" alt="NIL" />
+          </div>
+          <div class="nowt">NIL</div>
+        </div>
+        <div class="line">
+          <div>|</div>
+        </div>
+        <div class="now">
+          <div id="first">NIL</div>
+          <div>|</div>
+          <div>
+            <img class="firstimg" src="" alt="NIL" />
+          </div>
+          <div class="firstt">NIL</div>
+        </div>
+        <div class="line">
+          <div>|</div>
+        </div>
+
+        <div class="now">
+          <div id="second">NIL</div>
+          <div>|</div>
+          <div>
+            <img class="secondimg" src="" alt="NIL" />
+          </div>
+          <div class="secondt">NIL</div>
+        </div>
+        <div class="line">
+          <div>|</div>
+        </div>
+        <div class="now">
+          <div id="third">NIL</div>
+          <div>|</div>
+          <div>
+            <img class="thirdimg" src="" alt="NIL" />
+          </div>
+          <div class="thirdt">NIL</div>
+        </div>
+        <div class="line">
+          <div>|</div>
+        </div>
+        <div class="now">
+          <div id="fourth">NIL</div>
+          <div>|</div>
+          <div>
+            <img class="fourthimg" src="" alt="NIL" />
+          </div>
+          <div class="fourtht">NIL</div>
+        </div>
+        <div class="line">
+          <div>|</div>
+        </div>
+        <div class="now">
+          <div id="fifth">NIL</div>
+          <div>|</div>
+          <div>
+            <img class="fifthimg" src="" alt="NIL" />
+          </div>
+          <div class="fiftht">NIL</div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="heading">Top Cities Around World</div>
+      <div class="top-icon">
+        <div>
+          <img
+            id="dine"
+            src="../assets/sunnyIcon.svg"
+            alt="sun"
+            onclick="sunny();"
+          />
+        </div>
+        <div>
+          <img
+            id="dine1"
+            src="../assets/snowflakeIcon.svg"
+            alt="winter"
+            onclick="snow();"
+          />
+        </div>
+        <div>
+          <img
+            id="dine2"
+            src="../assets/rainyIcon.svg"
+            alt="rain"
+            onclick="rain();"
+          />
+        </div>
+        <div>Display Top</div>
+        <div>
+          <input
+            type="number"
+            value="4"
+            min="3"
+            max="10"
+            step="1"
+            id="drop"
+            onchange="create();"
+          />
+        </div>
+      </div>
+      <div class="mid"></div>
+      <div class="button">
+        <div class="left">
+          <button onclick="left();"><</button>
+        </div>
+        <div class="right"><button onclick="right();">></button></div>
+      </div>
+
+      <div class="end">
+        <div class="heading">Cities across continents as a Glance</div>
+        <div class="continent">
+          <div class="c-name">
+            <div>Continent Name</div>
+            <div>
+              <img
+                src="../assets/arrowDown.svg"
+                alt="arrowDown"
+                id="continentsort"
+                onclick="continentsort();"
+              />
+            </div>
+          </div>
+          <div class="c-name">
+            <div>Temperature</div>
+            <div>
+              <img
+                src="../assets/arrowUp.svg"
+                alt="arrowUp"
+                id="temperaturesort"
+                onclick="temperaturesort();"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="grid-end"></div>
+      </div>
+    </div>
+    <script src="../JavaScript/scriptClass.js"></script>
+  </body>
+</html>
